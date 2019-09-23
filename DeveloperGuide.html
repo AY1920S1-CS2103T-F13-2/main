@@ -855,23 +855,60 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="paragraph">
 <p>(For all use cases below, the <strong>System</strong> is the <code>AddressBook</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
 </div>
-<h3 id="use-case-delete-person" class="discrete">Use case: Delete person</h3>
+<h3 id="use-case-add-food-item" class="discrete">Use case: Add food item</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to list persons</p>
+<p>User requests to add food item, providing details such as price, description, category, location and so on.</p>
 </li>
 <li>
-<p>AddressBook shows a list of persons</p>
+<p>$aveNUS adds the food item.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. The details are given in the wrong format or mandatory fields are omitted.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. $aveNUS diplays an error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-delete-food-item" class="discrete">Use case: Delete food item</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to list food items.</p>
 </li>
 <li>
-<p>User requests to delete a specific person in the list</p>
+<p>$aveNUS shows a list of food items.</p>
 </li>
 <li>
-<p>AddressBook deletes the person</p>
+<p>User requests to delete a specific food item in the list.</p>
+</li>
+<li>
+<p>$aveNUS deletes the food item.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -894,9 +931,162 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>3a1. AddressBook shows an error message.</p>
+<p>3a1. $aveNUS shows an error message.</p>
 <div class="paragraph">
 <p>Use case resumes at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-search-food-item" class="discrete">Use case: Search food item</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to search for a food item, providing a search query.</p>
+</li>
+<li>
+<p>$aveNUS shows a list of filtered food items according to their provided query.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. User requests to add food item to their expenditure from the search results.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. $aveNUS adds the food item to their expenditure.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>2b. User requests to search without providing any query.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2b1. $aveNUS displays the normal ordering of food items.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-display-recommendations" class="discrete">Use case: Display recommendations</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to list recommendations.</p>
+</li>
+<li>
+<p>$aveNUS shows a list of recommended food items based on their specified budget.</p>
+</li>
+<li>
+<p>User requests to add a specific food item in the list into purchased food items.</p>
+</li>
+<li>
+<p>$aveNUS adds the food item into list of purchased food items.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. The list is empty.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+<li>
+<p>3a. The given index is invalid.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a1. $aveNUS shows an error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-tracking-expenditure" class="discrete">Use case: Tracking expenditure</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to track expenditure.</p>
+</li>
+<li>
+<p>$aveNUS shows a list of past purchases as expenses in a visual format.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<h3 id="use-case-set-budget" class="discrete">Use case: Set budget</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to set budget.</p>
+</li>
+<li>
+<p>$aveNUS calculates the daily budget based on the specified weekly budget.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. The budget set is invalid (such as a negative number).</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. $aveNUS shows an error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
 </div>
 </li>
 </ul>
@@ -1093,4 +1283,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-09-23 09:20:44 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-09-23 09:37:57 UTC</div></div></div></body></html>
