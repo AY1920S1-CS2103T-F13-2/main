@@ -249,8 +249,8 @@ obtain the arguments and index required.</p>
 </li>
 <li>
 <p>The rest of the method seems to exhaustively check for the existence of each possible parameter of the <code>edit</code>
-command and store any possible changes in an <code>EditPersonDescriptor</code>. Recall that we can verify the contents of
-<code>editPersonDesciptor</code> through the <code>Variable</code> tool window.</p>
+command and store any possible changes in an <code>EditFoodDescriptor</code>. Recall that we can verify the contents of
+<code>editfoodDesciptor</code> through the <code>Variable</code> tool window.</p>
 <div class="paragraph">
 <p><span class="image"><img src="../images/tracing/EditCommand.png" alt="EditCommand"></span></p>
 </div>
@@ -276,14 +276,14 @@ Does the execution path you traced in the code so far matches with the diagram?<
 <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Override</span>
 <span class="directive">public</span> CommandResult execute(Model model) <span class="directive">throws</span> CommandException {
     ...
-    Person personToEdit = lastShownList.get(index.getZeroBased());
-    Person editedPerson = createEditedPerson(personToEdit, editPersonDescriptor);
-    <span class="keyword">if</span> (!personToEdit.isSamePerson(editedPerson) &amp;&amp; model.hasPerson(editedPerson)) {
-        <span class="keyword">throw</span> <span class="keyword">new</span> CommandException(MESSAGE_DUPLICATE_PERSON);
+    food foodToEdit = lastShownList.get(index.getZeroBased());
+    food editedfood = createEditedFood(foodToEdit, EditFoodDescriptor);
+    <span class="keyword">if</span> (!foodToEdit.isSameFood(editedfood) &amp;&amp; model.hasFood(editedfood)) {
+        <span class="keyword">throw</span> <span class="keyword">new</span> CommandException(MESSAGE_DUPLICATE_FOOD);
     }
-    model.setPerson(personToEdit, editedPerson);
-    model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-    <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(<span class="predefined-type">String</span>.format(MESSAGE_EDIT_PERSON_SUCCESS, editedPerson));
+    model.setFood(foodToEdit, editedfood);
+    model.updateFilteredFoodList(PREDICATE_SHOW_ALL_FOOD);
+    <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(<span class="predefined-type">String</span>.format(MESSAGE_EDIT_FOOD_SUCCESS, editedfood));
 }</code></pre>
 </div>
 </div>
@@ -308,17 +308,17 @@ constructor.</p>
  * {@code JsonSerializableAddressBook}.
  */</span>
 <span class="directive">public</span> JsonSerializableAddressBook(ReadOnlyAddressBook source) {
-    persons.addAll(
-        source.getPersonList()
+    foods.addAll(
+        source.getFoodList()
               .stream()
-              .map(JsonAdaptedPerson::<span class="keyword">new</span>)
+              .map(JsonAdaptedfood::<span class="keyword">new</span>)
               .collect(Collectors.toList()));
 }</code></pre>
 </div>
 </div>
 </li>
 <li>
-<p>It appears that a <code>JsonAdaptedPerson</code> is created for each <code>Person</code> and then added to the
+<p>It appears that a <code>JsonAdaptedfood</code> is created for each <code>food</code> and then added to the
 <code>JsonSerializableAddressBook</code>.</p>
 </li>
 <li>
@@ -404,7 +404,7 @@ handled?</p>
 <p>Add a new command</p>
 </li>
 <li>
-<p>Add a new field to <code>Person</code></p>
+<p>Add a new field to <code>food</code></p>
 </li>
 <li>
 <p>Add a new entity to the address book</p>
@@ -417,4 +417,4 @@ handled?</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-09-25 13:11:21 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-09-25 15:02:09 UTC</div></div></div></body></html>
