@@ -1,6 +1,6 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>$aveNUS</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>$aveNUS - User Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">$aveNUS</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link active" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S1-CS2103T-F13-2/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>$aveNUS</h1></div><div id="content"><div id="preamble">
+<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">$aveNUS</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link active" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S1-CS2103T-F13-2/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>$aveNUS - User Guide</h1></div><div id="content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>By: <code>Team-F13-2</code>      Since: <code>Sep 2019</code>      Licence: <code>MIT</code></p>
@@ -10,7 +10,14 @@
 <div id="toctitle"></div>
 <ul class="sectlevel1">
 <li><a href="#introduction">1. Introduction</a></li>
-<li><a href="#quick-start">2. Quick Start</a></li>
+<li><a href="#quick-start">2. Quick Start</a>
+<ul class="sectlevel2">
+<li><a href="#using-the-user-guide">2.1. Using the User Guide</a></li>
+<li><a href="#pre-requisites">2.2. Pre-Requisites</a></li>
+<li><a href="#navigating-avenus">2.3. Navigating $aveNUS</a></li>
+<li><a href="#using-commands">2.4. Using Commands</a></li>
+</ul>
+</li>
 <li><a href="#Features">3. Features</a>
 <ul class="sectlevel2">
 <li><a href="#general-commands">3.1. General Commands</a></li>
@@ -29,9 +36,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p>$aveNUS is a financial planning app for meal planning in NUS. It is meant for
-students who prefer to use a desktop app for managing their food expenditure
-within NUS.</p>
+<p>$aveNUS is a desktop financial planning app that allows <strong>NUS students</strong> to <strong>plan their meals according
+to the amount of budget they set aside per meal</strong> in NUS. With $aveNUS, you can more effectively manage your expenses,
+save your favourite meal options within NUS, edit meal options, and even receive recommendations
+for meals that suit your budget.</p>
 </li>
 <li>
 <p>More importantly, $aveNUS is optimized for those who prefer to
@@ -48,13 +56,70 @@ Graphical User Interface (GUI).</p>
 <div class="sect1">
 <h2 id="quick-start"><a class="link" href="#quick-start">2. Quick Start</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Welcome to $aveNUS! If you are just starting out, this quick start will help you get $aveNUS up and running on
+your computer. It will equip you with the basics you need to know to utilise $aveNUS optimally.</p>
+</div>
+<div class="sect2">
+<h3 id="using-the-user-guide"><a class="link" href="#using-the-user-guide">2.1. Using the User Guide</a></h3>
+<table class="tableblock frame-all grid-all" style="width: 70%;">
+<colgroup>
+<col style="width: 15%;">
+<col style="width: 85%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top"><code>code</code></th>
+<th class="tableblock halign-left valign-top">Command that can be typed into the command box</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><div><div class="paragraph">
+<p><span class="icon green"><i class="fa fa-check fa-2x"></i></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Success execution of command</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><div><div class="paragraph">
+<p><span class="icon icon-tip"><i class="fa fa-lightbulb-o fa-2x"></i></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tips that might be useful</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><div><div class="paragraph">
+<p><span class="icon icon-note"><i class="fa fa-info-circle fa-2x"></i></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Additional information that is good to know</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><div><div class="paragraph">
+<p><span class="icon icon-important"><i class="fa fa-exclamation-circle fa-2x"></i></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Important pointers to take note</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="pre-requisites"><a class="link" href="#pre-requisites">2.2. Pre-Requisites</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Ensure you have Java <code>11</code> or above installed in your Computer.</p>
-</li>
-<li>
-<p>Download the latest release.</p>
+<p>Ensure you have Java <strong>11</strong> or above installed in your Computer.</p>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+You can download Java 11 from
+<a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html">here</a>.
+</td>
+</tr>
+</table>
+</div>
 </li>
 <li>
 <p>Copy the file to the folder you want to use as the home folder for $aveNUS.</p>
@@ -76,24 +141,64 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="ulist">
 <ul>
 <li>
-<p><strong><code>add</code></strong><code>n/halal chicken rice p/3.00 l/NUS UTown r/Halal</code></p>
+<p>First, <strong>add</strong> a food item into the menu by typing **<code>add n/Halal chicken rice p/3.00 d/chicken and rice c/Malay</code> and
+click <kbd>Enter</kbd></p>
 </li>
 <li>
-<p><strong><code>edit</code></strong><code>d/halal chicken rice</code></p>
-</li>
-<li>
-<p><strong><code>delete</code></strong><code>n/halal chicken rice</code></p>
-</li>
-<li>
-<p><strong><code>exit</code></strong></p>
+<p>You should see that a food item panel appear on the right of the window as shown below in Figure 1.2:</p>
 </li>
 </ul>
 </div>
 </li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Figure_1.2_mockup_add.png" alt="Figure 1.2 mockup add" width="790">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Now, try typing <code>delete 1</code> and then click <kbd>Enter</kbd>. Now the card labelled "1. Halal chicken rice"
+should disappear.</p>
+</li>
+<li>
+<p>Type <strong><code>exit</code></strong> and click <kbd>Enter</kbd> and the desktop application should close.</p>
+</li>
+<li>
+<p>If everything above executes as stated, you can use $aveNUS to plan your expenditure in NUS now!</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="navigating-avenus"><a class="link" href="#navigating-avenus">2.3. Navigating $aveNUS</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>TODO insert when we complete the user interface.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="using-commands"><a class="link" href="#using-commands">2.4. Using Commands</a></h3>
+<div class="paragraph">
+<p>You can use the commands described in <a href="#Features">Section 3, &#8220;Features&#8221;</a> by typing them into
+the command box and then hitting <kbd>Enter</kbd>.</p>
+</div>
+<div class="paragraph">
+<p>You have to provide additional parameters for some commands, and the format of each command
+is provided in the command descriptions.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
 <p>Refer to <a href="#Features">Section 3, &#8220;Features&#8221;</a> for details of each command.</p>
 </li>
 </ol>
+</div>
 </div>
 </div>
 </div>
@@ -103,49 +208,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="sect2">
 <h3 id="general-commands"><a class="link" href="#general-commands">3.1. General Commands</a></h3>
 <div class="sect3">
-<h4 id="help"><a class="link" href="#help">3.1.1. Help</a></h4>
-<div class="paragraph">
-<p>Display the help screen that contains helpful information on how to use the application.<br></p>
-</div>
-<div class="paragraph">
-<p>Format: <code>help</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="undo"><a class="link" href="#undo">3.1.2. Undo</a></h4>
-<div class="paragraph">
-<p>Undoes a command a specific number of TIMES. Note: TIMES must be a positive integer.<br></p>
-</div>
-<div class="paragraph">
-<p>Format: <code>undo TIMES</code></p>
-</div>
-<div class="paragraph">
-<p>Example: <code>undo 1</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="redo"><a class="link" href="#redo">3.1.3. Redo</a></h4>
-<div class="paragraph">
-<p>Redoes a command a specific number of TIMES. TIMES must be a positive integer.<br></p>
-</div>
-<div class="paragraph">
-<p>Format: <code>redo TIMES</code></p>
-</div>
-<div class="paragraph">
-<p>Example: <code>redo 1</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="exit"><a class="link" href="#exit">3.1.4. Exit</a></h4>
-<div class="paragraph">
-<p>Exits the app.<br></p>
-</div>
-<div class="paragraph">
-<p>Format: <code>exit</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="alias"><a class="link" href="#alias">3.1.5. Alias</a></h4>
+<h4 id="alias"><a class="link" href="#alias">3.1.1. Alias</a></h4>
 <div class="paragraph">
 <p>Adds a custom ALIAS to a COMMAND. All future occurrences of that alias
 will be executing that COMMAND.<br></p>
@@ -158,7 +221,59 @@ will be executing that COMMAND.<br></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="tutorial"><a class="link" href="#tutorial">3.1.6. Tutorial</a></h4>
+<h4 id="help"><a class="link" href="#help">3.1.2. Help</a></h4>
+<div class="paragraph">
+<p>Display the help screen that contains helpful information on how to use the application.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>help</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="history"><a class="link" href="#history">3.1.3. History</a></h4>
+<div class="paragraph">
+<p>Display within the grey box right below the command line box, a list of
+commands that were recently typed in order of which was most recent.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>history</code> or <code>h</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="undo"><a class="link" href="#undo">3.1.4. Undo</a></h4>
+<div class="paragraph">
+<p>Undoes a command a specific number of TIMES. Note: TIMES must be a positive integer.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>undo TIMES</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>undo 1</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="redo"><a class="link" href="#redo">3.1.5. Redo</a></h4>
+<div class="paragraph">
+<p>Redoes a command a specific number of TIMES. TIMES must be a positive integer.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>redo TIMES</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>redo 1</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="exit"><a class="link" href="#exit">3.1.6. Exit</a></h4>
+<div class="paragraph">
+<p>Exits the app.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>exit</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="tutorial"><a class="link" href="#tutorial">3.1.7. Tutorial</a></h4>
 <div class="paragraph">
 <p>Displays the tutorial on how to use the app.</p>
 </div>
@@ -380,7 +495,7 @@ later to run the app.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Add food item.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Alias <a href="#alias">Section 3.1.5, &#8220;Alias&#8221;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Alias <a href="#alias">Section 3.1.1, &#8220;Alias&#8221;</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Adds a custom alias to a command. All future occurrences of that alias will be executing that command.</p></td>
 </tr>
 <tr>
@@ -405,7 +520,7 @@ of days.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Edits a food item at a index based on a specific field or fields.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Exit <a href="#exit">Section 3.1.4, &#8220;Exit&#8221;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Exit <a href="#exit">Section 3.1.6, &#8220;Exit&#8221;</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Exits the app.</p></td>
 </tr>
 <tr>
@@ -413,7 +528,7 @@ of days.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Finds food items based on specified fields.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Help <a href="#help">Section 3.1.1, &#8220;Help&#8221;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Help <a href="#help">Section 3.1.2, &#8220;Help&#8221;</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Display possible uses of the application.</p></td>
 </tr>
 <tr>
@@ -425,7 +540,7 @@ of days.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Recommend a food item, based on the user&#8217;s budget.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Redo <a href="#redo">Section 3.1.3, &#8220;Redo&#8221;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Redo <a href="#redo">Section 3.1.5, &#8220;Redo&#8221;</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Redo a command a specified number of times.</p></td>
 </tr>
 <tr>
@@ -437,14 +552,14 @@ of days.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Brings up statistics of food expenditure.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Tutorial <a href="#tutorial">Section 3.1.6, &#8220;Tutorial&#8221;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tutorial <a href="#tutorial">Section 3.1.7, &#8220;Tutorial&#8221;</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Give users a brief guide on how to use the application.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Undo <a href="#undo">Section 3.1.2, &#8220;Undo&#8221;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Undo <a href="#undo">Section 3.1.4, &#8220;Undo&#8221;</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Undo a command a specified number of times.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-17 05:01:04 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-17 06:55:02 UTC</div></div></div></body></html>
