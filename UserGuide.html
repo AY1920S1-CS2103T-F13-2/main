@@ -445,7 +445,8 @@ of DAYS. DAYS must be a positive integer. AMOUNT must be a positive integer or d
 <h4 id="recommend"><a class="link" href="#recommend">3.3.4. Recommend</a></h4>
 <div class="paragraph">
 <p>Allow users to get a recommendation from the application, based on the budget
-as well as the available food items entries.</p>
+as well as the available food items entries. This also takes into account the
+user&#8217;s likes and dislikes (see below).</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>recommend</code></p>
@@ -456,8 +457,18 @@ as well as the available food items entries.</p>
 <div class="paragraph">
 <p>Allows users to specify their liked categories, tags and/or locations. The
 recommendation system (as mentioned above) will then be able to generate more
-accurate recommendations with your preferences. Note: You can have any number
-of categories, tags or locations</p>
+accurate recommendations with your preferences. Users can provide multiple
+categories, tags and/or locations with each command. To list the user&#8217;s likes and
+dislikes, use the command without providing any arguments.</p>
+</div>
+<div class="paragraph">
+<p>The user&#8217;s likes and dislikes will be saved into the hard disk for their convenience.</p>
+</div>
+<div class="paragraph">
+<p><strong>To list likes/dislikes</strong>:</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>like</code> or <code>dislike</code>.</p>
 </div>
 <div class="paragraph">
 <p><strong>To add likes</strong>:</p>
@@ -646,4 +657,4 @@ of days.</p></td>
 </tbody>
 </table>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-18 09:24:28 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-19 10:53:08 UTC</div></div></div></body></html>
