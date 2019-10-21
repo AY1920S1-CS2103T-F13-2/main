@@ -422,25 +422,124 @@ of DAYS. DAYS must be a positive integer. AMOUNT must be a positive integer or d
 <div class="sect3">
 <h4 id="buy"><a class="link" href="#buy">3.3.2. Buy</a></h4>
 <div class="paragraph">
-<p>Allows users the log a food expense into the application.</p>
+<p>Allows users to log a food expense into the application.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>buy FOOD</code></p>
+<p>Format: <code>buy FOOD_INDEX</code></p>
 </div>
 <div class="paragraph">
-<p>Example: <code>buy Chicken Rice</code></p>
+<p>Example: <code>buy 1</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="track"><a class="link" href="#track">3.3.3. Track</a></h4>
+<h4 id="save"><a class="link" href="#save">3.3.3. Save</a></h4>
 <div class="paragraph">
-<p>Brings up statistics of expenditure over the past day, month, or year.</p>
+<p>Allows users to log an amount of money to save in his savings account from user&#8217;s wallet.</p>
 </div>
+<div class="sidebarblock">
+<div class="content">
 <div class="paragraph">
-<p>Format: <code>track -d | -w | -m</code></p>
+<p><strong>Format</strong>: <code>save</code><br>
+<strong>Example</strong>: <code>save 10</code></p>
 </div>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Make sure you have money in your wallet before you save! You cannot save
+money without having money in your wallet.
+</td>
+</tr>
+</table>
+</div>
+<table class="tableblock frame-all grid-none spread">
+<colgroup>
+<col style="width: 5%;">
+<col style="width: 95%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><span class="icon green"><i class="fa fa-check fa-2x"></i></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>You will see a success message and the amount of money you have saved in your savings account.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you click the "Savings" tab on the right panel, you will be able to view your savings history.
+Also the amount saved is deducted from your wallet.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="withdraw"><a class="link" href="#withdraw">3.3.4. Withdraw</a></h4>
 <div class="paragraph">
-<p>Example: <code>track -d</code></p>
+<p>Allows users to log an amount of money to withdraw from his savings account into his wallet.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Format</strong>: <code>withdraw</code><br>
+<strong>Example</strong>: <code>withdraw 10</code></p>
+</div>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+You must have money in your savings account before you can withdraw from it.
+</td>
+</tr>
+</table>
+</div>
+<table class="tableblock frame-all grid-none spread">
+<colgroup>
+<col style="width: 5%;">
+<col style="width: 95%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><span class="icon green"><i class="fa fa-check fa-2x"></i></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>You will see a success message and the amount of money you have withdrew from your savings account.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you click the "Savings" tab on the right panel, you will be able to view your savings history.
+Also the amount withdrawn is added into your wallet.
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -823,10 +922,6 @@ later to run the app.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Add food item.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Alias <a href="#alias">Section 3.1.1, &#8220;Alias&#8221;</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Adds a custom alias to a command. All future occurrences of that alias will be executing that command.</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Budget <a href="#budget">Section 3.3.1, &#8220;Budget&#8221;</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Allows the user to set a budget amount for food expenses for a certain number
 of days.</p></td>
@@ -872,6 +967,10 @@ of days.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Display possible uses of the application.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">History <a href="#history">Section 3.1.3, &#8220;History&#8221;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Displays the list of commands that has been typed by the user.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Info <a href="#info">Section 3.1.4, &#8220;Info&#8221;</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Displays the information of the command specified.</p></td>
 </tr>
@@ -886,6 +985,14 @@ of days.</p></td>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Recommend <a href="#recommend">Section 3.4.1, &#8220;Recommend&#8221;</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Recommend a food item, based on the user&#8217;s budget.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Like <a href="#Likes and Dislikes">[Likes and Dislikes]</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Likes categories, tags and locations</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Dislike <a href="#Likes and Dislikes">[Likes and Dislikes]</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Dislikes categories, tags and locations</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Redo <a href="#redo">Section 3.1.7, &#8220;Redo&#8221;</a></p></td>
@@ -904,18 +1011,14 @@ of days.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Sort all the food items by a specified field.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Track <a href="#track">Section 3.3.3, &#8220;Track&#8221;</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Brings up statistics of food expenditure.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Save <a href="#save">Section 3.3.3, &#8220;Save&#8221;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Saves a specified amount of money from the user&#8217;s wallet into his savings account.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Tutorial <a href="#tutorial">Section 3.1.9, &#8220;Tutorial&#8221;</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Give users a brief guide on how to use the application.</p></td>
 </tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Undo <a href="#undo">Section 3.1.6, &#8220;Undo&#8221;</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Undo a command a specified number of times.</p></td>
-</tr>
 </tbody>
 </table>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-21 08:34:10 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-21 09:06:17 UTC</div></div></div></body></html>
