@@ -70,7 +70,7 @@ public class HelpWindow extends UiPart<Stage> {
             + RemoveLikeCommand.COMMAND_WORD + "\n"
             + SaveCommand.COMMAND_WORD + "\n"
             + SortCommand.COMMAND_WORD + "\n\n"
-            + "Click the Guide button below to open to full user guide.\n"
+            + "Click the user guide button below to open to full user guide.\n"
             + "You will need internet connection to open the user guide.";
 
     private static final Logger logger = LogsCenter.getLogger(HelpWindow.class);

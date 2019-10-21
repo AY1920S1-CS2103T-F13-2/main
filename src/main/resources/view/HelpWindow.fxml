@@ -24,7 +24,7 @@
                   </font></Label>
                <HBox spacing="20.0">
                   <children>
-                     <Button fx:id="openButton" mnemonicParsing="false" onAction="#openUrl" prefHeight="40.0" prefWidth="135.0" styleClass="help-button" stylesheets="@DarkTheme.css" text="Guide" />
+                     <Button fx:id="openButton" mnemonicParsing="false" onAction="#openUrl" prefHeight="40.0" prefWidth="135.0" styleClass="help-button" stylesheets="@DarkTheme.css" text="User Guide" />
                      <Button fx:id="closeButton" mnemonicParsing="false" onAction="#closeWindow" prefHeight="40.0" prefWidth="135.0" styleClass="help-button" stylesheets="@DarkTheme.css" text="Close" />
                   </children>
                </HBox>
