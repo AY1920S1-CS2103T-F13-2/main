@@ -206,7 +206,7 @@ The following class plays an important role at the architecture level:</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><code>Logic</code> uses the <code>MenuParser</code> class to parse the user command.</p>
+<p><code>Logic</code> uses the <code>SaveNusParser</code> class to parse the user command.</p>
 </li>
 <li>
 <p>This results in a <code>Command</code> object which is executed by the <code>LogicManager</code>.</p>
@@ -267,7 +267,16 @@ The lifeline for <code>DeleteCommandParser</code> should end at the destroy mark
 <p>stores the Menu data.</p>
 </li>
 <li>
-<p>exposes an unmodifiable <code>ObservableList&lt;Person&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
+<p>stores the Wallet data.</p>
+</li>
+<li>
+<p>stores the PurchaseHistory data.</p>
+</li>
+<li>
+<p>exposes the <code>RemainingBudget</code> and <code>DaysToExpire</code> that can be 'observed' e.g. the UI can be bound to these values so that the UI automatically updates when the data in the <code>Wallet</code> change.</p>
+</li>
+<li>
+<p>exposes an unmodifiable <code>ObservableList&lt;Food&gt;</code> and <code>ObservableList&lt;Purchase&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in either of the lists change.</p>
 </li>
 <li>
 <p>does not depend on any of the other three components.</p>
@@ -281,7 +290,7 @@ The lifeline for <code>DeleteCommandParser</code> should end at the destroy mark
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-As a more OOP model, we can store a <code>Tag</code> list in <code>Menu</code>, which <code>Person</code> can reference. This would allow <code>Menu</code> to only require one <code>Tag</code> object per unique <code>Tag</code>, instead of each <code>Person</code> needing their own <code>Tag</code> object. An example of how such a model may look like is given below.<br>
+As a more OOP model, we can store a <code>Tag</code> list in <code>Menu</code>, which <code>Food</code> can reference. This would allow <code>Menu</code> to only require one <code>Tag</code> object per unique <code>Tag</code>, instead of each <code>Food</code> needing their own <code>Tag</code> object. An example of how such a model may look like is given below.<br>
 <br>
 <span class="image"><img src="images/BetterModelClassDiagram.png" alt="BetterModelClassDiagram"></span>
 </td>
@@ -309,7 +318,13 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Menu</code>, 
 <p>can save <code>UserPref</code> objects in json format and read it back.</p>
 </li>
 <li>
-<p>can save the Menu data in json format and read it back.</p>
+<p>can save the <code>Menu</code> data in json format and read it back.</p>
+</li>
+<li>
+<p>can save the <code>Wallet</code> data in json format and read it back.</p>
+</li>
+<li>
+<p>can save the <code>PurchaseHistory</code> data in json format and read it back.</p>
 </li>
 </ul>
 </div>
@@ -1061,4 +1076,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-22 07:11:01 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-22 12:06:03 UTC</div></div></div></body></html>
