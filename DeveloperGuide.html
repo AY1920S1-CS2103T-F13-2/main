@@ -25,7 +25,13 @@
 <li><a href="#proposed-data-encryption">3.1. [Proposed] Data Encryption</a></li>
 <li><a href="#logging">3.2. Logging</a></li>
 <li><a href="#Implementation-Configuration">3.3. Configuration</a></li>
-<li><a href="#recommendation-feature">3.4. Recommendation feature</a></li>
+<li><a href="#recommendation-feature">3.4. Recommendation feature</a>
+<ul class="sectlevel3">
+<li><a href="#classes-for-recommendation-feature-in-model">3.4.1. Classes for recommendation feature in Model</a></li>
+<li><a href="#adding-likes-and-dislikes">3.4.2. Adding likes and dislikes</a></li>
+<li><a href="#displaying-recommendations">3.4.3. Displaying recommendations</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a></li>
@@ -408,17 +414,74 @@ The recommendations are tailored to each user based on their current likes, disl
 </div>
 <div class="paragraph">
 <p>Users are able to add their liked and disliked categories, tags and locations into the app using the <code>like</code> and <code>dislike</code>
-command. The recommendation system will then take into account these preferences to generate a more accurate
-list of recommendations. Users will then able to find the food that they are likely to enjoy more accurately.</p>
+command. The recommendation system will then take into account these preferences, in addition to their purchase history,
+to generate a more accurate list of recommendations. Users will then able to find the food that they are likely to enjoy
+more accurately.</p>
 </div>
 <div class="sect3">
-<h4 id="adding-likes-and-dislikes"><a class="link" href="#adding-likes-and-dislikes">3.4.1. Adding likes and dislikes</a></h4>
+<h4 id="classes-for-recommendation-feature-in-model"><a class="link" href="#classes-for-recommendation-feature-in-model">3.4.1. Classes for recommendation feature in Model</a></h4>
+<div class="paragraph">
+<p>With the recommendation feature, a new set of classes were added. A singleton class <code>RecommendationSystem</code> encapsulates
+the methods and classes related to this feature. This <code>RecommendationSystem</code> class implements the interface <code>Recommender</code>
+which specifies the behaviour of the system, which include the ability to generate recommendation values.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, the <code>RecommendationSystem</code> class also contains a class <code>UserRecommendations</code>, which include the likes and
+dislikes of the user. The functionality of <code>UserRecommendations</code> is specified by the <code>Recommendations</code> interface,
+encompassing the ability to add and remove likes and dislikes, among other features.</p>
+</div>
+<div class="paragraph">
+<p>The <code>UserRecommendations</code> object contain 6 sets, namely:</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>A set of user&#8217;s liked categories</p>
+</li>
+<li>
+<p>A set of user&#8217;s liked tags</p>
+</li>
+<li>
+<p>A set of user&#8217;s liked locations</p>
+</li>
+<li>
+<p>A set of user&#8217;s disliked categories</p>
+</li>
+<li>
+<p>A set of user&#8217;s disliked tags</p>
+</li>
+<li>
+<p>A set of user&#8217;s disliked locations</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The items stored in the sets are first converted to lowercase before adding them so that a case-insensitive
+comparison can be done more easily.</p>
+</div>
+<div class="paragraph">
+<p>The class diagram below illustrates the relationship between the classes.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/RecommendationClassDiagram.png" alt="RecommendationClassDiagram" width="500">
+</div>
+<div class="title">Figure 9. Recommendation class diagram in Model component</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="adding-likes-and-dislikes"><a class="link" href="#adding-likes-and-dislikes">3.4.2. Adding likes and dislikes</a></h4>
 <div class="paragraph">
 <p>The feature of adding the user&#8217;s liked and disliked categories, tags and locations was introduced to support the
 recommendation system.</p>
 </div>
 <div class="paragraph">
-<p>The <em>UserRecommendations</em> class stores the list of user likes and dislikes.</p>
+<p>The <code>UserRecommendations</code> class stores the list of user likes and dislikes as a set in lowercase to prevent duplicates.
+Furthermore, the user&#8217;s likes and dislikes are integrated with <code>Storage</code> for the user&#8217;s convenience.</p>
 </div>
 <div class="paragraph">
 <p>The sequence diagram below shows how a sample <code>like</code> command is executed:</p>
@@ -427,31 +490,167 @@ recommendation system.</p>
 <div class="content">
 <img src="images/LikeSequenceDiagram.png" alt="LikeSequenceDiagram">
 </div>
-<div class="title">Figure 9. Sequence Diagram for a sample like command</div>
+<div class="title">Figure 10. Sequence diagram for a sample like command</div>
 </div>
 <div class="paragraph">
-<p>The following activity diagram below summarizes how the <code>like</code> command works: <strong>TODO</strong></p>
+<p>The following activity diagram below summarizes how the <code>like</code> command works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/LikeActivityDiagram.png" alt="LikeActivityDiagram" width="450">
+</div>
+<div class="title">Figure 11. Activity diagram for a sample like command</div>
+</div>
+<div class="paragraph">
+<p>A similar execution sequence is performed for a dislike command by replacing instances of like with dislike and vice versa.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="displaying-recommendations"><a class="link" href="#displaying-recommendations">3.4.2. Displaying recommendations</a></h4>
+<h4 id="displaying-recommendations"><a class="link" href="#displaying-recommendations">3.4.3. Displaying recommendations</a></h4>
 <div class="paragraph">
 <p>After customizing the user&#8217;s likes and dislikes, users can obtain a personalized list of recommendations
-using the <code>recommend</code> command.</p>
+using the <code>recommend</code> command. Each food is passed to the recommendation system and it calculates the
+recommendation value based on the table below:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Bonuses applied by the recommendation system</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Condition 1</th>
+<th class="tableblock halign-left valign-top">Condition 2</th>
+<th class="tableblock halign-left valign-top">Bonus</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="3"><p class="tableblock">Food tags match the user&#8217;s liked tags</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 or more tags</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+0.05 and +0.03 per matching tag</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3 or more tags</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+0.10 and +0.03 per matching tag</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5 or more tags</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+0.25 and +0.03 per matching tag</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Food category matches the user&#8217;s liked categories</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N/A</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+0.15</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Food location matches the user&#8217;s liked locations</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N/A</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+0.10</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Food tags match the user&#8217;s tags in purchase history</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N/A</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+0.01 per matching tag</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Food category matches the user&#8217;s categories in purchase history</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N/A</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+0.02</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Food location matches the user&#8217;s locations in purchase history</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N/A</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+0.03</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="3"><p class="tableblock">Food purchase is found in user&#8217;s purchase history</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2 or more purchases</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+0.10</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5 or more purchases</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+0.30</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10 or more purchases</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+0.50</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 2. Penalties applied by the recommendation system</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Condition 1</th>
+<th class="tableblock halign-left valign-top">Condition 2</th>
+<th class="tableblock halign-left valign-top">Penalty</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Food price is out of the user&#8217;s current budget</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N/A</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Removes the item from the recommendation results</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="3"><p class="tableblock">Food tags match the user&#8217;s disliked tags</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 or more tags</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-0.10 and -0.10 per matching tag</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2 or more tags</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-0.30 and -0.10 per matching tag</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3 or more tags</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-0.50 and -0.10 per matching tag</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Food category matches the user&#8217;s disliked categories</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N/A</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-0.40</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Food location matches the user&#8217;s disliked locations</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N/A</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-0.30</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Food purchase is found in user&#8217;s purchase history</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Within a time period of &lt;2 days</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Applies a decreasing penalty from -10 which diminishes to 0 after 2 days</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The sequence diagram below shows how a sample Food is passed into <code>RecommendationSystem</code> to output a
+recommendation value:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/RecValueSequenceDiagram.png" alt="RecValueSequenceDiagram" width="400">
+</div>
+<div class="title">Figure 12. Sequence diagram for <code>calculateRecommendation</code></div>
 </div>
 <div class="paragraph">
-<p>The sequence diagram below shows how a sample <code>recommend</code> command is executed: <strong>TODO</strong></p>
-</div>
-<div class="paragraph">
-<p>The following activity diagram below summarizes how the <code>recommend</code> command works: <strong>TODO</strong></p>
+<p>The calculated recommendation values are used to sort the food items when the <code>recommend</code> command
+is executed. Food with similar recommendation values are sorted based on their price.</p>
 </div>
 <div class="sect4">
 <h5 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
+<col style="width: 20%;">
+<col style="width: 40%;">
+<col style="width: 40%;">
 </colgroup>
 <thead>
 <tr>
@@ -462,9 +661,81 @@ using the <code>recommend</code> command.</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TODO</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TODO</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TODO</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Design of<br>
+calculateRecommendation</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Declare a static method <code>calculateRecommendation</code> to calculate the recommendation value of each <code>Food</code>
+before sorting them.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>No extra field required for each <code>Food</code> item</p>
+</li>
+<li>
+<p>Easier implementation and more straightforward</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Sorting by recommendation value may be less efficient as the recommendation system has to calculate the
+recommendation value of each <code>Food</code> item when the comparator is called</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We chose this design because of its simplicity of implementation. Adding a hidden <code>recommendationValue</code>
+field for each <code>Food</code> might not be the best solution in the design of our application. A <code>recommendationValue</code> might
+not make sense in the context of a <code>Food</code> object and thus it may not be justifiable to force a connection between the
+two for the sake of efficiency.</p>
+</div>
+<div class="paragraph">
+<p>Furthermore, we do not have to manually update the recommendation of each <code>Food</code> item before every command with this design.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Have a field (e.g. <code>recommendationValue</code>) for each <code>Food</code> item</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Sorting by recommendation value would be more efficient as the recommendation value would
+be stored in each item</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The recommendation value of each <code>Food</code> must be updated before every command to ensure validity of
+the recommendation value</p>
+</li>
+<li>
+<p>An extra field <code>recommendationValue</code> has to be added to each <code>Food</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
 </tr>
 </tbody>
 </table>
@@ -1154,4 +1425,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-23 12:33:42 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-23 13:38:36 UTC</div></div></div></body></html>
