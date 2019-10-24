@@ -25,11 +25,17 @@
 <li><a href="#proposed-data-encryption">3.1. [Proposed] Data Encryption</a></li>
 <li><a href="#logging">3.2. Logging</a></li>
 <li><a href="#Implementation-Configuration">3.3. Configuration</a></li>
-<li><a href="#recommendation-feature">3.4. Recommendation feature</a>
+<li><a href="#savings-feature">3.4. Savings feature</a>
 <ul class="sectlevel3">
-<li><a href="#classes-for-recommendation-feature-in-model">3.4.1. Classes for recommendation feature in Model</a></li>
-<li><a href="#adding-likes-and-dislikes">3.4.2. Adding likes and dislikes</a></li>
-<li><a href="#displaying-recommendations">3.4.3. Displaying recommendations</a></li>
+<li><a href="#classes-for-savings-feature-in-model">3.4.1. Classes for savings feature in Model</a></li>
+<li><a href="#strong-adding-to-the-savings-account-strong">3.4.2. <strong>Adding to the Savings Account</strong></a></li>
+</ul>
+</li>
+<li><a href="#recommendation-feature">3.5. Recommendation feature</a>
+<ul class="sectlevel3">
+<li><a href="#classes-for-recommendation-feature-in-model">3.5.1. Classes for recommendation feature in Model</a></li>
+<li><a href="#adding-likes-and-dislikes">3.5.2. Adding likes and dislikes</a></li>
+<li><a href="#displaying-recommendations">3.5.3. Displaying recommendations</a></li>
 </ul>
 </li>
 </ul>
@@ -179,7 +185,7 @@ The following class plays an important role at the architecture level:</p>
 <p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103T-F13-2/main/src/main/java/seedu/savenus/ui/Ui.java"><code>Ui.java</code></a></p>
 </div>
 <div class="paragraph">
-<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>, <code>StatusBarFooter</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
+<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>FoodListPanel</code>, <code>PurchaseListPanel</code>, <code>SavingsHistoryPanel</code>, <code>StatusBarFooter</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/AY1920S1-CS2103T-F13-2/main/src/main/java/seedu/savenus/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/AY1920S1-CS2103T-F13-2/main/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
@@ -219,7 +225,7 @@ The following class plays an important role at the architecture level:</p>
 <p>This results in a <code>Command</code> object which is executed by the <code>LogicManager</code>.</p>
 </li>
 <li>
-<p>The command execution can affect the <code>Model</code> (e.g. adding a person).</p>
+<p>The command execution can affect the <code>Model</code> (e.g. adding a food item).</p>
 </li>
 <li>
 <p>The result of the command execution is encapsulated as a <code>CommandResult</code> object which is passed back to the <code>Ui</code>.</p>
@@ -286,7 +292,7 @@ The lifeline for <code>DeleteCommandParser</code> should end at the destroy mark
 <p>exposes the <code>RemainingBudget</code> and <code>DaysToExpire</code> that can be 'observed' e.g. the UI can be bound to these values so that the UI automatically updates when the data in the <code>Wallet</code> change.</p>
 </li>
 <li>
-<p>exposes the <code>CurrentSavings</code> that can be 'observed' e.g. the UI can be bound to these values so that the UI automatically updates when the data in the <code>SavingsAccount</code> changes.</p>
+<p>exposes the <code>Savings</code> that can be 'observed' e.g. the UI can be bound to these values so that the UI automatically updates when the data in the <code>SavingsAccount</code> changes.</p>
 </li>
 <li>
 <p>exposes an unmodifiable <code>ObservableList&lt;Food&gt;</code>, <code>ObservableList&lt;Savings&gt;</code> and <code>ObservableList&lt;Purchase&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in either of the lists change.</p>
@@ -303,7 +309,7 @@ The lifeline for <code>DeleteCommandParser</code> should end at the destroy mark
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-As a more OOP model, we can store a <code>Tag</code> list in <code>Menu</code>, which <code>Food</code> can reference. This would allow <code>Menu</code> to only require one <code>Tag</code> object per unique <code>Tag</code>, instead of each <code>Food</code> needing their own <code>Tag</code> object. An example of how such a model may look like is given below.<br>
+As a more OOP model, we can store a <code>Tag</code> list in <code>Menu</code>, which <code>Food</code> can reference. This would allow <code>Menu</code> to only require one <code>Tag</code> object per unique <code>Tag</code>, instead of each <code>Food</code> needing their own <code>Tag</code> object.<br>
 <br>
 <span class="image"><img src="images/BetterModelClassDiagram.png" alt="BetterModelClassDiagram"></span>
 </td>
@@ -339,6 +345,9 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Menu</code>, 
 <li>
 <p>can save the <code>PurchaseHistory</code> data in json format and read it back.</p>
 </li>
+<li>
+<p>can save the <code>SavingsHistory</code> data in json format and read it back.</p>
+</li>
 </ul>
 </div>
 </div>
@@ -358,9 +367,7 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Menu</code>, 
 </div>
 <div class="sect2">
 <h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.1. [Proposed] Data Encryption</a></h3>
-<div class="paragraph">
-<p><em>{Explain here how the data encryption feature will be implemented}</em></p>
-</div>
+
 </div>
 <div class="sect2">
 <h3 id="logging"><a class="link" href="#logging">3.2. Logging</a></h3>
@@ -407,7 +414,75 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Menu</code>, 
 </div>
 </div>
 <div class="sect2">
-<h3 id="recommendation-feature"><a class="link" href="#recommendation-feature">3.4. Recommendation feature</a></h3>
+<h3 id="savings-feature"><a class="link" href="#savings-feature">3.4. Savings feature</a></h3>
+<div class="paragraph">
+<p>The Savings feature allows users to save a specified amount of money from their wallet into their Savings Account using the <code>save AMOUNT</code> command, where <code>AMOUNT</code> is a user defined amount of money to deposit into the user&#8217;s Savings Account.
+The Savings feature also allows the user to withdraw from his savings account either into his wallet or withdraw the money completely from the $aveNUS app.
+Using the <code>withdraw AMOUNT</code>, users will be able to transfer their money into their $aveNUS wallets, and using "withdraw out AMOUNT", the user can withdraw the
+money completely from the Savings Account and the application.</p>
+</div>
+<div class="sect3">
+<h4 id="classes-for-savings-feature-in-model"><a class="link" href="#classes-for-savings-feature-in-model">3.4.1. Classes for savings feature in Model</a></h4>
+<div class="paragraph">
+<p>The Savings feature was implemented with a new set of classes introduced to the Model. The <code>SavingsAccount</code> is a singleton class
+which contains the methods and  classes related to this feature.
+The <code>SavingsAccount</code> object is stored in $aveNUS. It exposes a read-only interface <code>ReadOnlySavings</code> to allow the other components to retrieve
+the savings history of the user while maintaining data integrity.</p>
+</div>
+<div class="paragraph">
+<p>The <code>SavingsAccount</code> contains a unique <code>SavingsHistory</code> which contains a list of the past savings and withdrawals made by the user.
+which are represented by <code>Saving</code> and <code>Withdrawal</code> respectively. Both <code>Saving</code> and <code>Withdrawal</code>
+implement AccountMoney object, which consists of 2 objects:</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>Amount</code> indicated the value added/withdrew and it is displayed in the UI.</p>
+</li>
+<li>
+<p><code>TimeStamp</code> indicated the date and time the amount of money was added/withdrawn.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Each <code>AccountMoney</code> object is unique because the <code>TimeStamp</code> will never be the same. Since it is not possible for the user to do a saving
+and a withdrawal at a single time.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SavingsAccountClassDiagram.png" alt="SavingsAccountClassDiagram" width="500">
+</div>
+<div class="title">Figure 9. Savings class diagram in Model component.</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="strong-adding-to-the-savings-account-strong"><a class="link" href="#strong-adding-to-the-savings-account-strong">3.4.2. <strong>Adding to the Savings Account</strong></a></h4>
+<div class="paragraph">
+<p>The user may want to add a new saving to his savings account. This can be done with the <code>save</code> command.</p>
+</div>
+<div class="paragraph">
+<p>The savings/withdrawals are stored in the SavingsAccount in the SavingsHistory object, which stores the savings/withdrawal
+as a list.</p>
+</div>
+<div class="paragraph">
+<p>The current implementation for adding a new saving/withdrawal is done by overwriting the existing SavingsHistory, with a new
+SavingsHistory that includes past and new savings/withdrawals.</p>
+</div>
+<div class="paragraph">
+<p>The command is read as a text string from the command box in the UI and then is executed by calling MainWindow#executeCommand(),
+which passes this string (named commandText) to the Logic component by calling Logic#execute(Model model).</p>
+</div>
+<div class="paragraph">
+<p>The sequence diagram for interactions between the Logic, Model and Storage components when a user executes the <code>save</code> command is shown below.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="recommendation-feature"><a class="link" href="#recommendation-feature">3.5. Recommendation feature</a></h3>
 <div class="paragraph">
 <p>The recommendation feature allows users to generate a list of personalized recommendations using the <code>recommend</code> command.
 The recommendations are tailored to each user based on their current likes, dislikes and purchase history.</p>
@@ -419,7 +494,7 @@ to generate a more accurate list of recommendations. Users will then able to fin
 more accurately.</p>
 </div>
 <div class="sect3">
-<h4 id="classes-for-recommendation-feature-in-model"><a class="link" href="#classes-for-recommendation-feature-in-model">3.4.1. Classes for recommendation feature in Model</a></h4>
+<h4 id="classes-for-recommendation-feature-in-model"><a class="link" href="#classes-for-recommendation-feature-in-model">3.5.1. Classes for recommendation feature in Model</a></h4>
 <div class="paragraph">
 <p>With the recommendation feature, a new set of classes were added. A singleton class <code>RecommendationSystem</code> encapsulates
 the methods and classes related to this feature. This <code>RecommendationSystem</code> class implements the interface <code>Recommender</code>
@@ -470,11 +545,11 @@ comparison can be done more easily.</p>
 <div class="content">
 <img src="images/RecommendationClassDiagram.png" alt="RecommendationClassDiagram" width="500">
 </div>
-<div class="title">Figure 9. Recommendation class diagram in Model component</div>
+<div class="title">Figure 10. Recommendation class diagram in Model component</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="adding-likes-and-dislikes"><a class="link" href="#adding-likes-and-dislikes">3.4.2. Adding likes and dislikes</a></h4>
+<h4 id="adding-likes-and-dislikes"><a class="link" href="#adding-likes-and-dislikes">3.5.2. Adding likes and dislikes</a></h4>
 <div class="paragraph">
 <p>The feature of adding the user&#8217;s liked and disliked categories, tags and locations was introduced to support the
 recommendation system.</p>
@@ -490,7 +565,7 @@ Furthermore, the user&#8217;s likes and dislikes are integrated with <code>Stora
 <div class="content">
 <img src="images/LikeSequenceDiagram.png" alt="LikeSequenceDiagram">
 </div>
-<div class="title">Figure 10. Sequence diagram for a sample like command</div>
+<div class="title">Figure 11. Sequence diagram for a sample like command</div>
 </div>
 <div class="paragraph">
 <p>The following activity diagram below summarizes how the <code>like</code> command works:</p>
@@ -499,14 +574,14 @@ Furthermore, the user&#8217;s likes and dislikes are integrated with <code>Stora
 <div class="content">
 <img src="images/LikeActivityDiagram.png" alt="LikeActivityDiagram" width="450">
 </div>
-<div class="title">Figure 11. Activity diagram for a sample like command</div>
+<div class="title">Figure 12. Activity diagram for a sample like command</div>
 </div>
 <div class="paragraph">
 <p>A similar execution sequence is performed for a dislike command by replacing instances of like with dislike and vice versa.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="displaying-recommendations"><a class="link" href="#displaying-recommendations">3.4.3. Displaying recommendations</a></h4>
+<h4 id="displaying-recommendations"><a class="link" href="#displaying-recommendations">3.5.3. Displaying recommendations</a></h4>
 <div class="paragraph">
 <p>After customizing the user&#8217;s likes and dislikes, users can obtain a personalized list of recommendations
 using the <code>recommend</code> command. Each food is passed to the recommendation system and it calculates the
@@ -638,7 +713,7 @@ recommendation value:</p>
 <div class="content">
 <img src="images/RecValueSequenceDiagram.png" alt="RecValueSequenceDiagram" width="400">
 </div>
-<div class="title">Figure 12. Sequence diagram for <code>calculateRecommendation</code></div>
+<div class="title">Figure 13. Sequence diagram for <code>calculateRecommendation</code></div>
 </div>
 <div class="paragraph">
 <p>The calculated recommendation values are used to sort the food items when the <code>recommend</code> command
@@ -1425,4 +1500,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-23 23:51:06 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-24 03:23:36 UTC</div></div></div></body></html>
