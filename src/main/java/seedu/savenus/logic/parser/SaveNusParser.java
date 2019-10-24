@@ -20,6 +20,7 @@ import seedu.savenus.logic.commands.DislikeCommand;
 import seedu.savenus.logic.commands.EditCommand;
 import seedu.savenus.logic.commands.ExitCommand;
 import seedu.savenus.logic.commands.ExpandCommand;
+import seedu.savenus.logic.commands.FavoriteCommand;
 import seedu.savenus.logic.commands.FilterCommand;
 import seedu.savenus.logic.commands.FindCommand;
 import seedu.savenus.logic.commands.HelpCommand;
@@ -145,6 +146,9 @@ public class SaveNusParser {
 
         case AutoSortCommand.COMMAND_WORD:
             return new AutoSortCommandParser().parse(arguments);
+
+        case FavoriteCommand.COMMAND_WORD:
+            return new FavoriteCommandParser().parse(arguments);
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

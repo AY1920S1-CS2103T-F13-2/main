@@ -31,6 +31,7 @@ import seedu.savenus.logic.commands.DislikeCommand;
 import seedu.savenus.logic.commands.EditCommand;
 import seedu.savenus.logic.commands.ExitCommand;
 import seedu.savenus.logic.commands.ExpandCommand;
+import seedu.savenus.logic.commands.FavoriteCommand;
 import seedu.savenus.logic.commands.FilterCommand;
 import seedu.savenus.logic.commands.FindCommand;
 import seedu.savenus.logic.commands.HelpCommand;
@@ -185,6 +186,12 @@ public class SaveNusParserTest {
         assertTrue(
                 parser.parseCommand(FilterCommand.COMMAND_WORD + " " + FIELD_NAME_NAME
                         + " " + QUANTIFY_EQUALS_TO + " Tom") instanceof FilterCommand);
+    }
+
+    @Test
+    public void parseCommand_favorite() throws ParseException {
+        assertTrue(
+                parser.parseCommand(FavoriteCommand.COMMAND_WORD + " 1") instanceof FavoriteCommand);
     }
 
     @Test
