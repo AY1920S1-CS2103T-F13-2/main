@@ -25,17 +25,22 @@
 <li><a href="#proposed-data-encryption">3.1. [Proposed] Data Encryption</a></li>
 <li><a href="#logging">3.2. Logging</a></li>
 <li><a href="#Implementation-Configuration">3.3. Configuration</a></li>
-<li><a href="#savings-feature">3.4. Savings feature</a>
+<li><a href="#sorting-feature">3.4. Sorting feature</a>
 <ul class="sectlevel3">
-<li><a href="#classes-for-savings-feature-in-model">3.4.1. Classes for savings feature in Model</a></li>
-<li><a href="#strong-adding-to-the-savings-account-strong">3.4.2. <strong>Adding to the Savings Account</strong></a></li>
+<li><a href="#classes-for-sorting-feature-in-model">3.4.1. Classes for sorting feature in Model</a></li>
 </ul>
 </li>
-<li><a href="#recommendation-feature">3.5. Recommendation feature</a>
+<li><a href="#savings-feature">3.5. Savings feature</a>
 <ul class="sectlevel3">
-<li><a href="#classes-for-recommendation-feature-in-model">3.5.1. Classes for recommendation feature in Model</a></li>
-<li><a href="#adding-likes-and-dislikes">3.5.2. Adding likes and dislikes</a></li>
-<li><a href="#displaying-recommendations">3.5.3. Displaying recommendations</a></li>
+<li><a href="#classes-for-savings-feature-in-model">3.5.1. Classes for savings feature in Model</a></li>
+<li><a href="#strong-adding-to-the-savings-account-strong">3.5.2. <strong>Adding to the Savings Account</strong></a></li>
+</ul>
+</li>
+<li><a href="#recommendation-feature">3.6. Recommendation feature</a>
+<ul class="sectlevel3">
+<li><a href="#classes-for-recommendation-feature-in-model">3.6.1. Classes for recommendation feature in Model</a></li>
+<li><a href="#adding-likes-and-dislikes">3.6.2. Adding likes and dislikes</a></li>
+<li><a href="#displaying-recommendations">3.6.3. Displaying recommendations</a></li>
 </ul>
 </li>
 </ul>
@@ -420,7 +425,46 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Menu</code>, 
 </div>
 </div>
 <div class="sect2">
-<h3 id="savings-feature"><a class="link" href="#savings-feature">3.4. Savings feature</a></h3>
+<h3 id="sorting-feature"><a class="link" href="#sorting-feature">3.4. Sorting feature</a></h3>
+<div class="paragraph">
+<p>The Sorting feature allows users to sort their food items based on certain criteria. You are allowed to sort based on certain fields and directions.<br>
+First and foremost, they will be able to sort the food items based on their default ordering, where it is based on ascending price, name and then category.<br>
+Not only that, they will be able to implement their own custom comparator using <code>makesort</code>. From this, they should be able to use <code>customsort</code> and autosort`. <br>
+<code>customsort</code> sorts the food items based on the custom comparator, where <code>autosort</code> sorts the food items every time there is an edit to the food list.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The <code>FIELD</code> are as follows: <code>NAME</code>, <code>DESCRIPTION</code>, <code>PRICE</code>, <code>CATEGORY</code>, <code>LOCATION</code>, <code>OPENING_HOURS</code>, <code>RESTRICTIONS</code>.</p>
+</li>
+<li>
+<p>The <code>DIRECTION</code> are as follows: <code>ASCENDING</code> or <code>DESCENDING</code>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="classes-for-sorting-feature-in-model"><a class="link" href="#classes-for-sorting-feature-in-model">3.4.1. Classes for sorting feature in Model</a></h4>
+<div class="paragraph">
+<p>The Sorting feature was implemented with a new set of classes introduced to the Model. The <code>CustomSorter</code> stores the comparator for <code>autosort</code> and <code>makesort</code>.<br>
+From which, you will need to call <code>makesort FIELD DIRECTION</code> to create the custom comparator. The <code>CustomSorter</code> contains a <code>FoodComparator</code>.<br>
+The <code>FoodComparator</code> stores fields which will be needed for various <code>FOOD</code> to be compared.<br>
+The <code>DefaultComparator</code> helps to sort food items based on their natural ordering. This is called via the <code>default</code> command.
+Finally, the <code>FieldComparator</code> helps to compare between various <code>FIELD</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SortingClassDiagram.png" alt="SortingClassDiagram" width="500">
+</div>
+<div class="title">Figure 9. Sorting class diagram in Sort component.</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="savings-feature"><a class="link" href="#savings-feature">3.5. Savings feature</a></h3>
 <div class="paragraph">
 <p>The Savings feature allows users to save a specified amount of money from their wallet into their Savings Account using the <code>save AMOUNT</code> command, where <code>AMOUNT</code> is a user defined amount of money to deposit into the user&#8217;s Savings Account.
 The Savings feature also allows the user to withdraw from his savings account either into his wallet or withdraw the money completely from the $aveNUS app.
@@ -428,7 +472,7 @@ Using the <code>withdraw AMOUNT</code>, users will be able to transfer their mon
 money completely from the Savings Account and the application.</p>
 </div>
 <div class="sect3">
-<h4 id="classes-for-savings-feature-in-model"><a class="link" href="#classes-for-savings-feature-in-model">3.4.1. Classes for savings feature in Model</a></h4>
+<h4 id="classes-for-savings-feature-in-model"><a class="link" href="#classes-for-savings-feature-in-model">3.5.1. Classes for savings feature in Model</a></h4>
 <div class="paragraph">
 <p>The Savings feature was implemented with a new set of classes introduced to the Model. The <code>SavingsAccount</code> is a singleton class
 which contains the methods and  classes related to this feature.
@@ -462,11 +506,11 @@ and a withdrawal at a single time.</p>
 <div class="content">
 <img src="images/SavingsAccountClassDiagram.png" alt="SavingsAccountClassDiagram" width="500">
 </div>
-<div class="title">Figure 9. Savings class diagram in Model component.</div>
+<div class="title">Figure 10. Savings class diagram in Model component.</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="strong-adding-to-the-savings-account-strong"><a class="link" href="#strong-adding-to-the-savings-account-strong">3.4.2. <strong>Adding to the Savings Account</strong></a></h4>
+<h4 id="strong-adding-to-the-savings-account-strong"><a class="link" href="#strong-adding-to-the-savings-account-strong">3.5.2. <strong>Adding to the Savings Account</strong></a></h4>
 <div class="paragraph">
 <p>The user may want to add a new saving to his savings account. This can be done with the <code>save</code> command.</p>
 </div>
@@ -489,7 +533,7 @@ which passes this string (named commandText) to the Logic component by calling L
 <div class="content">
 <img src="images/SaveSequenceDiagram.png" alt="SaveSequenceDiagram">
 </div>
-<div class="title">Figure 10. Sequence diagram for sample save command</div>
+<div class="title">Figure 11. Sequence diagram for sample save command</div>
 </div>
 <div class="paragraph">
 <p>The following activity diagram below summarizes how the save command works</p>
@@ -498,12 +542,12 @@ which passes this string (named commandText) to the Logic component by calling L
 <div class="content">
 <img src="images/SaveActivityDiagram.png" alt="SaveActivityDiagram">
 </div>
-<div class="title">Figure 11. Activity diagram for a sample save command</div>
+<div class="title">Figure 12. Activity diagram for a sample save command</div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="recommendation-feature"><a class="link" href="#recommendation-feature">3.5. Recommendation feature</a></h3>
+<h3 id="recommendation-feature"><a class="link" href="#recommendation-feature">3.6. Recommendation feature</a></h3>
 <div class="paragraph">
 <p>The recommendation feature allows users to generate a list of personalized recommendations using the <code>recommend</code> command.
 The recommendations are tailored to each user based on their current likes, dislikes and purchase history.</p>
@@ -515,7 +559,7 @@ to generate a more accurate list of recommendations. Users will then able to fin
 more accurately.</p>
 </div>
 <div class="sect3">
-<h4 id="classes-for-recommendation-feature-in-model"><a class="link" href="#classes-for-recommendation-feature-in-model">3.5.1. Classes for recommendation feature in Model</a></h4>
+<h4 id="classes-for-recommendation-feature-in-model"><a class="link" href="#classes-for-recommendation-feature-in-model">3.6.1. Classes for recommendation feature in Model</a></h4>
 <div class="paragraph">
 <p>With the recommendation feature, a new set of classes were added. A singleton class <code>RecommendationSystem</code> encapsulates
 the methods and classes related to this feature. This <code>RecommendationSystem</code> class implements the interface <code>Recommender</code>
@@ -566,11 +610,11 @@ comparison can be done more easily.</p>
 <div class="content">
 <img src="images/RecommendationClassDiagram.png" alt="RecommendationClassDiagram" width="500">
 </div>
-<div class="title">Figure 12. Recommendation class diagram in Model component</div>
+<div class="title">Figure 13. Recommendation class diagram in Model component</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="adding-likes-and-dislikes"><a class="link" href="#adding-likes-and-dislikes">3.5.2. Adding likes and dislikes</a></h4>
+<h4 id="adding-likes-and-dislikes"><a class="link" href="#adding-likes-and-dislikes">3.6.2. Adding likes and dislikes</a></h4>
 <div class="paragraph">
 <p>The feature of adding the user&#8217;s liked and disliked categories, tags and locations was introduced to support the
 recommendation system.</p>
@@ -586,7 +630,7 @@ Furthermore, the user&#8217;s likes and dislikes are integrated with <code>Stora
 <div class="content">
 <img src="images/LikeSequenceDiagram.png" alt="LikeSequenceDiagram">
 </div>
-<div class="title">Figure 13. Sequence diagram for a sample like command</div>
+<div class="title">Figure 14. Sequence diagram for a sample like command</div>
 </div>
 <div class="paragraph">
 <p>The following activity diagram below summarizes how the <code>like</code> command works:</p>
@@ -595,14 +639,14 @@ Furthermore, the user&#8217;s likes and dislikes are integrated with <code>Stora
 <div class="content">
 <img src="images/LikeActivityDiagram.png" alt="LikeActivityDiagram" width="450">
 </div>
-<div class="title">Figure 14. Activity diagram for a sample like command</div>
+<div class="title">Figure 15. Activity diagram for a sample like command</div>
 </div>
 <div class="paragraph">
 <p>A similar execution sequence is performed for a dislike command by replacing instances of like with dislike and vice versa.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="displaying-recommendations"><a class="link" href="#displaying-recommendations">3.5.3. Displaying recommendations</a></h4>
+<h4 id="displaying-recommendations"><a class="link" href="#displaying-recommendations">3.6.3. Displaying recommendations</a></h4>
 <div class="paragraph">
 <p>After customizing the user&#8217;s likes and dislikes, users can obtain a personalized list of recommendations
 using the <code>recommend</code> command. Each food is passed to the recommendation system and it calculates the
@@ -734,7 +778,7 @@ recommendation value:</p>
 <div class="content">
 <img src="images/RecValueSequenceDiagram.png" alt="RecValueSequenceDiagram" width="400">
 </div>
-<div class="title">Figure 15. Sequence diagram for <code>calculateRecommendation</code></div>
+<div class="title">Figure 16. Sequence diagram for <code>calculateRecommendation</code></div>
 </div>
 <div class="paragraph">
 <p>The calculated recommendation values are used to sort the food items when the <code>recommend</code> command
@@ -1553,4 +1597,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-24 07:58:42 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-24 08:00:04 UTC</div></div></div></body></html>
