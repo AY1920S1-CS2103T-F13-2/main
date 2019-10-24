@@ -188,6 +188,9 @@ The following class plays an important role at the architecture level:</p>
 <p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>FoodListPanel</code>, <code>PurchaseListPanel</code>, <code>SavingsHistoryPanel</code>, <code>StatusBarFooter</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
 </div>
 <div class="paragraph">
+<p>There are pop-up windows that appeared when the calls the <code>InfoCommand</code> or <code>HelpCommand</code> which is a new window with their own stages. The CSS files for each pop-up windows is taken from the <code>MainWindow</code> which ensures that they always match the theme of the <code>MainWindow</code> should the user decide to switch the theme while either pop-up window is open.</p>
+</div>
+<div class="paragraph">
 <p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/AY1920S1-CS2103T-F13-2/main/src/main/java/seedu/savenus/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/AY1920S1-CS2103T-F13-2/main/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
 </div>
 <div class="paragraph">
@@ -197,6 +200,9 @@ The following class plays an important role at the architecture level:</p>
 <ul>
 <li>
 <p>Executes user commands using the <code>Logic</code> component.</p>
+</li>
+<li>
+<p>Responds to the user&#8217;s keyboard and mouse input.</p>
 </li>
 <li>
 <p>Listens for changes to <code>Model</code> data so that the UI can be updated with the modified data.</p>
@@ -867,25 +873,31 @@ the recommendation value</p>
 <div class="ulist">
 <ul>
 <li>
-<p>has a need to manage a significant number of food items</p>
+<p>Has a need to manage a significant number of food items</p>
 </li>
 <li>
-<p>has trouble tracking expenditure over a period of time</p>
+<p>Has trouble tracking expenditure over a period of time</p>
 </li>
 <li>
-<p>wants meal recommendations within their specified budget</p>
+<p>Wants to know how much money they have saved</p>
 </li>
 <li>
-<p>prefer desktop apps over other types</p>
+<p>Wants meal recommendations within their specified budget</p>
 </li>
 <li>
-<p>can type fast</p>
+<p>Prefer desktop apps over other types</p>
 </li>
 <li>
-<p>prefers typing over mouse input</p>
+<p>Can type fast</p>
 </li>
 <li>
-<p>is reasonably comfortable using CLI apps</p>
+<p>Prefers typing over mouse input</p>
+</li>
+<li>
+<p>Reasonably comfortable using CLI apps</p>
+</li>
+<li>
+<p>Able to read graphs and data.</p>
 </li>
 </ul>
 </div>
@@ -1541,4 +1553,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-24 07:42:13 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-24 07:49:47 UTC</div></div></div></body></html>
