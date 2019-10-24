@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>$aveNUS - User Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">$aveNUS</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link active" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S1-CS2103T-F13-2/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>$aveNUS - User Guide</h1></div><div id="content"><div id="preamble">
+<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">$aveNUS</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link active" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S1-CS2103T-F13-2/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1><strong>$aveNUS - User Guide</strong></h1></div><div id="content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>By: <code>Team-F13-2</code>      Since: <code>Sep 2019</code>      Licence: <code>MIT</code></p>
@@ -78,23 +78,19 @@
 <div class="sect1">
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
+<div class="paragraph">
 <p>$aveNUS is a desktop financial planning app that allows <strong>NUS students</strong> to <strong>plan their meals according
 to the amount of budget they set aside per meal</strong> in NUS. With $aveNUS, you can more effectively manage your expenses,
 save your favourite meal options within NUS, edit meal options, and even receive recommendations
 for meals that suit your budget.</p>
-</li>
-<li>
+</div>
+<div class="paragraph">
 <p>More importantly, $aveNUS is optimized for those who prefer to
 work on a Command Line Interface (CLI) while still having the benefits of a
 Graphical User Interface (GUI).</p>
-</li>
-<li>
+</div>
+<div class="paragraph">
 <p>Interested in our app? <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started. Enjoy!</p>
-</li>
-</ul>
 </div>
 </div>
 </div>
@@ -170,13 +166,18 @@ You can download Java 11 from
 <p>Copy the file to the folder you want to use as the home folder for $aveNUS.</p>
 </li>
 <li>
-<p>Double-click the file to start the app. The GUI should appear in a few seconds.</p>
+<p>Double-click the file to start the app. The Graphical User Interface (GUI) should appear in a few seconds.</p>
+</li>
+</ol>
+</div>
 <div class="imageblock">
 <div class="content">
 <img src="images/Ui.png" alt="Ui" width="790">
 </div>
+<div class="title">Figure 1. The GUI of $aveNUS</div>
 </div>
-</li>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
 <p>Type the command in the command box and press <kbd>Enter</kbd> to execute it.<br>
 e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> will open the help window.</p>
@@ -186,8 +187,8 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="ulist">
 <ul>
 <li>
-<p>First, <strong>add</strong> a food item into the menu by typing **<code>add n/Halal chicken rice p/3.00 d/chicken and rice c/Malay</code> and
-click <kbd>Enter</kbd></p>
+<p>First, <strong>add</strong> a food item into the menu by typing <code>add n/Halal chicken rice p/3.00 d/chicken and rice c/Malay</code> and
+press <kbd>Enter</kbd></p>
 </li>
 <li>
 <p>You should see that a food item panel appear on the right of the window as shown below in Figure 1.2:</p>
@@ -201,6 +202,7 @@ click <kbd>Enter</kbd></p>
 <div class="content">
 <img src="images/Figure_1.2_mockup_add.png" alt="Figure 1.2 mockup add" width="790">
 </div>
+<div class="title">Figure 2. The food pane of $aveNUS</div>
 </div>
 <div class="ulist">
 <ul>
@@ -250,12 +252,20 @@ is provided in the command descriptions.</p>
 <div class="sect1">
 <h2 id="Features"><a class="link" href="#Features">3. Features</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>This section highlights the commands that $aveNUS supports. These include information about the command&#8217;s
+function, format as well as example usages of the command.</p>
+</div>
 <div class="sect2">
 <h3 id="general-commands"><a class="link" href="#general-commands">3.1. General Commands</a></h3>
+<div class="paragraph">
+<p>$aveNUS provides the user with a set of commands that are not feature-specific to
+enhance the user&#8217;s experience as a whole.</p>
+</div>
 <div class="sect3">
 <h4 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">3.1.1. Viewing Help: <code>help</code></a></h4>
 <div class="paragraph">
-<p>Display the help screen that contains helpful information on how to use the application.<br></p>
+<p>Display the help screen that contains helpful information on how to use the application.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -442,7 +452,7 @@ Note: NAME, PRICE and CATEGORY are mandatory fields.</p>
 </td>
 <td class="content">
 The list of recommendations would be cleared if you use the this command. You can re-enable recommendations
-by using the <code>recommend</code> command again (see <a href="#Recommend">[Recommend]</a>).
+by using the <code>recommend</code> command again (see <a href="#getting-a-list-of-recommended-food-items-code-recommend-code">Section 3.5.1, &#8220;Getting a list of recommended food items: <code>recommend</code>&#8221;</a>).
 </td>
 </tr>
 </table>
@@ -469,7 +479,7 @@ by using the <code>recommend</code> command again (see <a href="#Recommend">[Rec
 </td>
 <td class="content">
 The list of recommendations would be cleared if you use the this command. You can re-enable recommendations
-by using the <code>recommend</code> command again (see <a href="#Recommend">[Recommend]</a>).
+by using the <code>recommend</code> command again (see <a href="#getting-a-list-of-recommended-food-items-code-recommend-code">Section 3.5.1, &#8220;Getting a list of recommended food items: <code>recommend</code>&#8221;</a>).
 </td>
 </tr>
 </table>
@@ -1468,4 +1478,4 @@ of days.</p></td>
 </tbody>
 </table>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-24 09:32:57 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-24 14:41:41 UTC</div></div></div></body></html>

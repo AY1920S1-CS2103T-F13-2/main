@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>$aveNUS - Developer Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">$aveNUS</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link active" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S1-CS2103T-F13-2/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>$aveNUS - Developer Guide</h1></div><div id="content"><div id="preamble">
+<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">$aveNUS</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link active" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S1-CS2103T-F13-2/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1><strong>$aveNUS - Developer Guide</strong></h1></div><div id="content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>By: <code>Team-F13-2</code>      Since: <code>Sep 2019</code>      Licence: <code>MIT</code></p>
@@ -561,9 +561,12 @@ more accurately.</p>
 <div class="sect3">
 <h4 id="classes-for-recommendation-feature-in-model"><a class="link" href="#classes-for-recommendation-feature-in-model">3.6.1. Classes for recommendation feature in Model</a></h4>
 <div class="paragraph">
-<p>With the recommendation feature, a new set of classes were added. A singleton class <code>RecommendationSystem</code> encapsulates
-the methods and classes related to this feature. This <code>RecommendationSystem</code> class implements the interface <code>Recommender</code>
-which specifies the behaviour of the system, which include the ability to generate recommendation values.</p>
+<p>With the recommendation feature, a new set of classes were added.</p>
+</div>
+<div class="paragraph">
+<p>A singleton class <code>RecommendationSystem</code> encapsulates the methods and classes related to this feature.
+This <code>RecommendationSystem</code> class implements the interface <code>Recommender</code> which specifies the behaviour of the system,
+and include the ability to generate recommendation values.</p>
 </div>
 <div class="paragraph">
 <p>Additionally, the <code>RecommendationSystem</code> class also contains a class <code>UserRecommendations</code>, which include the likes and
@@ -649,8 +652,10 @@ Furthermore, the user&#8217;s likes and dislikes are integrated with <code>Stora
 <h4 id="displaying-recommendations"><a class="link" href="#displaying-recommendations">3.6.3. Displaying recommendations</a></h4>
 <div class="paragraph">
 <p>After customizing the user&#8217;s likes and dislikes, users can obtain a personalized list of recommendations
-using the <code>recommend</code> command. Each food is passed to the recommendation system and it calculates the
-recommendation value based on the table below:</p>
+using the <code>recommend</code> command.</p>
+</div>
+<div class="paragraph">
+<p>Each food is passed to the recommendation system and it calculates the recommendation value based on the tables below:</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Table 1. Bonuses applied by the recommendation system</caption>
@@ -720,6 +725,9 @@ recommendation value based on the table below:</p>
 </tr>
 </tbody>
 </table>
+<div class="paragraph">
+<p><br></p>
+</div>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Table 2. Penalties applied by the recommendation system</caption>
 <colgroup>
@@ -771,14 +779,14 @@ recommendation value based on the table below:</p>
 </tbody>
 </table>
 <div class="paragraph">
-<p>The sequence diagram below shows how a sample Food is passed into <code>RecommendationSystem</code> to output a
+<p>The activity diagram below shows how a sample Food is passed into <code>RecommendationSystem</code> to output a
 recommendation value:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/RecValueSequenceDiagram.png" alt="RecValueSequenceDiagram" width="400">
+<img src="images/RecValueActivityDiagram.png" alt="RecValueActivityDiagram" width="600">
 </div>
-<div class="title">Figure 16. Sequence diagram for <code>calculateRecommendation</code></div>
+<div class="title">Figure 16. Activity diagram for <code>calculateRecommendation</code></div>
 </div>
 <div class="paragraph">
 <p>The calculated recommendation values are used to sort the food items when the <code>recommend</code> command
@@ -786,7 +794,11 @@ is executed. Food with similar recommendation values are sorted based on their p
 </div>
 <div class="sect4">
 <h5 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h5>
+<div class="paragraph">
+<p>Detailed below are the design considerations taken into account when engineering the <code>calculateRecommendation()</code> function.</p>
+</div>
 <table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 3. Design considerations of the calculateRecommendation() function</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 40%;">
@@ -1597,4 +1609,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-24 09:32:57 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-24 14:41:41 UTC</div></div></div></body></html>
