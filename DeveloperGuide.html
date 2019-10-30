@@ -37,11 +37,23 @@
 <li><a href="#strong-adding-to-the-savings-account-strong">3.5.2. <strong>Adding to the Savings Account</strong></a></li>
 </ul>
 </li>
-<li><a href="#recommendation-feature">3.6. Recommendation feature</a>
+<li><a href="#budget-tracking-feature">3.6. Budget Tracking feature</a>
 <ul class="sectlevel3">
-<li><a href="#classes-for-recommendation-feature-in-model">3.6.1. Classes for recommendation feature in Model</a></li>
-<li><a href="#adding-likes-and-dislikes">3.6.2. Adding likes and dislikes</a></li>
-<li><a href="#displaying-recommendations">3.6.3. Displaying recommendations</a></li>
+<li><a href="#classes-for-budget-tracking-feature-in-model">3.6.1. Classes for Budget Tracking feature in Model</a></li>
+<li><a href="#setting-a-budget">3.6.2. Setting a Budget</a></li>
+</ul>
+</li>
+<li><a href="#purchase-tracking-feature">3.7. Purchase Tracking feature</a>
+<ul class="sectlevel3">
+<li><a href="#classes-for-purchase-tracking-feature-in-model">3.7.1. Classes for Purchase Tracking feature in Model</a></li>
+<li><a href="#buying-a-food-item">3.7.2. Buying a Food Item</a></li>
+</ul>
+</li>
+<li><a href="#recommendation-feature">3.8. Recommendation feature</a>
+<ul class="sectlevel3">
+<li><a href="#classes-for-recommendation-feature-in-model">3.8.1. Classes for recommendation feature in Model</a></li>
+<li><a href="#adding-likes-and-dislikes">3.8.2. Adding likes and dislikes</a></li>
+<li><a href="#displaying-recommendations">3.8.3. Displaying recommendations</a></li>
 </ul>
 </li>
 </ul>
@@ -602,7 +614,202 @@ which passes this string (named commandText) to the Logic component by calling L
 </div>
 </div>
 <div class="sect2">
-<h3 id="recommendation-feature"><a class="link" href="#recommendation-feature">3.6. Recommendation feature</a></h3>
+<h3 id="budget-tracking-feature"><a class="link" href="#budget-tracking-feature">3.6. Budget Tracking feature</a></h3>
+<div class="paragraph">
+<p>The Budget Tracking feature allows users to manage their budget for food expenditure.
+It keeps the user updated with regards to the amount as well as the duration left for their current budget.
+Budget information is also used in the application&#8217;s recommendation system to suggest appropriate food items within a user&#8217;s budget.</p>
+</div>
+<div class="sect3">
+<h4 id="classes-for-budget-tracking-feature-in-model"><a class="link" href="#classes-for-budget-tracking-feature-in-model">3.6.1. Classes for Budget Tracking feature in Model</a></h4>
+<div class="paragraph">
+<p>The Budget Tracking feature was implemented with the following classes.</p>
+</div>
+<div class="sect4">
+<h5 id="wallet"><a class="link" href="#wallet">Wallet</a></h5>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><code>Wallet</code> is a class containing the user&#8217;s current budget, i.e., storing the user&#8217;s budget amount and budget duration.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="remainingbudget"><a class="link" href="#remainingbudget">RemainingBudget</a></h5>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><code>RemainingBudget</code> stores a user&#8217;s remaining budget amount.
+It contains an <code>ObservableValue</code> which allows the UI to track of the amount of money left in the current budget after changes are made to it.
+The maximum budget amount has been set to 1 million dollars.</p>
+</div>
+<div class="paragraph">
+<p>Also, in order to avoid possible loss of precision errors, calculations regarding the budget amount is done using Java&#8217;s <code>BigDecimal</code> class instead of <code>Double</code>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="daystoexpire"><a class="link" href="#daystoexpire">DaysToExpire</a></h5>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><code>DaysToExpire</code> stores a user&#8217;s remaining budget duration.
+It contains an <code>ObservableValue</code> which allows the UI to track of the number of days before the current budget expires after changes are made to it.
+The maximum budget duration has been set to 1 year (365 days).</p>
+</div>
+<div class="paragraph">
+<p>When a <code>DaysToExpire</code> object is instantiated, it stores the system time as a field.
+The budget duration is correspondingly updated based on the difference between this saved time and the actual system time.
+Due to development constraints, we have decided to only update the budget duration every time the application is started up instead of constantly monitoring the actual time to update this property.</p>
+</div>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/WalletClassDiagram.png" alt="WalletClassDiagram" width="400">
+</div>
+<div class="title">Figure 15. Wallet-related class diagram in Model component.</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="setting-a-budget"><a class="link" href="#setting-a-budget">3.6.2. Setting a Budget</a></h4>
+<div class="paragraph">
+<p>A budget can be set using the <code>budget</code> command which takes a budget amount, and an optional budget duration.</p>
+</div>
+<div class="paragraph">
+<p>For example, <code>budget 100 10</code> will set the user&#8217;s budget, with $100.00 for 10 days.</p>
+</div>
+<div class="paragraph">
+<p>The command is read as a text string from the command box in the UI and then is executed by calling MainWindow#executeCommand(),
+which passes this string (named commandText) to the Logic component by calling Logic#execute(Model model).</p>
+</div>
+<div class="paragraph">
+<p>The sequence diagram for interactions between the Logic, Model and Storage components when a user executes the <code>buy 1</code> command is shown below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/BudgetSequenceDiagram.png" alt="BudgetSequenceDiagram">
+</div>
+<div class="title">Figure 16. Sequence diagram for <code>budget 100 10</code> command</div>
+</div>
+<div class="paragraph">
+<p>The following activity diagram below summarizes how <code>budget</code> commands works</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/BudgetActivityDiagram.png" alt="BudgetActivityDiagram">
+</div>
+<div class="title">Figure 17. Activity diagram for a <code>budget</code> command</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="purchase-tracking-feature"><a class="link" href="#purchase-tracking-feature">3.7. Purchase Tracking feature</a></h3>
+<div class="paragraph">
+<p>The Purchase Tracking feature allows users to monitor their food expenditure by keeping track of their purchase history.
+Whenever a user&#8217;s executes the <code>buy</code> command, the corresponding food will be added as a purchase to the purchase history.
+A user&#8217;s purchase history is displayed in the UI, similar to the food menu, and is updated every time a change is made to it.</p>
+</div>
+<div class="sect3">
+<h4 id="classes-for-purchase-tracking-feature-in-model"><a class="link" href="#classes-for-purchase-tracking-feature-in-model">3.7.1. Classes for Purchase Tracking feature in Model</a></h4>
+<div class="imageblock">
+<div class="content">
+<img src="images/PurchaseHistoryClassDiagram.png" alt="PurchaseHistoryClassDiagram" width="400">
+</div>
+<div class="title">Figure 18. Purchase-related class diagram in Model component.</div>
+</div>
+<div class="paragraph">
+<p>The Purchase Tracking feature was implemented with the following classes.</p>
+</div>
+<div class="sect4">
+<h5 id="readonlypurchasehistory"><a class="link" href="#readonlypurchasehistory">ReadOnlyPurchaseHistory</a></h5>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><code>ReadOnlyPurchaseHistory</code> is an interface implemented by <code>PurchaseHistory</code> to allow the other components to retrieve
+the purchase history data of the user while maintaining data integrity.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="purchasehistory"><a class="link" href="#purchasehistory">PurchaseHistory</a></h5>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><code>PurchaseHistory</code> contains a <code>PurchaseHistoryList</code> and serves as an encapsulation for Purchase-related methods and fields.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="purchasehistorylist"><a class="link" href="#purchasehistorylist">PurchaseHistoryList</a></h5>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><code>PurchaseHistoryList</code> contains an <code>ObservableList</code> of <code>Purchase</code> made by the user.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="purchase"><a class="link" href="#purchase">Purchase</a></h5>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><code>Purchase</code> contains a <code>Food</code> object representing the purchased food item, and a <code>TimeOfPurchase</code> representing the time of purchase.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="timeofpurchase"><a class="link" href="#timeofpurchase">TimeOfPurchase</a></h5>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><code>TimeOfPurchase</code> stores the time the <code>Purchase</code> was made by the user.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="buying-a-food-item"><a class="link" href="#buying-a-food-item">3.7.2. Buying a Food Item</a></h4>
+<div class="paragraph">
+<p>The user may want to buy a food item and record the purchase. This can be done with the <code>buy</code> command.</p>
+</div>
+<div class="paragraph">
+<p>After the users enters a <code>buy</code> command, for example, <code>buy 1</code> which buys the first item in the displayed list.</p>
+</div>
+<div class="paragraph">
+<p>The command is read as a text string from the command box in the UI and then is executed by calling MainWindow#executeCommand(),
+which passes this string (named commandText) to the Logic component by calling Logic#execute(Model model).</p>
+</div>
+<div class="paragraph">
+<p>The sequence diagram for interactions between the Logic, Model and Storage components when a user executes the <code>buy 1</code> command is shown below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/BuySequenceDiagram.png" alt="BuySequenceDiagram">
+</div>
+<div class="title">Figure 19. Sequence diagram for <code>buy 1</code> command</div>
+</div>
+<div class="paragraph">
+<p>The following activity diagram below summarizes how <code>buy</code> commands works</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/BuyActivityDiagram.png" alt="BuyActivityDiagram">
+</div>
+<div class="title">Figure 20. Activity diagram for a <code>buy</code> command</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="recommendation-feature"><a class="link" href="#recommendation-feature">3.8. Recommendation feature</a></h3>
 <div class="paragraph">
 <p>The recommendation feature allows users to generate a list of personalized recommendations using the <code>recommend</code> command.
 The recommendations are tailored to each user based on their current likes, dislikes and purchase history.</p>
@@ -614,7 +821,7 @@ to generate a more accurate list of recommendations. Users will then able to fin
 more accurately.</p>
 </div>
 <div class="sect3">
-<h4 id="classes-for-recommendation-feature-in-model"><a class="link" href="#classes-for-recommendation-feature-in-model">3.6.1. Classes for recommendation feature in Model</a></h4>
+<h4 id="classes-for-recommendation-feature-in-model"><a class="link" href="#classes-for-recommendation-feature-in-model">3.8.1. Classes for recommendation feature in Model</a></h4>
 <div class="paragraph">
 <p>With the recommendation feature, a new set of classes were added.</p>
 </div>
@@ -668,11 +875,11 @@ comparison can be done more easily.</p>
 <div class="content">
 <img src="images/RecommendationClassDiagram.png" alt="RecommendationClassDiagram" width="500">
 </div>
-<div class="title">Figure 15. Recommendation class diagram in Model component</div>
+<div class="title">Figure 21. Recommendation class diagram in Model component</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="adding-likes-and-dislikes"><a class="link" href="#adding-likes-and-dislikes">3.6.2. Adding likes and dislikes</a></h4>
+<h4 id="adding-likes-and-dislikes"><a class="link" href="#adding-likes-and-dislikes">3.8.2. Adding likes and dislikes</a></h4>
 <div class="paragraph">
 <p>The feature of adding the user&#8217;s liked and disliked categories, tags and locations was introduced to support the
 recommendation system.</p>
@@ -688,7 +895,7 @@ Furthermore, the user&#8217;s likes and dislikes are integrated with <code>Stora
 <div class="content">
 <img src="images/LikeSequenceDiagram.png" alt="LikeSequenceDiagram">
 </div>
-<div class="title">Figure 16. Sequence diagram for a sample like command</div>
+<div class="title">Figure 22. Sequence diagram for a sample like command</div>
 </div>
 <div class="paragraph">
 <p>The following activity diagram below summarizes how the <code>like</code> command works:</p>
@@ -697,14 +904,14 @@ Furthermore, the user&#8217;s likes and dislikes are integrated with <code>Stora
 <div class="content">
 <img src="images/LikeActivityDiagram.png" alt="LikeActivityDiagram" width="450">
 </div>
-<div class="title">Figure 17. Activity diagram for a sample like command</div>
+<div class="title">Figure 23. Activity diagram for a sample like command</div>
 </div>
 <div class="paragraph">
 <p>A similar execution sequence is performed for a dislike command by replacing instances of like with dislike and vice versa.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="displaying-recommendations"><a class="link" href="#displaying-recommendations">3.6.3. Displaying recommendations</a></h4>
+<h4 id="displaying-recommendations"><a class="link" href="#displaying-recommendations">3.8.3. Displaying recommendations</a></h4>
 <div class="paragraph">
 <p>After customizing the user&#8217;s likes and dislikes, users can obtain a personalized list of recommendations
 using the <code>recommend</code> command.</p>
@@ -841,7 +1048,7 @@ recommendation value:</p>
 <div class="content">
 <img src="images/RecValueActivityDiagram.png" alt="RecValueActivityDiagram" width="600">
 </div>
-<div class="title">Figure 18. Activity diagram for <code>calculateRecommendation</code></div>
+<div class="title">Figure 24. Activity diagram for <code>calculateRecommendation</code></div>
 </div>
 <div class="paragraph">
 <p>The calculated recommendation values are used to sort the food items when the <code>recommend</code> command
@@ -1060,7 +1267,7 @@ the recommendation value</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">forgetful user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">track my expenses for the day using the app</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">track my expenditure for the day using the app</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">know how much I have already spend in the day and plan for the remaining meals of the day.</p></td>
 </tr>
 <tr>
@@ -1664,4 +1871,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-28 14:12:43 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-30 03:58:20 UTC</div></div></div></body></html>
