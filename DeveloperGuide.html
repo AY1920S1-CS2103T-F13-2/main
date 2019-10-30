@@ -9,58 +9,73 @@
 <div id="toc" class="toc">
 <div id="toctitle"></div>
 <ul class="sectlevel1">
-<li><a href="#setting-up">1. Setting up</a></li>
-<li><a href="#design">2. Design</a>
+<li><a href="#introduction">1. Introduction</a></li>
+<li><a href="#setting-up">2. Setting up</a>
 <ul class="sectlevel2">
-<li><a href="#Design-Architecture">2.1. Architecture</a></li>
-<li><a href="#Design-Ui">2.2. UI component</a></li>
-<li><a href="#Design-Logic">2.3. Logic component</a></li>
-<li><a href="#Design-Model">2.4. Model component</a></li>
-<li><a href="#Design-Storage">2.5. Storage component</a></li>
-<li><a href="#Design-Commons">2.6. Common classes</a></li>
+<li><a href="#prerequisites">2.1. Prerequisites</a></li>
+<li><a href="#setting-up-avenus-in-your-computer">2.2. Setting up $aveNUS in your computer</a></li>
+<li><a href="#verifying-the-setup">2.3. Verifying the setup</a></li>
+<li><a href="#configurations-to-do-before-writing-code">2.4. Configurations to do before writing code</a>
+<ul class="sectlevel3">
+<li><a href="#configuring-the-coding-style">2.4.1. Configuring the coding style</a></li>
+<li><a href="#updating-documentation-to-match-your-fork">2.4.2. Updating documentation to match your fork</a></li>
+<li><a href="#setting-up-ci">2.4.3. Setting up CI</a></li>
+<li><a href="#getting-started-with-coding">2.4.4. Getting started with coding</a></li>
 </ul>
 </li>
-<li><a href="#implementation">3. Implementation</a>
+</ul>
+</li>
+<li><a href="#design">3. Design</a>
 <ul class="sectlevel2">
-<li><a href="#proposed-data-encryption">3.1. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">3.2. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.3. Configuration</a></li>
-<li><a href="#sorting-feature">3.4. Sorting feature</a>
+<li><a href="#Design-Architecture">3.1. Architecture</a></li>
+<li><a href="#Design-Ui">3.2. UI component</a></li>
+<li><a href="#Design-Logic">3.3. Logic component</a></li>
+<li><a href="#Design-Model">3.4. Model component</a></li>
+<li><a href="#Design-Storage">3.5. Storage component</a></li>
+<li><a href="#Design-Commons">3.6. Common classes</a></li>
+</ul>
+</li>
+<li><a href="#implementation">4. Implementation</a>
+<ul class="sectlevel2">
+<li><a href="#proposed-data-encryption">4.1. [Proposed] Data Encryption</a></li>
+<li><a href="#logging">4.2. Logging</a></li>
+<li><a href="#Implementation-Configuration">4.3. Configuration</a></li>
+<li><a href="#sorting-feature">4.4. Sorting feature</a>
 <ul class="sectlevel3">
-<li><a href="#classes-for-sorting-feature-in-model">3.4.1. Classes for sorting feature in Model</a></li>
-<li><a href="#creation-of-new-custom-comparator">3.4.2. Creation of new Custom Comparator</a></li>
+<li><a href="#classes-for-sorting-feature-in-model">4.4.1. Classes for sorting feature in Model</a></li>
+<li><a href="#creation-of-new-custom-comparator">4.4.2. Creation of new Custom Comparator</a></li>
 </ul>
 </li>
-<li><a href="#savings-feature">3.5. Savings feature</a>
+<li><a href="#savings-feature">4.5. Savings feature</a>
 <ul class="sectlevel3">
-<li><a href="#classes-for-savings-feature-in-model">3.5.1. Classes for savings feature in Model</a></li>
-<li><a href="#strong-adding-to-the-savings-account-strong">3.5.2. <strong>Adding to the Savings Account</strong></a></li>
+<li><a href="#classes-for-savings-feature-in-model">4.5.1. Classes for savings feature in Model</a></li>
+<li><a href="#strong-adding-to-the-savings-account-strong">4.5.2. <strong>Adding to the Savings Account</strong></a></li>
 </ul>
 </li>
-<li><a href="#budget-tracking-feature">3.6. Budget Tracking feature</a>
+<li><a href="#budget-tracking-feature">4.6. Budget Tracking feature</a>
 <ul class="sectlevel3">
-<li><a href="#classes-for-budget-tracking-feature-in-model">3.6.1. Classes for Budget Tracking feature in Model</a></li>
-<li><a href="#setting-a-budget">3.6.2. Setting a Budget</a></li>
+<li><a href="#classes-for-budget-tracking-feature-in-model">4.6.1. Classes for Budget Tracking feature in Model</a></li>
+<li><a href="#setting-a-budget">4.6.2. Setting a Budget</a></li>
 </ul>
 </li>
-<li><a href="#purchase-tracking-feature">3.7. Purchase Tracking feature</a>
+<li><a href="#purchase-tracking-feature">4.7. Purchase Tracking feature</a>
 <ul class="sectlevel3">
-<li><a href="#classes-for-purchase-tracking-feature-in-model">3.7.1. Classes for Purchase Tracking feature in Model</a></li>
-<li><a href="#buying-a-food-item">3.7.2. Buying a Food Item</a></li>
+<li><a href="#classes-for-purchase-tracking-feature-in-model">4.7.1. Classes for Purchase Tracking feature in Model</a></li>
+<li><a href="#buying-a-food-item">4.7.2. Buying a Food Item</a></li>
 </ul>
 </li>
-<li><a href="#recommendation-feature">3.8. Recommendation feature</a>
+<li><a href="#recommendation-feature">4.8. Recommendation feature</a>
 <ul class="sectlevel3">
-<li><a href="#classes-for-recommendation-feature-in-model">3.8.1. Classes for recommendation feature in Model</a></li>
-<li><a href="#adding-likes-and-dislikes">3.8.2. Adding likes and dislikes</a></li>
-<li><a href="#displaying-recommendations">3.8.3. Displaying recommendations</a></li>
+<li><a href="#classes-for-recommendation-feature-in-model">4.8.1. Classes for recommendation feature in Model</a></li>
+<li><a href="#adding-likes-and-dislikes">4.8.2. Adding likes and dislikes</a></li>
+<li><a href="#displaying-recommendations">4.8.3. Displaying recommendations</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#documentation">4. Documentation</a></li>
-<li><a href="#testing">5. Testing</a></li>
-<li><a href="#dev-ops">6. Dev Ops</a></li>
+<li><a href="#documentation">5. Documentation</a></li>
+<li><a href="#testing">6. Testing</a></li>
+<li><a href="#dev-ops">7. Dev Ops</a></li>
 <li><a href="#product-scope">Appendix A: Product Scope</a></li>
 <li><a href="#user-stories">Appendix B: User Stories</a></li>
 <li><a href="#use-cases">Appendix C: Use Cases</a></li>
@@ -78,18 +93,244 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="setting-up"><a class="link" href="#setting-up">1. Setting up</a></h2>
+<h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Refer to the guide <a href="SettingUp.html">here</a>.</p>
+<p>$aveNUS is a desktop financial planning app that allows <strong>NUS students</strong> to <strong>plan their meals according
+to the amount of budget they set aside per meal</strong> in NUS. With $aveNUS, you can more effectively manage your expenses,
+save your favourite meal options within NUS, edit meal options, and even receive recommendations
+for meals that suit your budget.</p>
+</div>
+<div class="paragraph">
+<p>This Developer Guide allows other developers to understand the design principles as well as implementation decisions
+behind $aveNUS. With this guide, developers can understand and  contribute to $aveNUS easily.</p>
+</div>
+<div class="paragraph">
+<p>The table below provides a quick summary of the symbols and formatting used in the guide.</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 70%;">
+<colgroup>
+<col style="width: 15%;">
+<col style="width: 85%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><div><div class="paragraph">
+<p><code>code</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Command that can be typed into the command box</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><div><div class="paragraph">
+<p><span class="icon green"><i class="fa fa-check fa-2x"></i></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Success execution of command</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><div><div class="paragraph">
+<p><span class="icon icon-tip"><i class="fa fa-lightbulb-o fa-2x"></i></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tips that might be useful</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><div><div class="paragraph">
+<p><span class="icon icon-note"><i class="fa fa-info-circle fa-2x"></i></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Additional information that is good to know</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><div><div class="paragraph">
+<p><span class="icon icon-important"><i class="fa fa-exclamation-circle fa-2x"></i></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Important pointers to take note</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="setting-up"><a class="link" href="#setting-up">2. Setting up</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="prerequisites"><a class="link" href="#prerequisites">2.1. Prerequisites</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>JDK <code>11</code></strong> or above</p>
+</li>
+<li>
+<p><strong>IntelliJ</strong> IDE</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+IntelliJ by default has Gradle and JavaFx plugins installed.<br>
+Do not disable them. If you have disabled them, go to <code>File</code> &gt; <code>Settings</code> &gt; <code>Plugins</code> to re-enable them.
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="setting-up-avenus-in-your-computer"><a class="link" href="#setting-up-avenus-in-your-computer">2.2. Setting up $aveNUS in your computer</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Fork this repo, and clone the fork to your computer</p>
+</li>
+<li>
+<p>Open IntelliJ (if you are not in the welcome screen, click <code>File</code> &gt; <code>Close Project</code> to close the existing project dialog first)</p>
+</li>
+<li>
+<p>Set up the correct JDK version for Gradle</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Click <code>Configure</code> &gt; <code>Project Defaults</code> &gt; <code>Project Structure</code></p>
+</li>
+<li>
+<p>Click <code>New&#8230;&#8203;</code> and find the directory of the JDK</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Click <code>Import Project</code></p>
+</li>
+<li>
+<p>Locate the <code>build.gradle</code> file and select it. Click <code>OK</code></p>
+</li>
+<li>
+<p>Click <code>Open as Project</code></p>
+</li>
+<li>
+<p>Click <code>OK</code> to accept the default settings.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="verifying-the-setup"><a class="link" href="#verifying-the-setup">2.3. Verifying the setup</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Run the <code>seedu.savenus.Main</code> and try a few commands</p>
+</li>
+<li>
+<p><a href="Testing.html">Run the tests</a> to ensure they all pass.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="configurations-to-do-before-writing-code"><a class="link" href="#configurations-to-do-before-writing-code">2.4. Configurations to do before writing code</a></h3>
+<div class="sect3">
+<h4 id="configuring-the-coding-style"><a class="link" href="#configuring-the-coding-style">2.4.1. Configuring the coding style</a></h4>
+<div class="paragraph">
+<p>This project follows <a href="https://github.com/oss-generic/process/blob/master/docs/CodingStandards.adoc">oss-generic coding standards</a>. IntelliJ&#8217;s default style is mostly compliant with ours but it uses a different import order from ours. To rectify,</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Go to <code>File</code> &gt; <code>Settings&#8230;&#8203;</code> (Windows/Linux), or <code>IntelliJ IDEA</code> &gt; <code>Preferences&#8230;&#8203;</code> (macOS)</p>
+</li>
+<li>
+<p>Select <code>Editor</code> &gt; <code>Code Style</code> &gt; <code>Java</code></p>
+</li>
+<li>
+<p>Click on the <code>Imports</code> tab to set the order</p>
+<div class="ulist">
+<ul>
+<li>
+<p>For <code>Class count to use import with '*'</code> and <code>Names count to use static import with '*'</code>: Set to <code>999</code> to prevent IntelliJ from contracting the import statements</p>
+</li>
+<li>
+<p>For <code>Import Layout</code>: The order is <code>import static all other imports</code>, <code>import java.*</code>, <code>import javax.*</code>, <code>import org.*</code>, <code>import com.*</code>, <code>import all other imports</code>. Add a <code>&lt;blank line&gt;</code> between each <code>import</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Optionally, you can follow the <a href="UsingCheckstyle.html">UsingCheckstyle.adoc</a> document to configure Intellij to check style-compliance as you write code.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="updating-documentation-to-match-your-fork"><a class="link" href="#updating-documentation-to-match-your-fork">2.4.2. Updating documentation to match your fork</a></h4>
+<div class="paragraph">
+<p>After forking the repo, the documentation will still have the SE-EDU branding and refer to the <code>se-edu/addressbook-level3</code> repo.</p>
+</div>
+<div class="paragraph">
+<p>If you plan to develop this fork as a separate product (i.e. instead of contributing to <code>se-edu/addressbook-level3</code>), you should do the following:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Configure the <a href="Documentation.html#Docs-SiteWideDocSettings">site-wide documentation settings</a> in <a href="https://github.com/AY1920S1-CS2103T-F13-2/main/build.gradle"><code>build.gradle</code></a>, such as the <code>site-name</code>, to suit your own project.</p>
+</li>
+<li>
+<p>Replace the URL in the attribute <code>repoURL</code> in <a href="https://github.com/AY1920S1-CS2103T-F13-2/main/docs/DeveloperGuide.adoc"><code>DeveloperGuide.adoc</code></a> and <a href="https://github.com/AY1920S1-CS2103T-F13-2/main/docs/UserGuide.adoc"><code>UserGuide.adoc</code></a> with the URL of your fork.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="setting-up-ci"><a class="link" href="#setting-up-ci">2.4.3. Setting up CI</a></h4>
+<div class="paragraph">
+<p>Set up Travis to perform Continuous Integration (CI) for your fork. See <a href="UsingTravis.html">UsingTravis.adoc</a> to learn how to set it up.</p>
+</div>
+<div class="paragraph">
+<p>After setting up Travis, you can optionally set up coverage reporting for your team fork (see <a href="UsingCoveralls.html">UsingCoveralls.adoc</a>).</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Coverage reporting could be useful for a team repository that hosts the final version but it is not that useful for your Personal fork.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Optionally, you can set up AppVeyor as a second CI (see <a href="UsingAppVeyor.html">UsingAppVeyor.adoc</a>).</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Having both Travis and AppVeyor ensures your App works on both Unix-based platforms and Windows-based platforms (Travis is Unix-based and AppVeyor is Windows-based)
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="getting-started-with-coding"><a class="link" href="#getting-started-with-coding">2.4.4. Getting started with coding</a></h4>
+<div class="paragraph">
+<p>When you are ready to start coding, we recommend that you get some sense of the overall design by reading about <a href="#Design-Architecture">$aveNUS&#8217;s architecture</a>.</p>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="design"><a class="link" href="#design">2. Design</a></h2>
+<h2 id="design"><a class="link" href="#design">3. Design</a></h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="Design-Architecture"><a class="link" href="#Design-Architecture">2.1. Architecture</a></h3>
+<h3 id="Design-Architecture"><a class="link" href="#Design-Architecture">3.1. Architecture</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/ArchitectureDiagram.png" alt="ArchitectureDiagram">
@@ -192,7 +433,7 @@ The following class plays an important role at the architecture level:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Ui"><a class="link" href="#Design-Ui">2.2. UI component</a></h3>
+<h3 id="Design-Ui"><a class="link" href="#Design-Ui">3.2. UI component</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/UiClassDiagram.png" alt="UiClassDiagram">
@@ -229,7 +470,7 @@ The following class plays an important role at the architecture level:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Logic"><a class="link" href="#Design-Logic">2.3. Logic component</a></h3>
+<h3 id="Design-Logic"><a class="link" href="#Design-Logic">3.3. Logic component</a></h3>
 <div id="fig-LogicClassDiagram" class="imageblock">
 <div class="content">
 <img src="images/LogicClassDiagram.png" alt="LogicClassDiagram">
@@ -282,7 +523,7 @@ The lifeline for <code>DeleteCommandParser</code> should end at the destroy mark
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Model"><a class="link" href="#Design-Model">2.4. Model component</a></h3>
+<h3 id="Design-Model"><a class="link" href="#Design-Model">3.4. Model component</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/ModelClassDiagram.png" alt="ModelClassDiagram">
@@ -342,7 +583,7 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Menu</code>, 
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Storage"><a class="link" href="#Design-Storage">2.5. Storage component</a></h3>
+<h3 id="Design-Storage"><a class="link" href="#Design-Storage">3.5. Storage component</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/StorageClassDiagram.png" alt="StorageClassDiagram">
@@ -376,7 +617,7 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Menu</code>, 
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Commons"><a class="link" href="#Design-Commons">2.6. Common classes</a></h3>
+<h3 id="Design-Commons"><a class="link" href="#Design-Commons">3.6. Common classes</a></h3>
 <div class="paragraph">
 <p>Classes used by multiple components are in the <code>seedu.savenus.commons</code> package.</p>
 </div>
@@ -384,24 +625,24 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Menu</code>, 
 </div>
 </div>
 <div class="sect1">
-<h2 id="implementation"><a class="link" href="#implementation">3. Implementation</a></h2>
+<h2 id="implementation"><a class="link" href="#implementation">4. Implementation</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This section describes some noteworthy details on how certain features are implemented.</p>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.1. [Proposed] Data Encryption</a></h3>
+<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">4.1. [Proposed] Data Encryption</a></h3>
 
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.2. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">4.2. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.3, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 4.3, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -432,13 +673,13 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Menu</code>, 
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.3. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.3. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="sorting-feature"><a class="link" href="#sorting-feature">3.4. Sorting feature</a></h3>
+<h3 id="sorting-feature"><a class="link" href="#sorting-feature">4.4. Sorting feature</a></h3>
 <div class="paragraph">
 <p>The Sorting feature allows users to sort their food items based on certain <code>FIELD</code> and <code>DIRECTION</code>.</p>
 </div>
@@ -465,7 +706,7 @@ The default ordering is based on ascending price, name and then category. This i
 <code>customsort</code> sorts the food items based on the custom comparator, where <code>autosort</code> sorts the food items every time there is an edit to the food list.</p>
 </div>
 <div class="sect3">
-<h4 id="classes-for-sorting-feature-in-model"><a class="link" href="#classes-for-sorting-feature-in-model">3.4.1. Classes for sorting feature in Model</a></h4>
+<h4 id="classes-for-sorting-feature-in-model"><a class="link" href="#classes-for-sorting-feature-in-model">4.4.1. Classes for sorting feature in Model</a></h4>
 <div class="paragraph">
 <p>The Sorting feature was implemented with a new set of classes introduced to the Model.<br></p>
 </div>
@@ -487,7 +728,7 @@ Finally, the <code>FieldComparator</code> helps to compare between various <code
 </div>
 </div>
 <div class="sect3">
-<h4 id="creation-of-new-custom-comparator"><a class="link" href="#creation-of-new-custom-comparator">3.4.2. Creation of new Custom Comparator</a></h4>
+<h4 id="creation-of-new-custom-comparator"><a class="link" href="#creation-of-new-custom-comparator">4.4.2. Creation of new Custom Comparator</a></h4>
 <div class="paragraph">
 <p>The user may wish to create a new custom comparator. This can be done with the <code>makesort</code> command.</p>
 </div>
@@ -531,7 +772,7 @@ CustomSorter is overridden by a new CustomSorter with no fields.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="savings-feature"><a class="link" href="#savings-feature">3.5. Savings feature</a></h3>
+<h3 id="savings-feature"><a class="link" href="#savings-feature">4.5. Savings feature</a></h3>
 <div class="paragraph">
 <p>The Savings feature allows users to save a specified amount of money from their wallet into their Savings Account using the <code>save AMOUNT</code> command, where <code>AMOUNT</code> is a user defined amount of money to deposit into the user&#8217;s Savings Account.
 The Savings feature also allows the user to withdraw from his savings account either into his wallet or withdraw the money completely from the $aveNUS app.
@@ -539,7 +780,7 @@ Using the <code>withdraw AMOUNT</code>, users will be able to transfer their mon
 money completely from the Savings Account and the application.</p>
 </div>
 <div class="sect3">
-<h4 id="classes-for-savings-feature-in-model"><a class="link" href="#classes-for-savings-feature-in-model">3.5.1. Classes for savings feature in Model</a></h4>
+<h4 id="classes-for-savings-feature-in-model"><a class="link" href="#classes-for-savings-feature-in-model">4.5.1. Classes for savings feature in Model</a></h4>
 <div class="paragraph">
 <p>The Savings feature was implemented with a new set of classes introduced to the Model. The <code>SavingsAccount</code> is a singleton class
 which contains the methods and  classes related to this feature.
@@ -577,7 +818,7 @@ and a withdrawal at a single time.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="strong-adding-to-the-savings-account-strong"><a class="link" href="#strong-adding-to-the-savings-account-strong">3.5.2. <strong>Adding to the Savings Account</strong></a></h4>
+<h4 id="strong-adding-to-the-savings-account-strong"><a class="link" href="#strong-adding-to-the-savings-account-strong">4.5.2. <strong>Adding to the Savings Account</strong></a></h4>
 <div class="paragraph">
 <p>The user may want to add a new saving to his savings account. This can be done with the <code>save</code> command.</p>
 </div>
@@ -614,14 +855,14 @@ which passes this string (named commandText) to the Logic component by calling L
 </div>
 </div>
 <div class="sect2">
-<h3 id="budget-tracking-feature"><a class="link" href="#budget-tracking-feature">3.6. Budget Tracking feature</a></h3>
+<h3 id="budget-tracking-feature"><a class="link" href="#budget-tracking-feature">4.6. Budget Tracking feature</a></h3>
 <div class="paragraph">
 <p>The Budget Tracking feature allows users to manage their budget for food expenditure.
 It keeps the user updated with regards to the amount as well as the duration left for their current budget.
 Budget information is also used in the application&#8217;s recommendation system to suggest appropriate food items within a user&#8217;s budget.</p>
 </div>
 <div class="sect3">
-<h4 id="classes-for-budget-tracking-feature-in-model"><a class="link" href="#classes-for-budget-tracking-feature-in-model">3.6.1. Classes for Budget Tracking feature in Model</a></h4>
+<h4 id="classes-for-budget-tracking-feature-in-model"><a class="link" href="#classes-for-budget-tracking-feature-in-model">4.6.1. Classes for Budget Tracking feature in Model</a></h4>
 <div class="paragraph">
 <p>The Budget Tracking feature was implemented with the following classes.</p>
 </div>
@@ -675,7 +916,7 @@ Due to development constraints, we have decided to only update the budget durati
 </div>
 </div>
 <div class="sect3">
-<h4 id="setting-a-budget"><a class="link" href="#setting-a-budget">3.6.2. Setting a Budget</a></h4>
+<h4 id="setting-a-budget"><a class="link" href="#setting-a-budget">4.6.2. Setting a Budget</a></h4>
 <div class="paragraph">
 <p>A budget can be set using the <code>budget</code> command which takes a budget amount, and an optional budget duration.</p>
 </div>
@@ -707,14 +948,14 @@ which passes this string (named commandText) to the Logic component by calling L
 </div>
 </div>
 <div class="sect2">
-<h3 id="purchase-tracking-feature"><a class="link" href="#purchase-tracking-feature">3.7. Purchase Tracking feature</a></h3>
+<h3 id="purchase-tracking-feature"><a class="link" href="#purchase-tracking-feature">4.7. Purchase Tracking feature</a></h3>
 <div class="paragraph">
 <p>The Purchase Tracking feature allows users to monitor their food expenditure by keeping track of their purchase history.
 Whenever a user&#8217;s executes the <code>buy</code> command, the corresponding food will be added as a purchase to the purchase history.
 A user&#8217;s purchase history is displayed in the UI, similar to the food menu, and is updated every time a change is made to it.</p>
 </div>
 <div class="sect3">
-<h4 id="classes-for-purchase-tracking-feature-in-model"><a class="link" href="#classes-for-purchase-tracking-feature-in-model">3.7.1. Classes for Purchase Tracking feature in Model</a></h4>
+<h4 id="classes-for-purchase-tracking-feature-in-model"><a class="link" href="#classes-for-purchase-tracking-feature-in-model">4.7.1. Classes for Purchase Tracking feature in Model</a></h4>
 <div class="imageblock">
 <div class="content">
 <img src="images/PurchaseHistoryClassDiagram.png" alt="PurchaseHistoryClassDiagram" width="400">
@@ -777,7 +1018,7 @@ the purchase history data of the user while maintaining data integrity.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="buying-a-food-item"><a class="link" href="#buying-a-food-item">3.7.2. Buying a Food Item</a></h4>
+<h4 id="buying-a-food-item"><a class="link" href="#buying-a-food-item">4.7.2. Buying a Food Item</a></h4>
 <div class="paragraph">
 <p>The user may want to buy a food item and record the purchase. This can be done with the <code>buy</code> command.</p>
 </div>
@@ -809,7 +1050,7 @@ which passes this string (named commandText) to the Logic component by calling L
 </div>
 </div>
 <div class="sect2">
-<h3 id="recommendation-feature"><a class="link" href="#recommendation-feature">3.8. Recommendation feature</a></h3>
+<h3 id="recommendation-feature"><a class="link" href="#recommendation-feature">4.8. Recommendation feature</a></h3>
 <div class="paragraph">
 <p>The recommendation feature allows users to generate a list of personalized recommendations using the <code>recommend</code> command.
 The recommendations are tailored to each user based on their current likes, dislikes and purchase history.</p>
@@ -821,7 +1062,7 @@ to generate a more accurate list of recommendations. Users will then able to fin
 more accurately.</p>
 </div>
 <div class="sect3">
-<h4 id="classes-for-recommendation-feature-in-model"><a class="link" href="#classes-for-recommendation-feature-in-model">3.8.1. Classes for recommendation feature in Model</a></h4>
+<h4 id="classes-for-recommendation-feature-in-model"><a class="link" href="#classes-for-recommendation-feature-in-model">4.8.1. Classes for recommendation feature in Model</a></h4>
 <div class="paragraph">
 <p>With the recommendation feature, a new set of classes were added.</p>
 </div>
@@ -834,6 +1075,20 @@ and include the ability to generate recommendation values.</p>
 <p>Additionally, the <code>RecommendationSystem</code> class also contains a class <code>UserRecommendations</code>, which include the likes and
 dislikes of the user. The functionality of <code>UserRecommendations</code> is specified by the <code>Recommendations</code> interface,
 encompassing the ability to add and remove likes and dislikes, among other features.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Design decisions for <code>RecommendationSystem</code></div>
+<div class="paragraph">
+<p><code>RecommendationSystem</code> was chosen to be a singleton because of the fact that it exists as a global class, encapsulating
+many seemingly unrelated classes such as <code>Budget</code>, <code>PurchaseHistory</code> and <code>UserRecommendations</code> in order to produce the
+required recommendation value.</p>
+</div>
+<div class="paragraph">
+<p>Furthermore, there should only be one unique <code>RecommendationSystem</code> and <code>UserRecommendations</code> in the application.
+To ensure the above requirements are met, we have decided to implement <code>RecommendationSystem</code> as a singleton class.</p>
+</div>
+</div>
 </div>
 <div class="paragraph">
 <p>The <code>UserRecommendations</code> object contain 6 sets, namely:</p>
@@ -871,15 +1126,15 @@ comparison can be done more easily.</p>
 <div class="paragraph">
 <p>The class diagram below illustrates the relationship between the classes.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="images/RecommendationClassDiagram.png" alt="RecommendationClassDiagram" width="500">
+<img src="images/RecommendationClassDiagram.png" alt="RecommendationClassDiagram" width="400">
 </div>
 <div class="title">Figure 21. Recommendation class diagram in Model component</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="adding-likes-and-dislikes"><a class="link" href="#adding-likes-and-dislikes">3.8.2. Adding likes and dislikes</a></h4>
+<h4 id="adding-likes-and-dislikes"><a class="link" href="#adding-likes-and-dislikes">4.8.2. Adding likes and dislikes</a></h4>
 <div class="paragraph">
 <p>The feature of adding the user&#8217;s liked and disliked categories, tags and locations was introduced to support the
 recommendation system.</p>
@@ -891,7 +1146,7 @@ Furthermore, the user&#8217;s likes and dislikes are integrated with <code>Stora
 <div class="paragraph">
 <p>The sequence diagram below shows how a sample <code>like</code> command is executed:</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/LikeSequenceDiagram.png" alt="LikeSequenceDiagram">
 </div>
@@ -900,7 +1155,7 @@ Furthermore, the user&#8217;s likes and dislikes are integrated with <code>Stora
 <div class="paragraph">
 <p>The following activity diagram below summarizes how the <code>like</code> command works:</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/LikeActivityDiagram.png" alt="LikeActivityDiagram" width="450">
 </div>
@@ -911,7 +1166,7 @@ Furthermore, the user&#8217;s likes and dislikes are integrated with <code>Stora
 </div>
 </div>
 <div class="sect3">
-<h4 id="displaying-recommendations"><a class="link" href="#displaying-recommendations">3.8.3. Displaying recommendations</a></h4>
+<h4 id="displaying-recommendations"><a class="link" href="#displaying-recommendations">4.8.3. Displaying recommendations</a></h4>
 <div class="paragraph">
 <p>After customizing the user&#8217;s likes and dislikes, users can obtain a personalized list of recommendations
 using the <code>recommend</code> command.</p>
@@ -1044,11 +1299,11 @@ using the <code>recommend</code> command.</p>
 <p>The activity diagram below shows how a sample Food is passed into <code>RecommendationSystem</code> to output a
 recommendation value:</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="images/RecValueActivityDiagram.png" alt="RecValueActivityDiagram" width="600">
+<img src="images/RecValueActivityDiagram.png" alt="RecValueActivityDiagram" width="650">
 </div>
-<div class="title">Figure 24. Activity diagram for <code>calculateRecommendation</code></div>
+<div class="title">Figure 24. Activity diagram for <code>RecommendationSystem#calculateRecommendation</code></div>
 </div>
 <div class="paragraph">
 <p>The calculated recommendation values are used to sort the food items when the <code>recommend</code> command
@@ -1057,26 +1312,23 @@ is executed. Food with similar recommendation values are sorted based on their p
 <div class="sect4">
 <h5 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h5>
 <div class="paragraph">
-<p>Detailed below are the design considerations taken into account when engineering the <code>calculateRecommendation()</code> function.</p>
+<p>Detailed below are the design considerations taken into account when engineering the
+ <code>RecommendationSystem#calculateRecommendation()</code> function.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 3. Design considerations of the calculateRecommendation() function</caption>
+<caption class="title">Table 3. Design considerations of the <code>RecommendationSystem#calculateRecommendation()</code> function</caption>
 <colgroup>
-<col style="width: 20%;">
-<col style="width: 40%;">
-<col style="width: 40%;">
+<col style="width: 50%;">
+<col style="width: 50%;">
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Aspect</th>
-<th class="tableblock halign-left valign-top">Alternative 1</th>
+<th class="tableblock halign-left valign-top">Alternative 1 (Chosen Implementation)</th>
 <th class="tableblock halign-left valign-top">Alternative 2</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Design of<br>
-calculateRecommendation</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Declare a static method <code>calculateRecommendation</code> to calculate the recommendation value of each <code>Food</code>
 before sorting them.</p>
@@ -1108,15 +1360,6 @@ recommendation value of each <code>Food</code> item when the comparator is calle
 </div>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p>We chose this design because of its simplicity of implementation. Adding a hidden <code>recommendationValue</code>
-field for each <code>Food</code> might not be the best solution in the design of our application. A <code>recommendationValue</code> might
-not make sense in the context of a <code>Food</code> object and thus it may not be justifiable to force a connection between the
-two for the sake of efficiency.</p>
-</div>
-<div class="paragraph">
-<p>Furthermore, we do not have to manually update the recommendation of each <code>Food</code> item before every command with this design.</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Have a field (e.g. <code>recommendationValue</code>) for each <code>Food</code> item</p>
@@ -1153,13 +1396,23 @@ the recommendation value</p>
 </tr>
 </tbody>
 </table>
+<div class="paragraph">
+<p>We chose alternative 1 because of its simplicity of implementation. Adding a hidden <code>recommendationValue</code>
+field for each <code>Food</code> might not be the best solution in the design of our application. A <code>recommendationValue</code> might
+not make sense in the context of a <code>Food</code> object and thus it may not be justifiable to force a connection between the
+two for the sake of efficiency.</p>
+</div>
+<div class="paragraph">
+<p>Furthermore, we do not have to manually update the recommendation of each <code>Food</code> item before every command with this
+design.</p>
+</div>
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="documentation"><a class="link" href="#documentation">4. Documentation</a></h2>
+<h2 id="documentation"><a class="link" href="#documentation">5. Documentation</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Refer to the guide <a href="Documentation.html">here</a>.</p>
@@ -1167,7 +1420,7 @@ the recommendation value</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="testing"><a class="link" href="#testing">5. Testing</a></h2>
+<h2 id="testing"><a class="link" href="#testing">6. Testing</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Refer to the guide <a href="Testing.html">here</a>.</p>
@@ -1175,7 +1428,7 @@ the recommendation value</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="dev-ops"><a class="link" href="#dev-ops">6. Dev Ops</a></h2>
+<h2 id="dev-ops"><a class="link" href="#dev-ops">7. Dev Ops</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Refer to the guide <a href="DevOps.html">here</a>.</p>
@@ -1871,4 +2124,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-30 03:58:20 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-30 05:02:46 UTC</div></div></div></body></html>
