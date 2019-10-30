@@ -55,7 +55,8 @@
 <li><a href="#budget-tracking-feature">4.6. Budget Tracking feature</a>
 <ul class="sectlevel3">
 <li><a href="#classes-for-budget-tracking-feature-in-model">4.6.1. Classes for Budget Tracking feature in Model</a></li>
-<li><a href="#setting-a-budget">4.6.2. Setting a Budget</a></li>
+<li><a href="#design-considerations-for-budget-related-models">4.6.2. Design considerations for Budget-related models</a></li>
+<li><a href="#setting-a-budget">4.6.3. Setting a Budget</a></li>
 </ul>
 </li>
 <li><a href="#purchase-tracking-feature">4.7. Purchase Tracking feature</a>
@@ -866,6 +867,12 @@ Budget information is also used in the application&#8217;s recommendation system
 <div class="paragraph">
 <p>The Budget Tracking feature was implemented with the following classes.</p>
 </div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/WalletClassDiagram.png" alt="WalletClassDiagram" width="400">
+</div>
+<div class="title">Figure 15. Wallet-related class diagram in Model component.</div>
+</div>
 <div class="sect4">
 <h5 id="wallet"><a class="link" href="#wallet">Wallet</a></h5>
 <div class="sidebarblock">
@@ -885,10 +892,19 @@ Budget information is also used in the application&#8217;s recommendation system
 It contains an <code>ObservableValue</code> which allows the UI to track of the amount of money left in the current budget after changes are made to it.
 The maximum budget amount has been set to 1 million dollars.</p>
 </div>
-<div class="paragraph">
-<p>Also, in order to avoid possible loss of precision errors, calculations regarding the budget amount is done using Java&#8217;s <code>BigDecimal</code> class instead of <code>Double</code>.</p>
 </div>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Also, in order to avoid possible loss of precision errors, a <code>Money</code> class is used. This design decision is discussed below.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect4">
@@ -902,30 +918,122 @@ The maximum budget duration has been set to 1 year (365 days).</p>
 </div>
 <div class="paragraph">
 <p>When a <code>DaysToExpire</code> object is instantiated, it stores the system time as a field.
-The budget duration is correspondingly updated based on the difference between this saved time and the actual system time.
-Due to development constraints, we have decided to only update the budget duration every time the application is started up instead of constantly monitoring the actual time to update this property.</p>
+The budget duration is correspondingly updated based on the difference between this saved time and the actual system time.</p>
 </div>
 </div>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="images/WalletClassDiagram.png" alt="WalletClassDiagram" width="400">
-</div>
-<div class="title">Figure 15. Wallet-related class diagram in Model component.</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Due to development constraints, we have decided to only update the budget duration every time the application is started up instead of constantly monitoring the actual time to update this property.
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="setting-a-budget"><a class="link" href="#setting-a-budget">4.6.2. Setting a Budget</a></h4>
+<h4 id="design-considerations-for-budget-related-models"><a class="link" href="#design-considerations-for-budget-related-models">4.6.2. Design considerations for Budget-related models</a></h4>
+<div class="paragraph">
+<p>Below are some design considerations when implementing Budget-related models.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Design considerations of the for <code>RemainingBudget</code> model</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Alternative 1 (Chosen Implementation)</th>
+<th class="tableblock halign-left valign-top">Alternative 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Creating a <code>Money</code> class which makes use of Java&#8217;s <code>BigDecimal</code> class to store budget amount</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Avoid precision loss when adding or subtracting from the budget amount</p>
+</li>
+<li>
+<p><code>Money</code> class serves as a reusable class to store money amounts and can be used in other parts of the application such as in the Savings feature</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Increased coupling due to the additional classes used.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Making use of Java&#8217;s primitive <code>double</code> to store budget amount</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Easier implementation</p>
+</li>
+<li>
+<p>Decreases the number of dependencies of <code>RemainingBudget</code></p>
+</li>
+<li>
+<p>Can make use of inbuild <code>DoubleProperty</code> to display to GUI</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Loss of precision when adding or subtracting from the budget amount</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>We chose alternative 1 mainly due to the fact that the loss of precision is extremely apparent to the user.
+From our testing, after the user buys 3 or 4 items, the precision error adds up resulting in a difference of 1 cent between the expected and actual budget amount.
+This may confuse the user and is a bug that we wish to avoid.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="setting-a-budget"><a class="link" href="#setting-a-budget">4.6.3. Setting a Budget</a></h4>
 <div class="paragraph">
 <p>A budget can be set using the <code>budget</code> command which takes a budget amount, and an optional budget duration.</p>
 </div>
 <div class="paragraph">
 <p>For example, <code>budget 100 10</code> will set the user&#8217;s budget, with $100.00 for 10 days.</p>
-</div>
-<div class="paragraph">
-<p>The command is read as a text string from the command box in the UI and then is executed by calling MainWindow#executeCommand(),
-which passes this string (named commandText) to the Logic component by calling Logic#execute(Model model).</p>
 </div>
 <div class="paragraph">
 <p>The sequence diagram for interactions between the Logic, Model and Storage components when a user executes the <code>buy 1</code> command is shown below.</p>
@@ -939,7 +1047,7 @@ which passes this string (named commandText) to the Logic component by calling L
 <div class="paragraph">
 <p>The following activity diagram below summarizes how <code>budget</code> commands works</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/BudgetActivityDiagram.png" alt="BudgetActivityDiagram">
 </div>
@@ -1026,10 +1134,6 @@ the purchase history data of the user while maintaining data integrity.</p>
 <p>After the users enters a <code>buy</code> command, for example, <code>buy 1</code> which buys the first item in the displayed list.</p>
 </div>
 <div class="paragraph">
-<p>The command is read as a text string from the command box in the UI and then is executed by calling MainWindow#executeCommand(),
-which passes this string (named commandText) to the Logic component by calling Logic#execute(Model model).</p>
-</div>
-<div class="paragraph">
 <p>The sequence diagram for interactions between the Logic, Model and Storage components when a user executes the <code>buy 1</code> command is shown below.</p>
 </div>
 <div class="imageblock">
@@ -1041,9 +1145,9 @@ which passes this string (named commandText) to the Logic component by calling L
 <div class="paragraph">
 <p>The following activity diagram below summarizes how <code>buy</code> commands works</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="images/BuyActivityDiagram.png" alt="BuyActivityDiagram">
+<img src="images/BuyActivityDiagram.png" alt="BuyActivityDiagram" width="300">
 </div>
 <div class="title">Figure 20. Activity diagram for a <code>buy</code> command</div>
 </div>
@@ -1175,7 +1279,7 @@ using the <code>recommend</code> command.</p>
 <p>Each food is passed to the recommendation system and it calculates the recommendation value based on the tables below:</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 1. Bonuses applied by the recommendation system</caption>
+<caption class="title">Table 2. Bonuses applied by the recommendation system</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -1246,7 +1350,7 @@ using the <code>recommend</code> command.</p>
 <p><br></p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 2. Penalties applied by the recommendation system</caption>
+<caption class="title">Table 3. Penalties applied by the recommendation system</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -1316,7 +1420,7 @@ is executed. Food with similar recommendation values are sorted based on their p
  <code>RecommendationSystem#calculateRecommendation()</code> function.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 3. Design considerations of the <code>RecommendationSystem#calculateRecommendation()</code> function</caption>
+<caption class="title">Table 4. Design considerations of the <code>RecommendationSystem#calculateRecommendation()</code> function</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -2124,4 +2228,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-30 14:58:13 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-30 16:35:20 UTC</div></div></div></body></html>
