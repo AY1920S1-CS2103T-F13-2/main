@@ -1,0 +1,407 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Sean Low - Project Portfolio for $aveNUS</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">$aveNUS</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S1-CS2103T-F13-2/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1><strong>Sean Low - Project Portfolio for $aveNUS</strong></h1></div><div id="content"><div class="sect1">
+<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>$aveNUS is a command line interface (CLI) financial planning application that my team and I designed for
+CS2103T (Software Engineering) module in School of Computing, National University of Singapore (NUS).</p>
+</div>
+<div class="paragraph">
+<p>In this project, we morphed the sample address book application into $aveNUS, an application that allows NUS students
+to track their financial spending with regards to food purchases. Additionally, the application provides them with
+the best food recommendations within their current budget as well as a savings feature to track their savings.</p>
+</div>
+<div class="paragraph">
+<p>The table below provides a quick summary of the symbols and formatting used in this portfolio.</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 70%;">
+<colgroup>
+<col style="width: 15%;">
+<col style="width: 85%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><div><div class="paragraph">
+<p><code>code</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Command that can be typed into the command box</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><div><div class="paragraph">
+<p><span class="icon green"><i class="fa fa-check fa-2x"></i></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Success execution of command</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><div><div class="paragraph">
+<p><span class="icon icon-tip"><i class="fa fa-lightbulb-o fa-2x"></i></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tips that might be useful</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><div><div class="paragraph">
+<p><span class="icon icon-note"><i class="fa fa-info-circle fa-2x"></i></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Additional information that is good to know</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><div><div class="paragraph">
+<p><span class="icon icon-important"><i class="fa fa-exclamation-circle fa-2x"></i></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Important pointers to take note</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section provides a summary of the contributions that I have made to the team project.</p>
+</div>
+<div class="sect2">
+<h3 id="major-enhancement-sorting-feature"><a class="link" href="#major-enhancement-sorting-feature">Major enhancement: Sorting Feature</a></h3>
+<div class="paragraph">
+<p>I have added a sorting feature to $aveNUS which allows users to sort the food items based on some specific criterion.</p>
+</div>
+<div class="sect3">
+<h4 id="what-it-does"><a class="link" href="#what-it-does">What it does</a></h4>
+<div class="paragraph">
+<p>The sorting feature allows users to sort the list of food based on some criterion. This is done by taking into account
+specific fields given from the command line interface, or the preset comparator which the user has created.</p>
+</div>
+<div class="paragraph">
+<p>For example, if the user wishes to see the list of food items in order of ascending price, the list will be then sorted.
+As a result, the cheapest food item will be on the top of the food list, followed by the second cheapest food item. And
+finally, the most expensive food item will be on the bottom of the food list.</p>
+</div>
+<div class="paragraph">
+<p>Not only that, the user can turn autosorting on or off. As a result, when the user adds a new food item, the food list
+will be autosorted immediately.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="justification"><a class="link" href="#justification">Justification</a></h4>
+<div class="paragraph">
+<p>NUS students would want to view food based on certain priority. They do not want to scroll through the entire list
+just to find the food that they prioritize.</p>
+</div>
+<div class="paragraph">
+<p>For example, if they want to view the cheapest food in
+the food list, they would want it readily available to them.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="highlights"><a class="link" href="#highlights">Highlights</a></h4>
+<div class="paragraph">
+<p>While implementing this feature, I had to implement new commands such as <code>default</code>, <code>sort</code>, <code>makesort</code> <code>customsort</code> and
+<code>autosort</code>. <code>default</code> and <code>sort</code> forms the backbone of the sorting algorithm, where it sorts food items based on
+default or specified criterion respectively.</p>
+</div>
+<div class="paragraph">
+<p><code>makesort</code>, <code>customsort</code> and <code>autosort</code> allow users to specifies their criterion to sort the food items. The application
+can then store the specified criterion and taken into account these criterion. As a result, the user will be able
+to see which food items most accurately match the criterion.</p>
+</div>
+<div class="paragraph">
+<p>Storage functionality for the user&#8217;s criterion were also implemented. This means that the criterion are conveniently saved
+into their hard disk and persist even after the application is closed and restarted.</p>
+</div>
+<div class="paragraph">
+<p>In this way, the user benefits from the sorting algorithms which allows users to see the food that best matches the
+criterion at the top of the food list.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="other-contributions"><a class="link" href="#other-contributions">Other contributions</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Project Management:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Added user stories as issues on GitHub</p>
+</li>
+<li>
+<p>Reviewed pull requests by team members [Examples: <a href="https://github.com/AY1920S1-CS2103T-F13-2/main/pull/80">#1</a>,
+<a href="https://github.com/AY1920S1-CS2103T-F13-2/main/pull/99">#2</a>]</p>
+</li>
+<li>
+<p>Organized mini project milestones [Examples: <a href="https://github.com/AY1920S1-CS2103T-F13-2/main/issues/158">#158</a>
+<a href="https://github.com/AY1920S1-CS2103T-F13-2/main/issues/194">#194</a>]</p>
+</li>
+<li>
+<p>Fixed bugs after they were found [PR <a href="https://github.com/AY1920S1-CS2103T-F13-2/main/pull/172">#172</a>]</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Documentation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Updated the User Guide</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Updated README and badges [PR <a href="https://github.com/AY1920S1-CS2103T-F13-2/main/pull/116">#116</a>]</p>
+</li>
+<li>
+<p>Updated Sorting Section [PR <a href="https://github.com/AY1920S1-CS2103T-F13-2/main/pull/184">#184</a>]</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Updated the Developer Guide</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Edited main UML Diagrams [PR <a href="https://github.com/AY1920S1-CS2103T-F13-2/main/pull/164">#164</a>
+<a href="https://github.com/AY1920S1-CS2103T-F13-2/main/pull/201">#201</a>
+]</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Community:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Reviewed the Developer Guide of other teams [Examples:
+<a href="https://github.com/nus-cs2103-AY1920S1/addressbook-level3/pull/64#pullrequestreview-306987354">#1</a>]</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section shows the contributions that I have made to the recommendation feature of the User Guide.</p>
+</div>
+<div class="sect2">
+<h3 id="sorting"><a class="link" href="#sorting">Sorting</a></h3>
+<div class="paragraph">
+<p>Allows the user to sort the food items based on his liking.
+This is done so that the user is able to get the food which is most relevant to his or her preferences.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+You must always provide pairs of FIELD and DIRECTION to execute the Sorting commands.
+The fields are as followed: <code>NAME</code>, <code>DESCRIPTION</code>, <code>PRICE</code>,
+<code>CATEGORY</code>, <code>LOCATION</code>, <code>OPENING_HOURS</code>, <code>RESTRICTIONS</code>.
+THe directions are as followed: <code>ASCENDING</code> or <code>DESCENDING</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Ordering of pairs matters! For example, specifying: <code>PRICE ASC NAME DESC</code> sorts the food items first based on
+price in ascending order. Following which, sorts the food items based on names in descending order.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="sorts-food-items-based-on-fields-code-sort-code"><a class="link" href="#sorts-food-items-based-on-fields-code-sort-code">Sorts food items based on fields: <code>sort</code></a></h4>
+<div class="paragraph">
+<p>Sorts all the food items by some specific FIELD.</p>
+</div>
+<div class="paragraph">
+<p>Note: You can have more than one pair of FIELD and DIRECTION.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Format</strong>: <code>sort FIELD DIRECTION &#8230;&#8203;</code>
+<strong>Example</strong>: <code>sort PRICE ASCENDING</code></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="make-your-own-custom-comparator-code-makesort-code"><a class="link" href="#make-your-own-custom-comparator-code-makesort-code">Make your own custom comparator: <code>makesort</code></a></h4>
+<div class="paragraph">
+<p>Create your own custom comparator, which will be stored within the storage of the application, using specific
+FIELD and DIRECTION.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Format</strong>: <code>makesort FIELD DIRECTION &#8230;&#8203;</code>
+<strong>Example</strong>: <code>makesort PRICE ASCENDING</code></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="sort-based-on-your-custom-comparator-code-customsort-code"><a class="link" href="#sort-based-on-your-custom-comparator-code-customsort-code">Sort based on your custom comparator: <code>customsort</code></a></h4>
+<div class="paragraph">
+<p>Sort Using your own custom comparator, which you have creating from MakeSort.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Format</strong>: <code>customsort</code></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="auto-sorts-list-based-on-custom-comparator-code-autosort-code"><a class="link" href="#auto-sorts-list-based-on-custom-comparator-code-autosort-code">Auto sorts list based on custom comparator: <code>autosort</code></a></h4>
+<div class="paragraph">
+<p>Turns on and off auto sorting, based on your own custom comparator, every time you make changes to the food list.
+There are only two states, ON or OFF.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Format</strong>: <code>autosort STATE</code>
+<strong>Example</strong>: <code>autosort ON</code></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="sorts-food-items-based-on-natural-order-code-default-code"><a class="link" href="#sorts-food-items-based-on-natural-order-code-default-code">Sorts food items based on natural order: <code>default</code></a></h4>
+<div class="paragraph">
+<p>Sorts the food items based on their default ordering, where it is based on ascending price, name and then category.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Format</strong>: <code>default</code></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section shows the additions that I have made to the recommendation feature of the Developer Guide.</p>
+</div>
+<div class="sect2">
+<h3 id="sorting-feature"><a class="link" href="#sorting-feature">Sorting feature</a></h3>
+<div class="paragraph">
+<p>The Sorting feature allows users to sort their food items based on certain <code>FIELD</code> and <code>DIRECTION</code>.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The <code>FIELD</code> are as follows: <code>NAME</code>, <code>DESCRIPTION</code>, <code>PRICE</code>, <code>CATEGORY</code>, <code>LOCATION</code>, <code>OPENING_HOURS</code>, <code>RESTRICTIONS</code>.</p>
+</li>
+<li>
+<p>The <code>DIRECTION</code> are as follows: <code>ASCENDING</code> or <code>DESCENDING</code>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>First and foremost, they will be able to sort the food items based on their default ordering.
+The default ordering is based on ascending price, name and then category. This is done using the <code>default</code> command.+</p>
+</div>
+<div class="paragraph">
+<p>Not only that, they will be able to implement their own custom comparator using <code>makesort</code>. From this, they should be able to use <code>customsort</code> and autosort`. <br>
+<code>customsort</code> sorts the food items based on the custom comparator, where <code>autosort</code> sorts the food items every time there is an edit to the food list.</p>
+</div>
+<div class="sect3">
+<h4 id="classes-for-sorting-feature-in-model"><a class="link" href="#classes-for-sorting-feature-in-model">Classes for sorting feature in Model</a></h4>
+<div class="paragraph">
+<p>The Sorting feature was implemented with a new set of classes introduced to the Model.<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/SortingClassDiagram.png" alt="SortingClassDiagram" width="500">
+</div>
+<div class="title">Figure 1. Sorting class diagram in Sort component.</div>
+</div>
+<div class="paragraph">
+<p>From the model, the <code>CustomSorter</code> stores the comparator for <code>autosort</code> and <code>makesort</code>.<br></p>
+</div>
+<div class="paragraph">
+<p>From which, you will need to call <code>makesort FIELD DIRECTION</code> to create the custom comparator. The <code>CustomSorter</code> contains a <code>FoodComparator</code>.<br></p>
+</div>
+<div class="paragraph">
+<p>The <code>FoodComparator</code> stores fields which will be needed for various <code>FOOD</code> to be compared. The <code>DefaultComparator</code> helps to sort food items based on their natural ordering. This is called via the <code>default</code> command.
+Finally, the <code>FieldComparator</code> helps to compare between various <code>FIELD</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="creation-of-new-custom-comparator"><a class="link" href="#creation-of-new-custom-comparator">Creation of new Custom Comparator</a></h4>
+<div class="paragraph">
+<p>The user may wish to create a new custom comparator. This can be done with the <code>makesort</code> command.</p>
+</div>
+<div class="paragraph">
+<p>The sequence diagram for interactions between the Logic, Model and Storage components when a user executes the <code>makesort</code> command is shown below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/MakeSortSequenceDiagram.png" alt="MakeSortSequenceDiagram">
+</div>
+<div class="title">Figure 2. Sequence diagram for sample makesort command</div>
+</div>
+<div class="paragraph">
+<p>The user may want to create a new custom comparator. This can be done with the <code>makesort</code> command.</p>
+</div>
+<div class="paragraph">
+<p>The fields are stored in the SavingsAccount in the CustomSorter object, which stores the necessary
+as a list.</p>
+</div>
+<div class="paragraph">
+<p>The current implementation for creating a new CustomSorter is done by overwriting the existing CustomSorter, with a new
+CustomSorter with the desired fields.</p>
+</div>
+<div class="paragraph">
+<p>The command is read as a text string from the command box in the UI and then is executed by calling MainWindow#executeCommand(),
+which passes this string (named commandText) to the Logic component by calling Logic#execute(Model model).</p>
+</div>
+<div class="paragraph">
+<p>The following activity diagram below summarizes how the save command works</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/MakeSortActivityDiagram.png" alt="MakeSortActivityDiagram" width="500">
+</div>
+<div class="title">Figure 3. Activity diagram for a sample save command</div>
+</div>
+<div class="paragraph">
+<p>If fields are given, the original CustomSorter is overridden by a new CustomSorter with new fields. Else, the original
+CustomSorter is overridden by a new CustomSorter with no fields.</p>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-30 12:51:18 UTC</div></div></div></body></html>
