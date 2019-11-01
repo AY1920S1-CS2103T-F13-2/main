@@ -196,8 +196,31 @@ purchased by the user, assuming that the user wants a variety of foods to enjoy.
 <div class="sect3">
 <h4 id="getting-a-list-of-recommended-food-items-code-recommend-code"><a class="link" href="#getting-a-list-of-recommended-food-items-code-recommend-code">Getting a list of recommended food items: <code>recommend</code></a></h4>
 <div class="paragraph">
-<p>Users can get a list of recommendations from the application, based on several factors, summarized
-in the tables below.</p>
+<p>Users can get a list of recommendations from the application, based on these factors:</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The user&#8217;s likes and dislikes (see <a href="#adding-likes-and-dislikes-to-the-recommendation-system-code-like-code-or-code-dislike-code">Adding likes and dislikes to the recommendation system: <code>like</code> or <code>dislike</code></a>)</p>
+</li>
+<li>
+<p>The user&#8217;s current budget and date to expiry of budget (see <a href="#Sets budget for a number of days: <code>budget</code>">[Sets budget for a number of days: <code>budget</code>]</a>)</p>
+</li>
+<li>
+<p>The user&#8217;s purchase history (see <a href="#Buy a food item: <code>buy</code>">[Buy a food item: <code>buy</code>]</a>)</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The recommended amount to spend per meal is calculated by <code>budget / (daysToExpiry * 2)</code> under the assumption that the
+user takes 2 meals per day.</p>
+</div>
+<div class="paragraph">
+<p>The factors affecting the calculation of the recommendation value is summarized in the tables below.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Table 1. Bonuses applied by the recommendation system</caption>
@@ -347,7 +370,15 @@ To clear the recommendations, use the <code>list</code> or <code>add</code> comm
 <p><span class="icon green"><i class="fa fa-check fa-2x"></i></span></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>The list of recommendations will be shown.</p>
+<p>The list of recommendations will be shown, sorted by their recommendation value.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/recommend.png" alt="recommend">
+</div>
+</div>
+<div class="paragraph">
+<p></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -390,6 +421,14 @@ the <code>budget</code> command! See <a href="#Sets budget for a number of days:
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>The list of liked or disliked categories, tags and locations will be shown.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/like-dislike-list.png" alt="like dislike list" width="700">
+</div>
+</div>
+<div class="paragraph">
+<p></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -433,7 +472,7 @@ for their convenience.
 <div class="content">
 <div class="paragraph">
 <p><strong>Format</strong>: <code>like c/CATEGORY t/TAG l/LOCATION</code><br>
-<strong>Example</strong>: <code>like c/Chinese c/Western t/Healthy l/Univeristy Town</code></p>
+<strong>Example</strong>: <code>like c/chinese t/chicken t/rice l/frontier canteen</code></p>
 </div>
 </div>
 </div>
@@ -449,6 +488,14 @@ for their convenience.
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>You will see a success message and your liked categories, tags and locations would be added.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/add-like.png" alt="add like" width="700">
+</div>
+</div>
+<div class="paragraph">
+<p></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -460,7 +507,7 @@ for their convenience.
 <div class="content">
 <div class="paragraph">
 <p><strong>Format</strong>: <code>dislike c/CATEGORY t/TAG l/LOCATION</code><br>
-<strong>Example</strong>: <code>dislike c/International t/Spicy l/The Deck l/The Terrace</code></p>
+<strong>Example</strong>: <code>dislike c/italian t/pasta t/cheese l/the tea party</code></p>
 </div>
 </div>
 </div>
@@ -476,6 +523,14 @@ for their convenience.
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>You will see a success message and your disliked categories, tags and locations would be added.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/add-dislike.png" alt="add dislike" width="700">
+</div>
+</div>
+<div class="paragraph">
+<p></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -522,6 +577,14 @@ Users can provide multiple categories, tags and/or locations with each command.
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>You will see a success message and your liked categories, tags and locations would be removed.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/removelike.png" alt="removelike" width="700">
+</div>
+</div>
+<div class="paragraph">
+<p></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -549,6 +612,14 @@ Users can provide multiple categories, tags and/or locations with each command.
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>You will see a success message and your disliked categories, tags and locations would be removed.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/removedislike.png" alt="removedislike" width="700">
+</div>
+</div>
+<div class="paragraph">
+<p></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -593,6 +664,14 @@ Only use this command if you are sure that you want to clear your likes and disl
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>You will see a success message and your liked categories, tags and locations would be cleared.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/removelike-all.png" alt="removelike all" width="700">
+</div>
+</div>
+<div class="paragraph">
+<p></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -619,6 +698,14 @@ Only use this command if you are sure that you want to clear your likes and disl
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>You will see a success message and your disliked categories, tags and locations would be cleared.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/removedislike-all.png" alt="removedislike all" width="700">
+</div>
+</div>
+<div class="paragraph">
+<p></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -638,7 +725,24 @@ Only use this command if you are sure that you want to clear your likes and disl
 <h3 id="recommendation-feature"><a class="link" href="#recommendation-feature">Recommendation feature</a></h3>
 <div class="paragraph">
 <p>The recommendation feature allows users to generate a list of personalized recommendations using the <code>recommend</code> command.
-The recommendations are tailored to each user based on their current likes, dislikes and purchase history.</p>
+The recommendations are tailored to each user based on the factors below:</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The user&#8217;s likes and dislikes</p>
+</li>
+<li>
+<p>The user&#8217;s current budget and date to expiry of budget</p>
+</li>
+<li>
+<p>The user&#8217;s purchase history</p>
+</li>
+</ol>
+</div>
+</div>
 </div>
 <div class="paragraph">
 <p>Users are able to add their liked and disliked categories, tags and locations into the app using the <code>like</code> and <code>dislike</code>
@@ -649,7 +753,7 @@ more accurately.</p>
 <div class="sect3">
 <h4 id="classes-for-recommendation-feature-in-model"><a class="link" href="#classes-for-recommendation-feature-in-model">Classes for recommendation feature in Model</a></h4>
 <div class="paragraph">
-<p>With the recommendation feature, a new set of classes were added.</p>
+<p>With the addition of the recommendation feature, a new set of classes were implemented to support the feature.</p>
 </div>
 <div class="paragraph">
 <p>A singleton class <code>RecommendationSystem</code> encapsulates the methods and classes related to this feature.
@@ -757,129 +861,9 @@ Furthermore, the user&#8217;s likes and dislikes are integrated with <code>Stora
 using the <code>recommend</code> command.</p>
 </div>
 <div class="paragraph">
-<p>Each food is passed to the recommendation system and it calculates the recommendation value based on the tables below:</p>
+<p>The detailed tables documenting the calculation of the recommendation values can be found above at:
+<a href="#getting-a-list-of-recommended-food-items-code-recommend-code">Getting a list of recommended food items: <code>recommend</code></a></p>
 </div>
-<table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 3. Bonuses applied by the recommendation system</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Condition 1</th>
-<th class="tableblock halign-left valign-top">Condition 2</th>
-<th class="tableblock halign-left valign-top">Bonus</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top" rowspan="3"><p class="tableblock">Food tags match the user&#8217;s liked tags</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1 or more tags</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">+0.05 and +0.03 per matching tag</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">3 or more tags</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">+0.10 and +0.03 per matching tag</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5 or more tags</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">+0.25 and +0.03 per matching tag</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Food category matches the user&#8217;s liked categories</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">N/A</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">+0.15</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Food location matches the user&#8217;s liked locations</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">N/A</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">+0.10</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Food tags match the user&#8217;s tags in purchase history</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">N/A</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">+0.01 per matching tag</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Food category matches the user&#8217;s categories in purchase history</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">N/A</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">+0.02</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Food location matches the user&#8217;s locations in purchase history</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">N/A</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">+0.03</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" rowspan="3"><p class="tableblock">Food purchase is found in user&#8217;s purchase history</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2 or more purchases</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">+0.10</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5 or more purchases</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">+0.30</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">10 or more purchases</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">+0.50</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p><br></p>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 4. Penalties applied by the recommendation system</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Condition 1</th>
-<th class="tableblock halign-left valign-top">Condition 2</th>
-<th class="tableblock halign-left valign-top">Penalty</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Food price is out of the user&#8217;s current budget</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">N/A</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Removes the item from the recommendation results</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" rowspan="3"><p class="tableblock">Food tags match the user&#8217;s disliked tags</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1 or more tags</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-0.10 and -0.10 per matching tag</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2 or more tags</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-0.30 and -0.10 per matching tag</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">3 or more tags</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-0.50 and -0.10 per matching tag</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Food category matches the user&#8217;s disliked categories</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">N/A</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-0.40</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Food location matches the user&#8217;s disliked locations</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">N/A</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-0.30</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Food purchase is found in user&#8217;s purchase history</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Within a time period of &lt;2 days</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Applies a decreasing penalty from -10 which diminishes to 0 after 2 days</p></td>
-</tr>
-</tbody>
-</table>
 <div class="paragraph">
 <p>The activity diagram below shows how a sample Food is passed into <code>RecommendationSystem</code> to output a
 recommendation value:</p>
@@ -901,7 +885,7 @@ is executed. Food with similar recommendation values are sorted based on their p
  <code>RecommendationSystem#calculateRecommendation()</code> function.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 5. Design considerations of the <code>RecommendationSystem#calculateRecommendation()</code> function</caption>
+<caption class="title">Table 3. Design considerations of the <code>RecommendationSystem#calculateRecommendation()</code> function</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -995,4 +979,4 @@ design.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-01 15:17:56 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-01 15:54:16 UTC</div></div></div></body></html>

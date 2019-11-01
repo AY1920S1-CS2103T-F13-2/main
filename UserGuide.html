@@ -892,8 +892,31 @@ If the purchase was successful, you should be able to see the update in your pur
 <div class="sect3">
 <h4 id="getting-a-list-of-recommended-food-items-code-recommend-code"><a class="link" href="#getting-a-list-of-recommended-food-items-code-recommend-code">3.6.1. Getting a list of recommended food items: <code>recommend</code></a></h4>
 <div class="paragraph">
-<p>Users can get a list of recommendations from the application, based on several factors, summarized
-in the tables below.</p>
+<p>Users can get a list of recommendations from the application, based on these factors:</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The user&#8217;s likes and dislikes (see <a href="#adding-likes-and-dislikes-to-the-recommendation-system-code-like-code-or-code-dislike-code">Section 3.6.3, &#8220;Adding likes and dislikes to the recommendation system: <code>like</code> or <code>dislike</code>&#8221;</a>)</p>
+</li>
+<li>
+<p>The user&#8217;s current budget and date to expiry of budget (see <a href="#sets-budget-for-a-number-of-days-code-budget-code">Section 3.4.1, &#8220;Sets budget for a number of days: <code>budget</code>&#8221;</a>)</p>
+</li>
+<li>
+<p>The user&#8217;s purchase history (see <a href="#buy-a-food-item-code-buy-code">Section 3.5.1, &#8220;Buy a food item: <code>buy</code>&#8221;</a>)</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The recommended amount to spend per meal is calculated by <code>budget / (daysToExpiry * 2)</code> under the assumption that the
+user takes 2 meals per day.</p>
+</div>
+<div class="paragraph">
+<p>The factors affecting the calculation of the recommendation value is summarized in the tables below.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Table 1. Bonuses applied by the recommendation system</caption>
@@ -1043,7 +1066,15 @@ To clear the recommendations, use the <code>list</code> or <code>add</code> comm
 <p><span class="icon green"><i class="fa fa-check fa-2x"></i></span></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>The list of recommendations will be shown.</p>
+<p>The list of recommendations will be shown, sorted by their recommendation value.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/recommend.png" alt="recommend">
+</div>
+</div>
+<div class="paragraph">
+<p></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1086,6 +1117,14 @@ the <code>budget</code> command! See <a href="#sets-budget-for-a-number-of-days-
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>The list of liked or disliked categories, tags and locations will be shown.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/like-dislike-list.png" alt="like dislike list" width="700">
+</div>
+</div>
+<div class="paragraph">
+<p></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1129,7 +1168,7 @@ for their convenience.
 <div class="content">
 <div class="paragraph">
 <p><strong>Format</strong>: <code>like c/CATEGORY t/TAG l/LOCATION</code><br>
-<strong>Example</strong>: <code>like c/Chinese c/Western t/Healthy l/Univeristy Town</code></p>
+<strong>Example</strong>: <code>like c/chinese t/chicken t/rice l/frontier canteen</code></p>
 </div>
 </div>
 </div>
@@ -1145,6 +1184,14 @@ for their convenience.
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>You will see a success message and your liked categories, tags and locations would be added.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/add-like.png" alt="add like" width="700">
+</div>
+</div>
+<div class="paragraph">
+<p></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1156,7 +1203,7 @@ for their convenience.
 <div class="content">
 <div class="paragraph">
 <p><strong>Format</strong>: <code>dislike c/CATEGORY t/TAG l/LOCATION</code><br>
-<strong>Example</strong>: <code>dislike c/International t/Spicy l/The Deck l/The Terrace</code></p>
+<strong>Example</strong>: <code>dislike c/italian t/pasta t/cheese l/the tea party</code></p>
 </div>
 </div>
 </div>
@@ -1172,6 +1219,14 @@ for their convenience.
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>You will see a success message and your disliked categories, tags and locations would be added.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/add-dislike.png" alt="add dislike" width="700">
+</div>
+</div>
+<div class="paragraph">
+<p></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1218,6 +1273,14 @@ Users can provide multiple categories, tags and/or locations with each command.
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>You will see a success message and your liked categories, tags and locations would be removed.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/removelike.png" alt="removelike" width="700">
+</div>
+</div>
+<div class="paragraph">
+<p></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1245,6 +1308,14 @@ Users can provide multiple categories, tags and/or locations with each command.
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>You will see a success message and your disliked categories, tags and locations would be removed.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/removedislike.png" alt="removedislike" width="700">
+</div>
+</div>
+<div class="paragraph">
+<p></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1289,6 +1360,14 @@ Only use this command if you are sure that you want to clear your likes and disl
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>You will see a success message and your liked categories, tags and locations would be cleared.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/removelike-all.png" alt="removelike all" width="700">
+</div>
+</div>
+<div class="paragraph">
+<p></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1315,6 +1394,14 @@ Only use this command if you are sure that you want to clear your likes and disl
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>You will see a success message and your disliked categories, tags and locations would be cleared.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/removedislike-all.png" alt="removedislike all" width="700">
+</div>
+</div>
+<div class="paragraph">
+<p></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1537,4 +1624,4 @@ later to run the app.</p>
 </tbody>
 </table>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-01 15:17:56 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-01 15:54:16 UTC</div></div></div></body></html>

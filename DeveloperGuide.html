@@ -1163,7 +1163,24 @@ the purchase history data of the user while maintaining data integrity.</p>
 <h3 id="recommendation-feature"><a class="link" href="#recommendation-feature">4.8. Recommendation feature</a></h3>
 <div class="paragraph">
 <p>The recommendation feature allows users to generate a list of personalized recommendations using the <code>recommend</code> command.
-The recommendations are tailored to each user based on their current likes, dislikes and purchase history.</p>
+The recommendations are tailored to each user based on the factors below:</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The user&#8217;s likes and dislikes</p>
+</li>
+<li>
+<p>The user&#8217;s current budget and date to expiry of budget</p>
+</li>
+<li>
+<p>The user&#8217;s purchase history</p>
+</li>
+</ol>
+</div>
+</div>
 </div>
 <div class="paragraph">
 <p>Users are able to add their liked and disliked categories, tags and locations into the app using the <code>like</code> and <code>dislike</code>
@@ -1174,7 +1191,7 @@ more accurately.</p>
 <div class="sect3">
 <h4 id="classes-for-recommendation-feature-in-model"><a class="link" href="#classes-for-recommendation-feature-in-model">4.8.1. Classes for recommendation feature in Model</a></h4>
 <div class="paragraph">
-<p>With the recommendation feature, a new set of classes were added.</p>
+<p>With the addition of the recommendation feature, a new set of classes were implemented to support the feature.</p>
 </div>
 <div class="paragraph">
 <p>A singleton class <code>RecommendationSystem</code> encapsulates the methods and classes related to this feature.
@@ -2234,4 +2251,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-01 15:17:56 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-01 15:54:16 UTC</div></div></div></body></html>
