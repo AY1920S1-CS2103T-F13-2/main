@@ -446,9 +446,21 @@ in one line.</p>
 <div class="sect3">
 <h4 id="add"><a class="link" href="#add">3.2.1. Add a food item: <code>add</code></a></h4>
 <div class="paragraph">
-<p>Adds a food item to the food list. Note: Price must be in integer or double value with at most 2 decimal places.
-Note: Opening Hours must be in HHMM format.
-Note: NAME, PRICE and CATEGORY are mandatory fields.</p>
+<p>Adds a food item to the food list.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+NAME, PRICE and CATEGORY are mandatory fields.
+Price must be an integer or a double with 2 decimal places and the maximum Price for a food item is $5000.
+Opening Hours must be in HHMM format.
+</td>
+</tr>
+</table>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -515,13 +527,13 @@ by using the <code>recommend</code> command again (see <a href="#getting-a-list-
 <div class="sect3">
 <h4 id="finds-food-items-based-on-keywords-code-find-code"><a class="link" href="#finds-food-items-based-on-keywords-code-find-code">3.2.4. Finds food items based on keywords: <code>find</code></a></h4>
 <div class="paragraph">
-<p>Finds a food items based on specific keywords. Following which, the food items containing the specific keywords will
+<p>Finds a food items based on specific keywords. Following which, the food items names containing the specific keywords will
 be shown in the food list.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><strong>Format</strong>: <code>find KEYWORD &#8230;&#8203;</code>
+<p><strong>Format</strong>: <code>find KEYWORD [MORE_KEYWORDS]..</code><br>
 <strong>Example</strong>: <code>find Chicken Rice</code></p>
 </div>
 </div>
@@ -549,7 +561,7 @@ in v2.0 and above.
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><strong>Format</strong>: <code>filter FIELD QUANTIFIER VALUE</code>
+<p><strong>Format</strong>: <code>filter FIELD QUANTIFIER VALUE</code><br>
 <strong>Example</strong>: <code>filter PRICE LESS_THAN 4.00</code></p>
 </div>
 </div>
@@ -600,7 +612,7 @@ This is done so that the user is able to get the food which is most relevant to 
 You must always provide pairs of FIELD and DIRECTION to execute the Sorting commands.
 The fields are as followed: <code>NAME</code>, <code>DESCRIPTION</code>, <code>PRICE</code>,
 <code>CATEGORY</code>, <code>LOCATION</code>, <code>OPENING_HOURS</code>, <code>RESTRICTIONS</code>.
-THe directions are as followed: <code>ASC</code> or <code>DESC</code>.
+The directions are as follows: <code>ASC</code> or <code>DESC</code>.
 </td>
 </tr>
 </table>
@@ -629,7 +641,7 @@ price in ascending order. Following which, sorts the food items based on names i
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><strong>Format</strong>: <code>sort FIELD DIRECTION &#8230;&#8203;</code>
+<p><strong>Format</strong>: <code>sort FIELD DIRECTION &#8230;&#8203;</code><br>
 <strong>Example</strong>: <code>sort PRICE ASC</code></p>
 </div>
 </div>
@@ -644,7 +656,7 @@ FIELD and DIRECTION.</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><strong>Format</strong>: <code>makesort FIELD DIRECTION &#8230;&#8203;</code>
+<p><strong>Format</strong>: <code>makesort FIELD DIRECTION &#8230;&#8203;</code><br>
 <strong>Example</strong>: <code>makesort PRICE ASC</code></p>
 </div>
 </div>
@@ -672,7 +684,7 @@ There are only two states, ON or OFF.</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><strong>Format</strong>: <code>autosort STATE</code>
+<p><strong>Format</strong>: <code>autosort STATE</code><br>
 <strong>Example</strong>: <code>autosort ON</code></p>
 </div>
 </div>
@@ -1638,4 +1650,4 @@ later to run the app.</p>
 </tbody>
 </table>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-02 10:44:50 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-02 11:37:20 UTC</div></div></div></body></html>
