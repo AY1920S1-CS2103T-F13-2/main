@@ -73,6 +73,11 @@
 <li><a href="#clearing-all-likes-and-dislikes-from-the-recommendation-system-code-removelike-code-or-code-removedislike-code">3.6.5. Clearing all likes and dislikes from the recommendation system: <code>removelike</code> or <code>removedislike</code></a></li>
 </ul>
 </li>
+<li><a href="#alias">3.7. Alias</a>
+<ul class="sectlevel3">
+<li><a href="#editing-the-alias-for-a-specific-command-code-alias-code">3.7.1. Editing the alias for a specific command: <code>alias</code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#frequently-asked-questions">4. Frequently Asked Questions</a></li>
@@ -585,7 +590,7 @@ Note: You are allowed to have more than one <code>INDEX</code>.</p>
 <div class="sect3">
 <h4 id="clears-wallet-purchase-history-and-food-items-code-clear-code"><a class="link" href="#clears-wallet-purchase-history-and-food-items-code-clear-code">3.2.7. Clears wallet purchase history and food items: <code>clear</code></a></h4>
 <div class="paragraph">
-<p>Clears wallet, purchase history and food items in the application.</p>
+<p>Clears wallet, purchase history, savings account, wallet, likes, dislikes and aliases in the application.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -1435,6 +1440,36 @@ Only use this command if you are sure that you want to clear your likes and disl
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="alias"><a class="link" href="#alias">3.7. Alias</a></h3>
+<div class="sect3">
+<h4 id="editing-the-alias-for-a-specific-command-code-alias-code"><a class="link" href="#editing-the-alias-for-a-specific-command-code-alias-code">3.7.1. Editing the alias for a specific command: <code>alias</code></a></h4>
+<div class="paragraph">
+<p>Users are able to given an alias word for any given command in $aveNUS. You need to give one <code>COMMANDWORD</code> and
+one optional <code>ALIASWORD</code>. If no <code>ALIASWORD</code> is given, the <code>ALIASWORD</code> for the specific <code>COMMANDWORD</code> will be cleared.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Alias Words can only be alphanumeric.
+</td>
+</tr>
+</table>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Format</strong>: <code>alias COMMANDWORD [ALIASWORD]</code>
+<strong>Example</strong>: <code>alias sort shuffleAround</code></p>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -1518,6 +1553,11 @@ later to run the app.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><code>add n/Chicken Rice d/Rice with Chicken p/2.50 c/Chinese l/NUS o/0800 2000 r/NIL</code></code></p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#editing-the-alias-for-a-specific-command-code-alias-code"><code>alias</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Editing the alias word for any given command word in $aveNUS.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><code>alias sort shuffleAround</code></code></p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#auto-sorts-list-based-on-custom-comparator-code-autosort-code"><code>autosort</code></a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Allows the user to sort every time the food list is changed. This is based on a created custom comparator.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><code>autosort ON</code></code></p></td>
@@ -1534,7 +1574,7 @@ later to run the app.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#clears-wallet-purchase-history-and-food-items-code-clear-code"><code>clear</code></a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Clears wallet, purchase history and food items.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Clears wallet, purchase history, savings account, wallet, likes, dislikes and aliases.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><code>clear</code></code></p></td>
 </tr>
 <tr>
@@ -1650,4 +1690,4 @@ later to run the app.</p>
 </tbody>
 </table>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-02 11:37:20 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-03 07:50:31 UTC</div></div></div></body></html>

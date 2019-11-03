@@ -72,6 +72,12 @@
 <li><a href="#displaying-recommendations">4.8.3. Displaying recommendations</a></li>
 </ul>
 </li>
+<li><a href="#alias-feature">4.9. Alias feature</a>
+<ul class="sectlevel3">
+<li><a href="#classes-for-alias-feature-in-model">4.9.1. Classes for alias feature in Model</a></li>
+<li><a href="#mapping-an-alias-word-to-a-command-word">4.9.2. Mapping an alias word to a command word.</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#documentation">5. Documentation</a></li>
@@ -1536,6 +1542,65 @@ design.</p>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="alias-feature"><a class="link" href="#alias-feature">4.9. Alias feature</a></h3>
+<div class="paragraph">
+<p>The alias feature allows users to generate their own unique aliases for commands in $aveNUS. This can be
+done using the <code>alias</code> command.</p>
+</div>
+<div class="sect3">
+<h4 id="classes-for-alias-feature-in-model"><a class="link" href="#classes-for-alias-feature-in-model">4.9.1. Classes for alias feature in Model</a></h4>
+<div class="paragraph">
+<p>With the addition of the alias feature, a new set of classes were implemented to support the feature.</p>
+</div>
+<div class="paragraph">
+<p>A class <code>AliasList</code> encapsulates methods and classes related to this feature. It contains a list of
+<code>AliasPair</code> which stores the alias word, if any, mapped to the command word in the <code>AliasList</code>.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, an <code>AliasChecker</code> is implemented to help check the validity of the <code>AliasPair</code> in the
+<code>AliasList</code>. Finally, a <code>CommandWordAdder</code> was implemented such that on the creation of a new <code>AliasList</code>,
+all command words in $aveNUS will have their mapped alias words removed, being replaced by an empty String.</p>
+</div>
+<div class="paragraph">
+<p>The class diagram below illustrates the relationship between the classes.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/AliasClassDiagram.png" alt="AliasClassDiagram" width="650">
+</div>
+<div class="title">Figure 25. Class Diagram for Alias feature.</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="mapping-an-alias-word-to-a-command-word"><a class="link" href="#mapping-an-alias-word-to-a-command-word">4.9.2. Mapping an alias word to a command word.</a></h4>
+<div class="paragraph">
+<p>The main command behind the alias feature is <code>alias</code>. The user can assign an alias word to a command word
+in $aveNUS, as long as the alias word is alphanumeric.</p>
+</div>
+<div class="paragraph">
+<p>For example, <code>alias sort s</code> sets the alias word for the command word <code>sort</code> to become <code>s</code>.</p>
+</div>
+<div class="paragraph">
+<p>The sequence diagram below shows how a sample <code>alias</code> command is executed.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/AliasSequenceDiagram.png" alt="AliasSequenceDiagram" width="650">
+</div>
+<div class="title">Figure 26. Sequence Diagram for sample alias command.</div>
+</div>
+<div class="paragraph">
+<p>The following activity diagram below shows how the <code>alias</code> command works.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/AliasActivityDiagram.png" alt="AliasActivityDiagram" width="650">
+</div>
+<div class="title">Figure 27. Activity Diagram for sample alias command.</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -2251,4 +2316,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-02 11:37:20 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-03 07:50:31 UTC</div></div></div></body></html>
