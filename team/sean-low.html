@@ -119,45 +119,48 @@ criterion at the top of the food list.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="minor-enhancement-filter-feature"><a class="link" href="#minor-enhancement-filter-feature">Minor enhancement: Filter Feature</a></h3>
+<h3 id="minor-enhancement-alias-feature"><a class="link" href="#minor-enhancement-alias-feature">Minor Enhancement: Alias Feature</a></h3>
 <div class="paragraph">
-<p>I have added a filter feature to $aveNUS which allows users to filter food items based on some specific criterion.</p>
+<p>I have added a alias feature to $aveNUS which allows users to create shortcuts for commonly used commands.</p>
 </div>
 <div class="sect3">
 <h4 id="what-it-does-2"><a class="link" href="#what-it-does-2">What it does</a></h4>
 <div class="paragraph">
-<p>The filter feature only shows food that satisfy the criterion given by the user.  This is done by taking
-into account  specific fields given from the command line interface.</p>
+<p>The alias feature allows users to create shortcuts for commonly used commands. For example, if the user wishes to
+view the custom comparator made, but does not want to type in <code>viewsort</code> all the time, he can add an alias to it. He
+can do use by typing <code>alias viewsort v</code> where <code>v</code> is now the shortcut for <code>viewsort</code>.</p>
 </div>
 <div class="paragraph">
-<p>For example, if the user wishes to see the list of food items which have a price of less than $5.00, only
-food items with a price of $4.99 and below can be seen in the display panel.</p>
+<p>When he does not require the alias for <code>viewsort</code>, he can clear it anytime using <code>alias viewsort</code>.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="justification-2"><a class="link" href="#justification-2">Justification</a></h4>
 <div class="paragraph">
-<p>NUS students might have certain restrictions with regards to the food that they can eat. As a result, it will be
-good for them to be able to filter the type of food they can order.</p>
-</div>
-<div class="paragraph">
-<p>For example, if they want to view halal food, they can just type in the following:</p>
-</div>
-<div class="paragraph">
-<p><code>filter CATEGORY EQUALS_TO halal</code>.</p>
+<p>NUS Students occasionally forget how to execute certain commands which may seem too long such as <code>viewsort</code> and
+<code>customsort</code>. As a result, it would be good for the user to be able to add shortcuts to save time and typing.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="highlights-2"><a class="link" href="#highlights-2">Highlights</a></h4>
+<h4 id="highlights-2"><a class="link" href="#highlights-2">Highlights.</a></h4>
 <div class="paragraph">
-<p>While implementing this feature, I had to implement the <code>filter</code> command. This is done in a way such that it
-will only affect the food list display panel. As a result, the food items stored in the data files will not
-be accidentally edited or removed.</p>
+<p>I only had to add the <code>alias</code> command to implement this new feature. However, I had to make sure that users will not
+accidentally keep in other conflicting shortcuts. For exampke, <code>alias viewsort sort</code>. is an invalid command as <code>sort</code> is
+already a command word in $aveNUS.</p>
 </div>
 <div class="paragraph">
-<p>In this way, if the user wishes to see his entire food list again, the user can simply type in the command
-<code>list</code>.</p>
+<p>Storage functionality for the user&#8217;s alias shortcuts were also implemented. This means that the shortcuts are conveniently saved
+into their hard disk and persist even after the application is closed and restarted.</p>
 </div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="code-contributions"><a class="link" href="#code-contributions">Code contributions:</a></h3>
+<div class="paragraph">
+<p>Here are the <a href="https://github.com/AY1920S1-CS2103T-F13-2/main/commits/master?author=seanlowjk">commits</a>,
+<a href="https://github.com/AY1920S1-CS2103T-F13-2/main/pulls?q=is%3Apr+author%3Aseanlowjk">pull requests</a> and
+<a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#search=seanlowjk&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2019-09-06&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false">code</a>
+that I have contributed for this project.</p>
 </div>
 </div>
 <div class="sect2">
@@ -208,8 +211,7 @@ be accidentally edited or removed.</p>
 <ul>
 <li>
 <p>Edited main UML Diagrams [PR <a href="https://github.com/AY1920S1-CS2103T-F13-2/main/pull/164">#164</a>
-<a href="https://github.com/AY1920S1-CS2103T-F13-2/main/pull/201">#201</a>
-]</p>
+<a href="https://github.com/AY1920S1-CS2103T-F13-2/main/pull/201">#201</a>]</p>
 </li>
 </ul>
 </div>
@@ -515,37 +517,6 @@ turn auto sorting off.
 </tr>
 </tbody>
 </table>
-<div class="paragraph">
-<p>This section shows the contributions that I have made to the filter feature of the User Guide.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="filters-food-items-based-on-criteria-code-filter-code"><a class="link" href="#filters-food-items-based-on-criteria-code-filter-code">Filters food items based on criteria: <code>filter</code></a></h4>
-<div class="paragraph">
-<p>Filters the food items based on the criteria specified. Note: You can need to
-have at least one of a <code>FIELD</code>, <code>QUANTIFIER</code> and <code>VALUE</code>.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Based on v1.4, you are only allowed to enter <code>PRICE</code> as a <code>FIELD</code>. Other fields will be available for use
-in v2.0 and above.
-</td>
-</tr>
-</table>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="paragraph">
-<p><strong>Format</strong>: <code>filter FIELD QUANTIFIER VALUE</code><br>
-<strong>Example</strong>: <code>filter PRICE LESS_THAN 4.00</code></p>
-</div>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -650,4 +621,4 @@ CustomSorter is overridden by a new CustomSorter with no fields.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-06 09:13:31 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-06 09:44:32 UTC</div></div></div></body></html>
