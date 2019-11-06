@@ -53,27 +53,31 @@
 <ul class="sectlevel3">
 <li><a href="#sets-budget-for-a-number-of-days-code-budget-code">3.4.1. Sets budget for a number of days: <code>budget</code></a></li>
 <li><a href="#top-up-money-into-wallet-code-topup-code">3.4.2. Top up money into wallet: <code>topup</code></a></li>
-<li><a href="#saves-money-into-savings-account-code-save-code">3.4.3. Saves money into savings account: <code>save</code></a></li>
-<li><a href="#withdraws-money-from-savings-account-code-withdraw-code">3.4.4. Withdraws money from savings account: <code>withdraw</code></a></li>
 </ul>
 </li>
-<li><a href="#purchasing">3.5. Purchasing</a>
+<li><a href="#saving">3.5. Saving</a>
 <ul class="sectlevel3">
-<li><a href="#buy-a-food-item-code-buy-code">3.5.1. Buy a food item: <code>buy</code></a></li>
+<li><a href="#saves-money-into-savings-account-code-save-code">3.5.1. Saves money into savings account: <code>save</code></a></li>
+<li><a href="#withdraws-money-from-savings-account-code-withdraw-code">3.5.2. Withdraws money from savings account: <code>withdraw</code></a></li>
 </ul>
 </li>
-<li><a href="#recommendations">3.6. Recommendations</a>
+<li><a href="#purchasing">3.6. Purchasing</a>
 <ul class="sectlevel3">
-<li><a href="#getting-a-list-of-recommended-food-items-code-recommend-code">3.6.1. Getting a list of recommended food items: <code>recommend</code></a></li>
-<li><a href="#listing-likes-and-dislikes-in-the-recommendation-system-code-like-code-or-code-dislike-code">3.6.2. Listing likes and dislikes in the recommendation system: <code>like</code> or <code>dislike</code></a></li>
-<li><a href="#adding-likes-and-dislikes-to-the-recommendation-system-code-like-code-or-code-dislike-code">3.6.3. Adding likes and dislikes to the recommendation system: <code>like</code> or <code>dislike</code></a></li>
-<li><a href="#removing-likes-and-dislikes-from-the-recommendation-system-code-removelike-code-or-code-removedislike-code">3.6.4. Removing likes and dislikes from the recommendation system: <code>removelike</code> or <code>removedislike</code></a></li>
-<li><a href="#clearing-all-likes-and-dislikes-from-the-recommendation-system-code-removelike-code-or-code-removedislike-code">3.6.5. Clearing all likes and dislikes from the recommendation system: <code>removelike</code> or <code>removedislike</code></a></li>
+<li><a href="#buy-a-food-item-code-buy-code">3.6.1. Buy a food item: <code>buy</code></a></li>
 </ul>
 </li>
-<li><a href="#alias">3.7. Alias</a>
+<li><a href="#recommendations">3.7. Recommendations</a>
 <ul class="sectlevel3">
-<li><a href="#editing-the-alias-for-a-specific-command-code-alias-code">3.7.1. Editing the alias for a specific command: <code>alias</code></a></li>
+<li><a href="#getting-a-list-of-recommended-food-items-code-recommend-code">3.7.1. Getting a list of recommended food items: <code>recommend</code></a></li>
+<li><a href="#listing-likes-and-dislikes-in-the-recommendation-system-code-like-code-or-code-dislike-code">3.7.2. Listing likes and dislikes in the recommendation system: <code>like</code> or <code>dislike</code></a></li>
+<li><a href="#adding-likes-and-dislikes-to-the-recommendation-system-code-like-code-or-code-dislike-code">3.7.3. Adding likes and dislikes to the recommendation system: <code>like</code> or <code>dislike</code></a></li>
+<li><a href="#removing-likes-and-dislikes-from-the-recommendation-system-code-removelike-code-or-code-removedislike-code">3.7.4. Removing likes and dislikes from the recommendation system: <code>removelike</code> or <code>removedislike</code></a></li>
+<li><a href="#clearing-all-likes-and-dislikes-from-the-recommendation-system-code-removelike-code-or-code-removedislike-code">3.7.5. Clearing all likes and dislikes from the recommendation system: <code>removelike</code> or <code>removedislike</code></a></li>
+</ul>
+</li>
+<li><a href="#alias">3.8. Alias</a>
+<ul class="sectlevel3">
+<li><a href="#editing-the-alias-for-a-specific-command-code-alias-code">3.8.1. Editing the alias for a specific command: <code>alias</code></a></li>
 </ul>
 </li>
 </ul>
@@ -414,7 +418,7 @@ Opening Hours must be in HHMM format.
 </td>
 <td class="content">
 The list of recommendations would be cleared if you use the this command. You can re-enable recommendations
-by using the <code>recommend</code> command again (see <a href="#getting-a-list-of-recommended-food-items-code-recommend-code">Section 3.6.1, &#8220;Getting a list of recommended food items: <code>recommend</code>&#8221;</a>).
+by using the <code>recommend</code> command again (see <a href="#getting-a-list-of-recommended-food-items-code-recommend-code">Section 3.7.1, &#8220;Getting a list of recommended food items: <code>recommend</code>&#8221;</a>).
 </td>
 </tr>
 </table>
@@ -441,7 +445,7 @@ by using the <code>recommend</code> command again (see <a href="#getting-a-list-
 </td>
 <td class="content">
 The list of recommendations would be cleared if you use the this command. You can re-enable recommendations
-by using the <code>recommend</code> command again (see <a href="#getting-a-list-of-recommended-food-items-code-recommend-code">Section 3.6.1, &#8220;Getting a list of recommended food items: <code>recommend</code>&#8221;</a>).
+by using the <code>recommend</code> command again (see <a href="#getting-a-list-of-recommended-food-items-code-recommend-code">Section 3.7.1, &#8220;Getting a list of recommended food items: <code>recommend</code>&#8221;</a>).
 </td>
 </tr>
 </table>
@@ -820,17 +824,40 @@ turn auto sorting off.
 </div>
 <div class="sect2">
 <h3 id="budgeting"><a class="link" href="#budgeting">3.4. Budgeting</a></h3>
+<div class="imageblock">
+<div class="content">
+<img src="images/wallet.png" alt="wallet" width="400">
+</div>
+<div class="title">Figure 3. Example User&#8217;s Wallet</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Maximum budget amount is 1 million dollars.<br>
+Maximum budget duration is 365 days (1 year).
+</td>
+</tr>
+</table>
+</div>
 <div class="sect3">
 <h4 id="sets-budget-for-a-number-of-days-code-budget-code"><a class="link" href="#sets-budget-for-a-number-of-days-code-budget-code">3.4.1. Sets budget for a number of days: <code>budget</code></a></h4>
 <div class="paragraph">
-<p>Allows the user to set a budget AMOUNT for food expenses for a certain number
-of DAYS. DAYS must be a positive integer. AMOUNT must be a positive integer or double with 2 decimal places.</p>
+<p>Allows the user to set a budget for food expenses.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><strong>Format</strong>: <code>budget AMOUNT DAYS</code><br>
+<p><strong>Format</strong>: <code>budget AMOUNT [DURATION]</code><br>
 <strong>Example</strong>: <code>budget 100.00 10</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Note</strong>:<br>
+<code>AMOUNT</code> must be a non-negative integer or non-negative double with 2 decimal places.<br>
+<code>DURATION</code> is in days, and must be a non-negative integer.<br></p>
 </div>
 </div>
 </div>
@@ -846,6 +873,10 @@ of DAYS. DAYS must be a positive integer. AMOUNT must be a positive integer or d
 <p><strong>Format</strong>: <code>topup AMOUNT</code><br>
 <strong>Example</strong>: <code>topup 10</code></p>
 </div>
+<div class="paragraph">
+<p><strong>Note</strong>:<br>
+<code>AMOUNT</code> must be a non-negative integer or or non-negative double with 2 decimal places.<br></p>
+</div>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -855,14 +886,17 @@ of DAYS. DAYS must be a positive integer. AMOUNT must be a positive integer or d
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the top up was successful, you should be able to see the update in your wallet immediately.
+If the top up was successful, you should be able to see the update to your wallet immediately.
 </td>
 </tr>
 </table>
 </div>
 </div>
+</div>
+<div class="sect2">
+<h3 id="saving"><a class="link" href="#saving">3.5. Saving</a></h3>
 <div class="sect3">
-<h4 id="saves-money-into-savings-account-code-save-code"><a class="link" href="#saves-money-into-savings-account-code-save-code">3.4.3. Saves money into savings account: <code>save</code></a></h4>
+<h4 id="saves-money-into-savings-account-code-save-code"><a class="link" href="#saves-money-into-savings-account-code-save-code">3.5.1. Saves money into savings account: <code>save</code></a></h4>
 <div class="paragraph">
 <p>Allows users to log an amount of money to save in his savings account from user&#8217;s wallet.</p>
 </div>
@@ -918,7 +952,7 @@ Also the amount saved is deducted from your wallet.
 </div>
 </div>
 <div class="sect3">
-<h4 id="withdraws-money-from-savings-account-code-withdraw-code"><a class="link" href="#withdraws-money-from-savings-account-code-withdraw-code">3.4.4. Withdraws money from savings account: <code>withdraw</code></a></h4>
+<h4 id="withdraws-money-from-savings-account-code-withdraw-code"><a class="link" href="#withdraws-money-from-savings-account-code-withdraw-code">3.5.2. Withdraws money from savings account: <code>withdraw</code></a></h4>
 <div class="paragraph">
 <p>Allows users to log an amount of money to withdraw from his savings account into his wallet.</p>
 </div>
@@ -974,9 +1008,15 @@ Also the amount withdrawn is added into your wallet.
 </div>
 </div>
 <div class="sect2">
-<h3 id="purchasing"><a class="link" href="#purchasing">3.5. Purchasing</a></h3>
+<h3 id="purchasing"><a class="link" href="#purchasing">3.6. Purchasing</a></h3>
+<div class="imageblock">
+<div class="content">
+<img src="images/PurchaseHistory.png" alt="PurchaseHistory" width="600">
+</div>
+<div class="title">Figure 4. Example User&#8217;s PurchaseHistory</div>
+</div>
 <div class="sect3">
-<h4 id="buy-a-food-item-code-buy-code"><a class="link" href="#buy-a-food-item-code-buy-code">3.5.1. Buy a food item: <code>buy</code></a></h4>
+<h4 id="buy-a-food-item-code-buy-code"><a class="link" href="#buy-a-food-item-code-buy-code">3.6.1. Buy a food item: <code>buy</code></a></h4>
 <div class="paragraph">
 <p>Allows users to log a food expense into the application.</p>
 </div>
@@ -985,6 +1025,9 @@ Also the amount withdrawn is added into your wallet.
 <div class="paragraph">
 <p><strong>Format</strong>: <code>buy FOOD_INDEX</code><br>
 <strong>Example</strong>: <code>buy 1</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Note</strong>: <code>FOOD_INDEX</code> is with reference to the currently displayed food list</p>
 </div>
 </div>
 </div>
@@ -1007,7 +1050,7 @@ Make sure you have enough money in your wallet for the purchase.
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the purchase was successful, you should be able to see the update in your purchase history immediately.
+If the purchase was successful, you should be able to see the update to your purchase history immediately.
 </td>
 </tr>
 </table>
@@ -1015,9 +1058,9 @@ If the purchase was successful, you should be able to see the update in your pur
 </div>
 </div>
 <div class="sect2">
-<h3 id="recommendations"><a class="link" href="#recommendations">3.6. Recommendations</a></h3>
+<h3 id="recommendations"><a class="link" href="#recommendations">3.7. Recommendations</a></h3>
 <div class="sect3">
-<h4 id="getting-a-list-of-recommended-food-items-code-recommend-code"><a class="link" href="#getting-a-list-of-recommended-food-items-code-recommend-code">3.6.1. Getting a list of recommended food items: <code>recommend</code></a></h4>
+<h4 id="getting-a-list-of-recommended-food-items-code-recommend-code"><a class="link" href="#getting-a-list-of-recommended-food-items-code-recommend-code">3.7.1. Getting a list of recommended food items: <code>recommend</code></a></h4>
 <div class="paragraph">
 <p>Users can get a list of recommendations from the application, based on these factors:</p>
 </div>
@@ -1026,13 +1069,13 @@ If the purchase was successful, you should be able to see the update in your pur
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>The user&#8217;s likes and dislikes (see <a href="#adding-likes-and-dislikes-to-the-recommendation-system-code-like-code-or-code-dislike-code">Section 3.6.3, &#8220;Adding likes and dislikes to the recommendation system: <code>like</code> or <code>dislike</code>&#8221;</a>)</p>
+<p>The user&#8217;s likes and dislikes (see <a href="#adding-likes-and-dislikes-to-the-recommendation-system-code-like-code-or-code-dislike-code">Section 3.7.3, &#8220;Adding likes and dislikes to the recommendation system: <code>like</code> or <code>dislike</code>&#8221;</a>)</p>
 </li>
 <li>
 <p>The user&#8217;s current budget and date to expiry of budget (see <a href="#sets-budget-for-a-number-of-days-code-budget-code">Section 3.4.1, &#8220;Sets budget for a number of days: <code>budget</code>&#8221;</a>)</p>
 </li>
 <li>
-<p>The user&#8217;s purchase history (see <a href="#buy-a-food-item-code-buy-code">Section 3.5.1, &#8220;Buy a food item: <code>buy</code>&#8221;</a>)</p>
+<p>The user&#8217;s purchase history (see <a href="#buy-a-food-item-code-buy-code">Section 3.6.1, &#8220;Buy a food item: <code>buy</code>&#8221;</a>)</p>
 </li>
 </ol>
 </div>
@@ -1221,7 +1264,7 @@ the <code>budget</code> command! See <a href="#sets-budget-for-a-number-of-days-
 </div>
 </div>
 <div class="sect3">
-<h4 id="listing-likes-and-dislikes-in-the-recommendation-system-code-like-code-or-code-dislike-code"><a class="link" href="#listing-likes-and-dislikes-in-the-recommendation-system-code-like-code-or-code-dislike-code">3.6.2. Listing likes and dislikes in the recommendation system: <code>like</code> or <code>dislike</code></a></h4>
+<h4 id="listing-likes-and-dislikes-in-the-recommendation-system-code-like-code-or-code-dislike-code"><a class="link" href="#listing-likes-and-dislikes-in-the-recommendation-system-code-like-code-or-code-dislike-code">3.7.2. Listing likes and dislikes in the recommendation system: <code>like</code> or <code>dislike</code></a></h4>
 <div class="paragraph">
 <p>To list the user&#8217;s likes and dislikes, use the command without providing any arguments.</p>
 </div>
@@ -1258,7 +1301,7 @@ the <code>budget</code> command! See <a href="#sets-budget-for-a-number-of-days-
 </table>
 </div>
 <div class="sect3">
-<h4 id="adding-likes-and-dislikes-to-the-recommendation-system-code-like-code-or-code-dislike-code"><a class="link" href="#adding-likes-and-dislikes-to-the-recommendation-system-code-like-code-or-code-dislike-code">3.6.3. Adding likes and dislikes to the recommendation system: <code>like</code> or <code>dislike</code></a></h4>
+<h4 id="adding-likes-and-dislikes-to-the-recommendation-system-code-like-code-or-code-dislike-code"><a class="link" href="#adding-likes-and-dislikes-to-the-recommendation-system-code-like-code-or-code-dislike-code">3.7.3. Adding likes and dislikes to the recommendation system: <code>like</code> or <code>dislike</code></a></h4>
 <div class="paragraph">
 <p>Users can specify their liked and disliked categories, tags and/or locations. The recommendation
 system will then be able to generate more accurate recommendations with the user&#8217;s preferences.</p>
@@ -1361,7 +1404,7 @@ for their convenience.
 </div>
 </div>
 <div class="sect3">
-<h4 id="removing-likes-and-dislikes-from-the-recommendation-system-code-removelike-code-or-code-removedislike-code"><a class="link" href="#removing-likes-and-dislikes-from-the-recommendation-system-code-removelike-code-or-code-removedislike-code">3.6.4. Removing likes and dislikes from the recommendation system: <code>removelike</code> or <code>removedislike</code></a></h4>
+<h4 id="removing-likes-and-dislikes-from-the-recommendation-system-code-removelike-code-or-code-removedislike-code"><a class="link" href="#removing-likes-and-dislikes-from-the-recommendation-system-code-removelike-code-or-code-removedislike-code">3.7.4. Removing likes and dislikes from the recommendation system: <code>removelike</code> or <code>removedislike</code></a></h4>
 <div class="paragraph">
 <p>Users are able to remove their previously added likes and dislikes (if they exist)
 from the system.</p>
@@ -1450,7 +1493,7 @@ Users can provide multiple categories, tags and/or locations with each command.
 </div>
 </div>
 <div class="sect3">
-<h4 id="clearing-all-likes-and-dislikes-from-the-recommendation-system-code-removelike-code-or-code-removedislike-code"><a class="link" href="#clearing-all-likes-and-dislikes-from-the-recommendation-system-code-removelike-code-or-code-removedislike-code">3.6.5. Clearing all likes and dislikes from the recommendation system: <code>removelike</code> or <code>removedislike</code></a></h4>
+<h4 id="clearing-all-likes-and-dislikes-from-the-recommendation-system-code-removelike-code-or-code-removedislike-code"><a class="link" href="#clearing-all-likes-and-dislikes-from-the-recommendation-system-code-removelike-code-or-code-removedislike-code">3.7.5. Clearing all likes and dislikes from the recommendation system: <code>removelike</code> or <code>removedislike</code></a></h4>
 <div class="paragraph">
 <p>To remove all likes or dislikes, use this command without providing any arguments.</p>
 </div>
@@ -1537,9 +1580,9 @@ Only use this command if you are sure that you want to clear your likes and disl
 </div>
 </div>
 <div class="sect2">
-<h3 id="alias"><a class="link" href="#alias">3.7. Alias</a></h3>
+<h3 id="alias"><a class="link" href="#alias">3.8. Alias</a></h3>
 <div class="sect3">
-<h4 id="editing-the-alias-for-a-specific-command-code-alias-code"><a class="link" href="#editing-the-alias-for-a-specific-command-code-alias-code">3.7.1. Editing the alias for a specific command: <code>alias</code></a></h4>
+<h4 id="editing-the-alias-for-a-specific-command-code-alias-code"><a class="link" href="#editing-the-alias-for-a-specific-command-code-alias-code">3.8.1. Editing the alias for a specific command: <code>alias</code></a></h4>
 <div class="paragraph">
 <p>Users are able to given an alias word for any given command in $aveNUS. You need to give one <code>COMMANDWORD</code> and
 one optional <code>ALIASWORD</code>. If no <code>ALIASWORD</code> is given, the <code>ALIASWORD</code> for the specific <code>COMMANDWORD</code> will be cleared.</p>
@@ -1781,4 +1824,4 @@ later to run the app.</p>
 </tbody>
 </table>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-06 09:44:31 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-06 11:30:37 UTC</div></div></div></body></html>
