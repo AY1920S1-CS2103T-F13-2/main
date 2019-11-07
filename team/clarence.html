@@ -155,6 +155,13 @@ This is an enhancement to the implemented command-line command history feature.<
 </div>
 </div>
 <div class="sect2">
+<h3 id="code-contributions"><a class="link" href="#code-contributions">Code contributions</a></h3>
+<div class="paragraph">
+<p><a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#search=fatclarence&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2019-09-06&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false&amp;until=2019-11-05">Project Code Dashboard</a>
+| <a href="https://github.com/AY1920S1-CS2103T-F13-2/main/pulls?utf8=%E2%9C%93&amp;q=is%3Apr+author%3Afatclarence+is%3Aclosed">Pull Request</a></p>
+</div>
+</div>
+<div class="sect2">
 <h3 id="other-contributions"><a class="link" href="#other-contributions">Other contributions</a></h3>
 <div class="ulist">
 <ul>
@@ -423,4 +430,97 @@ which passes this string (named commandText) to the Logic component by calling L
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-06 11:30:37 UTC</div></div></div></body></html>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-developer-guide"><a class="link" href="#contributions-to-developer-guide">Contributions to Developer Guide</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>I have made documentation contributions to the Developer Guide regarding the 2 main features I implemented, i.e. Savings-Tracking and Withdrawal-Tracking features.<br>
+This section will only show the contribution that I have made regarding the Savings-Tracking feature of the Developer Guide to adhere to the PPP word limit.<br>
+The documentation regarding the Withdrawal-Tracking feature can be found in our Developer Guide.</p>
+</div>
+<div class="sect2">
+<h3 id="savings-feature-2"><a class="link" href="#savings-feature-2">Savings feature</a></h3>
+<div class="paragraph">
+<p>The Savings feature allows users to save a specified amount of money from their wallet into their Savings Account using the <code>save AMOUNT</code> command, where <code>AMOUNT</code> is a user defined amount of money to deposit into the user&#8217;s Savings Account.
+The Savings feature also allows the user to withdraw from his savings account either into his wallet or withdraw the money completely from the $aveNUS app.
+Using the <code>withdraw AMOUNT</code>, users will be able to transfer their money into their $aveNUS wallets, and using "withdraw out AMOUNT", the user can withdraw the
+money completely from the Savings Account and the application.</p>
+</div>
+<div class="sect3">
+<h4 id="classes-for-savings-feature-in-model-2"><a class="link" href="#classes-for-savings-feature-in-model-2">Classes for savings feature in Model</a></h4>
+<div class="paragraph">
+<p>The Savings feature was implemented with a new set of classes introduced to the Model. The <code>SavingsAccount</code> is a singleton class
+which contains the methods and  classes related to this feature.
+The <code>SavingsAccount</code> object is stored in $aveNUS. It exposes a read-only interface <code>ReadOnlySavings</code> to allow the other components to retrieve
+the savings history of the user while maintaining data integrity.</p>
+</div>
+<div class="paragraph">
+<p>The <code>SavingsAccount</code> contains a unique <code>SavingsHistory</code> which contains a list of the past savings and withdrawals made by the user.
+which are represented by <code>Saving</code> and <code>Withdrawal</code> respectively. Both <code>Saving</code> and <code>Withdrawal</code>
+implement AccountMoney object, which consists of 2 objects:</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>Amount</code> indicated the value added/withdrew and it is displayed in the UI.</p>
+</li>
+<li>
+<p><code>TimeStamp</code> indicated the date and time the amount of money was added/withdrawn.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Each <code>AccountMoney</code> object is unique because the <code>TimeStamp</code> will never be the same. Since it is not possible for the user to do a saving
+and a withdrawal at a single time.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/SavingsAccountClassDiagram.png" alt="SavingsAccount" width="180">
+</div>
+<div class="title">Figure 4. Savings class diagram in Model component.</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="strong-adding-to-the-savings-account-strong-2"><a class="link" href="#strong-adding-to-the-savings-account-strong-2"><strong>Adding to the Savings Account</strong></a></h4>
+<div class="paragraph">
+<p>The user may want to add a new saving to his savings account. This can be done with the <code>save</code> command.</p>
+</div>
+<div class="paragraph">
+<p>The savings/withdrawals are stored in the SavingsAccount in the SavingsHistory object, which stores the savings/withdrawal
+as a list.</p>
+</div>
+<div class="paragraph">
+<p>The current implementation for adding a new saving/withdrawal is done by overwriting the existing SavingsHistory, with a new
+SavingsHistory that includes past and new savings/withdrawals.</p>
+</div>
+<div class="paragraph">
+<p>The command is read as a text string from the command box in the UI and then is executed by calling MainWindow#executeCommand(),
+which passes this string (named commandText) to the Logic component by calling Logic#execute(Model model).</p>
+</div>
+<div class="paragraph">
+<p>The sequence diagram for interactions between the Logic, Model and Storage components when a user executes the <code>save</code> command is shown below.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/SaveSequenceDiagram.png" alt="SaveSequenceDiagram">
+</div>
+<div class="title">Figure 5. Sequence diagram for sample save command</div>
+</div>
+<div class="paragraph">
+<p>The following activity diagram below summarizes how the save command works</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/SaveActivityDiagram.png" alt="SaveActivityDiagram" width="400">
+</div>
+<div class="title">Figure 6. Activity diagram for a sample save command</div>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-07 15:45:21 UTC</div></div></div></body></html>
