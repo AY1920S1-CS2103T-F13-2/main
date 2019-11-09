@@ -250,6 +250,30 @@ the command box and then hitting <kbd>Enter</kbd>.</p>
 <p>You have to provide additional parameters for some commands, and the format of each command
 is provided in the command descriptions.</p>
 </div>
+<div class="paragraph">
+<p>Provided below is a summary of the command format used in the $aveNUS User Guide:</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><code>UPPER_CASE</code> words are the parameters supplied by you.</p>
+</div>
+<div class="paragraph">
+<p>For example, <code>info COMMAND</code>, <code>COMMAND</code> is a parameter to find out more information about <code>COMMAND</code>.</p>
+</div>
+<div class="paragraph">
+<p>Items in square brackets are optional.</p>
+</div>
+<div class="paragraph">
+<p>For example, <code>budget AMOUNT [DURATION]</code> has an optional parameter <code>DURATION</code>, hence <code>budget 100 10</code> or <code>budget 100</code>
+are both valid commands.</p>
+</div>
+<div class="paragraph">
+<p>Items with …​ after them can be used multiple times or not at all.
+For example, <code>delete INDEX&#8230;&#8203;</code> works with commands such as <code>delete 1</code>, <code>delete 1 2</code> and so on.</p>
+</div>
+</div>
+</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1082,10 +1106,6 @@ If the purchase was successful, you should be able to see the update to your pur
 </div>
 </div>
 <div class="paragraph">
-<p>The recommended amount to spend per meal is calculated by <code>budget / (daysToExpiry * 2)</code> under the assumption that the
-user takes 2 meals per day.</p>
-</div>
-<div class="paragraph">
 <p>The factors affecting the calculation of the recommendation value is summarized in the tables below.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
@@ -1213,18 +1233,6 @@ user takes 2 meals per day.</p>
 </div>
 </div>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-To clear the recommendations, use the <code>list</code> or <code>add</code> command.
-</td>
-</tr>
-</table>
-</div>
 <table class="tableblock frame-all grid-none spread">
 <colgroup>
 <col style="width: 5%;">
@@ -1249,6 +1257,31 @@ To clear the recommendations, use the <code>list</code> or <code>add</code> comm
 </tr>
 </tbody>
 </table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+To clear the recommendations, use the <code>list</code> or <code>add</code> command.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The recommended amount to spend per meal is calculated by <code>budget / (daysToExpiry * 2)</code> under the assumption that the
+user takes 2 meals per day, provided the budget and daysToExpiry is set by the user.
+</td>
+</tr>
+</table>
+</div>
 <div class="admonitionblock warning">
 <table>
 <tr>
@@ -1256,7 +1289,7 @@ To clear the recommendations, use the <code>list</code> or <code>add</code> comm
 <i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-If you do not see any recommendations, make sure that you have a non-zero budget and days to budget expiry set using
+If you do not see any recommendations, make sure that you have a non-zero budget set using
 the <code>budget</code> command! See <a href="#sets-budget-for-a-number-of-days-code-budget-code">Section 3.4.1, &#8220;Sets budget for a number of days: <code>budget</code>&#8221;</a> for more information.
 </td>
 </tr>
@@ -1313,7 +1346,8 @@ system will then be able to generate more accurate recommendations with the user
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-Users can provide multiple categories, tags and/or locations with each command.
+Users can provide multiple categories, tags and/or locations with each command. However, at least one category, tag
+or location must be provided with each command.
 </td>
 </tr>
 </table>
@@ -1337,7 +1371,7 @@ for their convenience.
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><strong>Format</strong>: <code>like c/CATEGORY t/TAG l/LOCATION</code><br>
+<p><strong>Format</strong>: <code>like [c/CATEGORY]&#8230;&#8203; [t/TAG]&#8230;&#8203; [l/LOCATION]&#8230;&#8203;</code><br>
 <strong>Example</strong>: <code>like c/chinese t/chicken t/rice l/frontier canteen</code></p>
 </div>
 </div>
@@ -1372,7 +1406,7 @@ for their convenience.
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><strong>Format</strong>: <code>dislike c/CATEGORY t/TAG l/LOCATION</code><br>
+<p><strong>Format</strong>: <code>dislike [c/CATEGORY]&#8230;&#8203; [t/TAG]&#8230;&#8203; [l/LOCATION]&#8230;&#8203;</code><br>
 <strong>Example</strong>: <code>dislike c/italian t/pasta t/cheese l/the tea party</code></p>
 </div>
 </div>
@@ -1409,6 +1443,19 @@ for their convenience.
 <p>Users are able to remove their previously added likes and dislikes (if they exist)
 from the system.</p>
 </div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Users can provide multiple categories, tags and/or locations with each command. However, at least one category, tag or
+location to remove must be provided with each command.
+</td>
+</tr>
+</table>
+</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -1416,7 +1463,7 @@ from the system.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Users can provide multiple categories, tags and/or locations with each command.
+The likes and dislikes must exist in the system before removing them.
 </td>
 </tr>
 </table>
@@ -1426,7 +1473,7 @@ Users can provide multiple categories, tags and/or locations with each command.
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><strong>Format</strong>: <code>removelike c/CATEGORY t/TAG l/LOCATION</code><br>
+<p><strong>Format</strong>: <code>removelike [c/CATEGORY]&#8230;&#8203; [t/TAG]&#8230;&#8203; [l/LOCATION]&#8230;&#8203;</code><br>
 <strong>Example</strong>: <code>removelike c/Japanese t/Spicy t/Healthy l/The Tea Party</code></p>
 </div>
 </div>
@@ -1461,7 +1508,7 @@ Users can provide multiple categories, tags and/or locations with each command.
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><strong>Format</strong>: <code>removedislike c/CATEGORY t/TAG l/LOCATION</code><br>
+<p><strong>Format</strong>: <code>removedislike [c/CATEGORY]&#8230;&#8203; [t/TAG]&#8230;&#8203; [l/LOCATION]&#8230;&#8203;</code><br>
 <strong>Example</strong>: <code>removedislike c/Chinese t/Cheap t/Healthy l/The Deck</code></p>
 </div>
 </div>
@@ -1495,7 +1542,10 @@ Users can provide multiple categories, tags and/or locations with each command.
 <div class="sect3">
 <h4 id="clearing-all-likes-and-dislikes-from-the-recommendation-system-code-removelike-code-or-code-removedislike-code"><a class="link" href="#clearing-all-likes-and-dislikes-from-the-recommendation-system-code-removelike-code-or-code-removedislike-code">3.7.5. Clearing all likes and dislikes from the recommendation system: <code>removelike</code> or <code>removedislike</code></a></h4>
 <div class="paragraph">
-<p>To remove all likes or dislikes, use this command without providing any arguments.</p>
+<p>To remove all likes or dislikes, use this command with the <code>ALL</code> flag.</p>
+</div>
+<div class="paragraph">
+<p>This command is case-sensitive to prevent any accidental clearing of user&#8217;s likes or dislikes.</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -1514,7 +1564,7 @@ Only use this command if you are sure that you want to clear your likes and disl
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><strong>Format</strong>: <code>removelike</code></p>
+<p><strong>Format</strong>: <code>removelike ALL</code></p>
 </div>
 </div>
 </div>
@@ -1548,7 +1598,7 @@ Only use this command if you are sure that you want to clear your likes and disl
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><strong>Format</strong>: <code>removedislike</code></p>
+<p><strong>Format</strong>: <code>removedislike ALL</code></p>
 </div>
 </div>
 </div>
@@ -1602,7 +1652,7 @@ Alias Words can only be alphanumeric.
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><strong>Format</strong>: <code>alias COMMANDWORD [ALIASWORD]</code>
+<p><strong>Format</strong>: <code>alias COMMANDWORD [ALIASWORD]</code><br>
 <strong>Example</strong>: <code>alias sort shuffleAround</code></p>
 </div>
 </div>
@@ -1667,7 +1717,7 @@ later to run the app.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Unfortunately you are unable to change the app’s language</p>
+<p>Unfortunately, you are unable to change the app’s language.</p>
 </div>
 </div>
 </div>
@@ -1824,4 +1874,4 @@ later to run the app.</p>
 </tbody>
 </table>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 03:12:39 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 04:32:46 UTC</div></div></div></body></html>
