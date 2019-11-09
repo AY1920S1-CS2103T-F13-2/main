@@ -270,7 +270,7 @@ default browser would definitely make it much more convenient for the user.</p>
 enhance the user&#8217;s experience as a whole.</p>
 </div>
 <div class="sect3">
-<h4 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">Viewing Help: <code>help</code></a></h4>
+<h4 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">Viewing help: <code>help</code></a></h4>
 <div class="paragraph">
 <p>Display the help screen that allows you to view the list of commands available and also open up the user guide
 by clicking the <code>Guide</code> button.</p>
@@ -278,21 +278,23 @@ by clicking the <code>Guide</code> button.</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><strong>Format</strong>: <code>help</code></p>
+<p><strong>Format</strong>: <code>help</code>
+<strong>Example</strong>: <code>help</code></p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="viewing-history-code-history-code"><a class="link" href="#viewing-history-code-history-code">Viewing History: <code>history</code></a></h4>
+<h4 id="viewing-previously-typed-commands-code-history-code"><a class="link" href="#viewing-previously-typed-commands-code-history-code">Viewing previously typed commands: <code>history</code></a></h4>
 <div class="paragraph">
-<p>Display within the grey box right below the command line box, a list of
-commands that were recently typed in order of which was most recent.</p>
+<p>Shows the user&#8217;s previously typed commands in the Results Display.<br>
+The user can view up to 10 previously typed commands.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><strong>Format</strong>: <code>history</code> or <code>h</code></p>
+<p><strong>Format</strong>: <code>history</code><br>
+<strong>Example</strong>: <code>history</code></p>
 </div>
 </div>
 </div>
@@ -303,7 +305,7 @@ commands that were recently typed in order of which was most recent.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-A message stating that "You have not entered any commands." is displayed if you have not input any commands prior to the call to history.
+A message stating that "You have not entered any commands." is displayed if you have not input any commands prior to the call to <code>history</code>.
 </td>
 </tr>
 </table>
@@ -319,14 +321,36 @@ A message stating that "You have not entered any commands." is displayed if you 
 <p><span class="icon green"><i class="fa fa-check fa-2x"></i></span></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>You will see a list of commands that you have previously typed in the grey box right below the Command Line.</p>
+<p>You will see a list of commands that you have previously typed in the Results Display.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/HistoryCommandUI.png" alt="HistoryCommandUI">
+</div>
+<div class="title">Figure 1. Example of view of $aveNUS after user inputs <code>history</code>. History of previously typed command appears in the Results Display as shown.</div>
+</div>
+<div class="paragraph">
+<p></p>
 </div></div></td>
 </tr>
 </tbody>
 </table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The <code>history</code> command will only display previous commands with no duplicate commands.<br>
+ Eg. typing <code>history</code> twice will only result in a display of <code>history</code> only ONCE in the Results Display.
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect3">
-<h4 id="viewing-information-about-a-command-code-info-code"><a class="link" href="#viewing-information-about-a-command-code-info-code">Viewing information about a Command: <code>info</code></a></h4>
+<h4 id="viewing-information-about-a-command-code-info-code"><a class="link" href="#viewing-information-about-a-command-code-info-code">Viewing information about a command: <code>info</code></a></h4>
 <div class="paragraph">
 <p>Displays the information of the command specified. A new window will be opened.</p>
 </div>
@@ -399,7 +423,7 @@ A message stating that "You have not entered any commands." is displayed if you 
 <div class="content">
 <img src="../images/UiClassDiagram.png" alt="UiClassDiagram">
 </div>
-<div class="title">Figure 1. Structure of the UI Component</div>
+<div class="title">Figure 2. Structure of the UI Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> : <a href="{repoURL}/src/main/java/seedu/savenus/ui/Ui.java"><code>Ui.java</code></a></p>
@@ -439,7 +463,7 @@ A message stating that "You have not entered any commands." is displayed if you 
 <div class="content">
 <img src="../images/LogicClassDiagram.png" alt="LogicClassDiagram">
 </div>
-<div class="title">Figure 2. Structure of the Logic Component</div>
+<div class="title">Figure 3. Structure of the Logic Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> :
@@ -471,7 +495,7 @@ A message stating that "You have not entered any commands." is displayed if you 
 <div class="content">
 <img src="../images/DeleteSequenceDiagram.png" alt="DeleteSequenceDiagram">
 </div>
-<div class="title">Figure 3. Interactions Inside the Logic Component for the <code>delete 1</code> Command</div>
+<div class="title">Figure 4. Interactions Inside the Logic Component for the <code>delete 1</code> Command</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -487,4 +511,4 @@ The lifeline for <code>DeleteCommandParser</code> should end at the destroy mark
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 08:13:44 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 09:07:32 UTC</div></div></div></body></html>
