@@ -114,12 +114,15 @@
 <li><a href="#use-cases">Appendix C: Use Cases</a></li>
 <li><a href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></li>
 <li><a href="#glossary">Appendix E: Glossary</a></li>
-<li><a href="#product-survey">Appendix F: Product Survey</a></li>
-<li><a href="#instructions-for-manual-testing">Appendix G: Instructions for Manual Testing</a>
+<li><a href="#instructions-for-manual-testing">Appendix F: Instructions for Manual Testing</a>
 <ul class="sectlevel2">
-<li><a href="#launch-and-shutdown">G.1. Launch and Shutdown</a></li>
-<li><a href="#deleting-a-food-item">G.2. Deleting a Food Item</a></li>
-<li><a href="#saving-data">G.3. Saving data</a></li>
+<li><a href="#launch-and-shutdown">F.1. Launch and Shutdown</a></li>
+<li><a href="#deleting-a-food-item">F.2. Deleting a Food Item</a></li>
+<li><a href="#saving-data">F.3. Saving data</a></li>
+<li><a href="#adding-like-and-dislikes">F.4. Adding like and dislikes</a></li>
+<li><a href="#removing-likes-and-dislikes">F.5. Removing likes and dislikes</a></li>
+<li><a href="#clearing-likes-and-dislikes">F.6. Clearing likes and dislikes</a></li>
+<li><a href="#obtaining-a-list-of-recommendations">F.7. Obtaining a list of recommendations</a></li>
 </ul>
 </li>
 </ul>
@@ -2368,6 +2371,56 @@ e.g. <code>seedu.savenus.logic.LogicManagerTest</code></p>
 </li>
 </ul>
 </div>
+<h3 id="use-case-add-likes-dislikes" class="discrete">Use case: Add likes / dislikes</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to add likes or dislikes, providing the list of liked categories, tags and locations.</p>
+</li>
+<li>
+<p>$aveNUS adds the likes or dislikes into the system.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. The user attempts to add a like that already exists as a dislike, or vice versa.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. $aveNUS shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1b. The given categories, tags or locations are invalid.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b1. $aveNUS shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 <h3 id="use-case-display-recommendations" class="discrete">Use case: Display recommendations</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
@@ -2537,49 +2590,7 @@ e.g. <code>seedu.savenus.logic.LogicManagerTest</code></p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="product-survey"><a class="link" href="#product-survey">Appendix F: Product Survey</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><strong>$aveNUS</strong></p>
-</div>
-<div class="paragraph">
-<p>Author:
-Sean Low
-Jon Chua
-Choo Ze Yuan
-Roby Tanama
-Clarence Koh</p>
-</div>
-<div class="paragraph">
-<p>Pros:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Cons:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">Appendix G: Instructions for Manual Testing</a></h2>
+<h2 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">Appendix F: Instructions for Manual Testing</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Given below are instructions to test the app manually.</p>
@@ -2597,7 +2608,7 @@ These instructions only provide a starting point for testers to work on; testers
 </table>
 </div>
 <div class="sect2">
-<h3 id="launch-and-shutdown"><a class="link" href="#launch-and-shutdown">G.1. Launch and Shutdown</a></h3>
+<h3 id="launch-and-shutdown"><a class="link" href="#launch-and-shutdown">F.1. Launch and Shutdown</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2635,7 +2646,7 @@ Expected: The most recent window size and location is retained.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-food-item"><a class="link" href="#deleting-a-food-item">G.2. Deleting a Food Item</a></h3>
+<h3 id="deleting-a-food-item"><a class="link" href="#deleting-a-food-item">F.2. Deleting a Food Item</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2664,7 +2675,7 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">G.3. Saving data</a></h3>
+<h3 id="saving-data"><a class="link" href="#saving-data">F.3. Saving data</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2679,9 +2690,105 @@ Expected: Similar to previous.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
+</div>
+<div class="sect2">
+<h3 id="adding-like-and-dislikes"><a class="link" href="#adding-like-and-dislikes">F.4. Adding like and dislikes</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Adding likes and dislikes</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>like c/chinese t/spicy l/location</code><br>
+Expected: The provided categories, tags and locations are added into the like list. Details of the list of likes
+and dislikes are shown in the status message.</p>
+</li>
+<li>
+<p>Test case: <code>dislike c/chinese</code> (after running the above command)<br>
+Expected: The dislike is not added because the category <code>chinese</code> already exists in the user&#8217;s likes.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="removing-likes-and-dislikes"><a class="link" href="#removing-likes-and-dislikes">F.5. Removing likes and dislikes</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Removing likes and dislikes</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: There has to be a like or dislike in the system for the user to remove.</p>
+</li>
+<li>
+<p>Test case: <code>removelike c/chinese</code><br>
+Expected: The category <code>chinese</code> is deleted from the user&#8217;s likes. Details of the list of likes and dislikes are shown
+in the status message.</p>
+</li>
+<li>
+<p>Test case <code>removelike c/chinese</code> (after running the above command)<br>
+Expected: The command fails because there is no more <code>chinese</code> category present in the user&#8217;s likes.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="clearing-likes-and-dislikes"><a class="link" href="#clearing-likes-and-dislikes">F.6. Clearing likes and dislikes</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Clearing likes and dislikes</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Optimally, there should be likes or dislikes present in the system for the user to remove.
+However, the command still works even if there are no likes or dislikes present.</p>
+</li>
+<li>
+<p>Test case: <code>removelike ALL</code><br>
+Expected: All likes are cleared.</p>
+</li>
+<li>
+<p>Test case <code>removedislike ALL</code><br>
+Expected: All dislikes are cleared.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="obtaining-a-list-of-recommendations"><a class="link" href="#obtaining-a-list-of-recommendations">F.7. Obtaining a list of recommendations</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Obtaining a list of recommendations</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Budget and days to expiry of the budget are set by the user. The budget should also be set high enough
+such that the user is able to purchase food items when the recommendation system calculates the optimal daily budget.</p>
+</li>
+<li>
+<p>Test case: <code>recommend</code><br>
+Expected: A list of recommendations tailored to the user will appear, taking into account factors such as the user&#8217;s
+liked and disliked categories, tags and locations and so on. All factors affecting the recommendation system&#8217;s
+recommendation value are documented in the User Guide and Developer Guide.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 05:15:46 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 05:39:56 UTC</div></div></div></body></html>
