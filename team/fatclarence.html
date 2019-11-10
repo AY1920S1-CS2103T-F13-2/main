@@ -422,83 +422,481 @@ When new command is entered that is not <code>show</code> the savings history di
 <div class="sect2">
 <h3 id="savings-feature"><a class="link" href="#savings-feature">Savings feature</a></h3>
 <div class="paragraph">
-<p>The Savings feature allows users to save a specified amount of money from their wallet into their Savings Account using the <code>save AMOUNT</code> command, where <code>AMOUNT</code> is a user defined amount of money to deposit into the user&#8217;s Savings Account.
-The Savings feature also allows the user to withdraw from his savings account either into his wallet or withdraw the money completely from the $aveNUS app.
-Using the <code>withdraw AMOUNT</code>, users will be able to transfer their money into their $aveNUS wallets, and using "withdraw out AMOUNT", the user can withdraw the
-money completely from the Savings Account and the application.</p>
+<p>The Savings feature encompasses a Savings Account feature and a Savings History feature, both of which work together to allow the user
+to track his/her savings effectively.</p>
+</div>
+<div class="paragraph">
+<p>The Savings Account feature allows users to save a specified amount of money from their wallet into their savings account using the <code>save AMOUNT</code> command, where <code>AMOUNT</code> is a user defined amount of money to deposit into the user&#8217;s savings account.
+The feature also allows the user to withdraw money from his/her savings account, direcly into his/her $aveNUS wallet. This is accomplished using the <code>withdraw AMOUNT</code> command.</p>
+</div>
+<div class="paragraph">
+<p>Meanwhile, the Savings History feature is also introduced to allow $aveNUS users to keep track of all their savings and withdrawals.
+This is available by clicking the "Savings" tab located below the Savings Account and Wallet display.</p>
+</div>
+<div class="paragraph">
+<p>Also, users can choose to view their savings or withdrawals only, by calling the <code>show TO_DISPLAY</code> command. This allows the user to have a quick overview of his savings/withdrawals history to decide
+if he/she has been saving enough or not. <code>TO_DISPLAY</code> must either be <code>savings</code>/
+<code>withdrawals</code>/<code>both</code>, whereby the <code>TO_DISPLAY</code> input is case-insensitive, i.e. <code>show SaVinGs</code> and <code>show savings</code> are valid inputs.</p>
 </div>
 <div class="sect3">
-<h4 id="classes-for-savings-feature-in-model"><a class="link" href="#classes-for-savings-feature-in-model">Classes for savings feature in Model</a></h4>
+<h4 id="classes-for-savings-account-feature-in-model"><a class="link" href="#classes-for-savings-account-feature-in-model">Classes for Savings Account feature in Model</a></h4>
 <div class="paragraph">
-<p>The Savings feature was implemented with a new set of classes introduced to the Model. The <code>SavingsAccount</code> is a singleton class
-which contains the methods and  classes related to this feature.
-The <code>SavingsAccount</code> object is stored in $aveNUS. It exposes a read-only interface <code>ReadOnlySavings</code> to allow the other components to retrieve
-the savings history of the user while maintaining data integrity.</p>
-</div>
-<div class="paragraph">
-<p>The <code>SavingsAccount</code> contains a unique <code>SavingsHistory</code> which contains a list of the past savings and withdrawals made by the user.
-which are represented by <code>Saving</code> and <code>Withdrawal</code> respectively. Both <code>Saving</code> and <code>Withdrawal</code>
-implement AccountMoney object, which consists of 2 objects:</p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><code>Amount</code> indicated the value added/withdrew and it is displayed in the UI.</p>
-</li>
-<li>
-<p><code>TimeStamp</code> indicated the date and time the amount of money was added/withdrawn.</p>
-</li>
-</ol>
-</div>
-</div>
+<p>The Savings Account feature was implemented with the introduction of a new set of classes into the Model. A new <code>SavingsAccount</code> class encapsulates all the methods and classes
+related to this feature. The <code>SavingsAccount</code> object is stored in $aveNUS and it exposes only a read-only interface, <code>ReadOnlySavingsAccount</code>, to allow other components to retrieve
+the retrieve information within the user&#8217;s <code>SavingsAccount</code>, while maintaining data integrity.</p>
 </div>
 <div class="paragraph">
-<p>Each <code>AccountMoney</code> object is unique because the <code>TimeStamp</code> will never be the same. Since it is not possible for the user to do a saving
-and a withdrawal at a single time.</p>
+<p><code>SavingsAccount</code> contains a single instance of the <code>CurrentSavings</code> class, a class we implemented to allow greater abstraction of the user&#8217;s current savings value.</p>
+</div>
+<div class="paragraph">
+<p><code>CurrentSavings</code> is only called once throughout the application and is modified with package-protected methods within the class itself.
+This allows the <code>CurrentSavings</code> itself to be unmodifiable in other components in the application except within the <code>SavingsAccount</code> itself.</p>
+</div>
+<div class="paragraph">
+<p>Within <code>CurrentSavings</code>, there is an unmodifiable <code>Money</code> class. Once a <code>CurrentSavings</code> object is created with a fixed value, it cannot be changed.</p>
+</div>
+<div class="paragraph">
+<p>The <code>SavingsAccount</code> Class Diagram below shows the relationship between the classes mentioned above.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="../images/SavingsAccountClassDiagram.png" alt="SavingsAccount" width="180">
+<img src="../images/SavingsAccountClassDiagram.png" alt="SavingsAccountClassDiagram" width="400">
 </div>
-<div class="title">Figure 5. Savings class diagram in Model component.</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="adding-to-the-savings-account"><a class="link" href="#adding-to-the-savings-account">Adding to the Savings Account</a></h4>
+<h4 id="classes-for-savings-history-feature-in-model"><a class="link" href="#classes-for-savings-history-feature-in-model">Classes for Savings History feature in Model</a></h4>
 <div class="paragraph">
-<p>The user may want to add a new saving to his savings account. This can be done with the <code>save</code> command.</p>
+<p>Also, the Savings History feature was implemented with another set of classes introduced to the Model. It includes a new <code>SavingsHistory</code> class, which contains all the methods
+related to this feature. The <code>SavingHistory</code> object exposes only a read-only interface, <code>ReadOnlySavingsHistory</code>, to allow other components within the application to retrieve the savings
+history of the user.</p>
 </div>
 <div class="paragraph">
-<p>The savings/withdrawals are stored in the SavingsAccount in the SavingsHistory object, which stores the savings/withdrawal
-as a list.</p>
+<p>Within the <code>SavingsHistory</code> object, it contains all the methods to interact with the <code>SavingsHistoryList</code> object. Hence,
+Each <code>SavingsHistory</code> object only has ONE unmodifiable <code>SavingsHistoryList</code> object.</p>
 </div>
 <div class="paragraph">
-<p>The current implementation for adding a new saving/withdrawal is done by overwriting the existing SavingsHistory, with a new
-SavingsHistory that includes past and new savings/withdrawals.</p>
+<p>The <code>SavingsHistoryList</code> class acts as an abstraction of a list, which sole purpose is to store all <code>Savings</code> made by the user.</p>
 </div>
 <div class="paragraph">
-<p>The command is read as a text string from the command box in the UI and then is executed by calling MainWindow#executeCommand(),
-which passes this string (named commandText) to the Logic component by calling Logic#execute(Model model).</p>
+<p>Withdrawals and savings made by the user are both objects of the class <code>Savings</code>. Within the <code>Savings</code> class, there are 3 unmodifiable attributes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Money</code> which is a class that contains the value of the <code>Savings</code> made. It is a negative value if a withdrawal is made, and a positive
+value if a saving was made.</p>
+</li>
+<li>
+<p><code>TimeStamp</code> which is a class that contains the time in which the <code>Savings</code> object was created, i.e. what time the saving/withdrawal was
+made by the user.</p>
+</li>
+<li>
+<p><code>isWithdraw</code> which is a boolean that is <code>true</code> if the <code>Savings</code> object is a withdrawal, and false if the object is a saving.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>The sequence diagram for interactions between the Logic, Model and Storage components when a user executes the <code>save</code> command is shown below.</p>
+<p>The <code>SavingsHistory</code> Class Diagram is shown below to reflect the interactions above.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="../images/SaveSequenceDiagram.png" alt="SaveSequenceDiagram">
+<img src="../images/SavingsHistoryClassDiagram.png" alt="SavingsHistoryClassDiagram" width="400">
 </div>
-<div class="title">Figure 6. Sequence diagram for sample save command</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="making-a-saving-in-avenus"><a class="link" href="#making-a-saving-in-avenus">Making a saving in $aveNUS</a></h4>
+<div class="paragraph">
+<p>When a user requests for a saving to be made in the application by calling the <code>save AMOUNT</code> command, the following processes
+will occur internally within the application:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>AMOUNT</code> specified by the user is deducted from the user&#8217;s wallet.</p>
+</li>
+<li>
+<p>The <code>AMOUNT</code> specified by the user is added into the user&#8217;s saving account.</p>
+</li>
+<li>
+<p>The saving is reflected in the savings history.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If the user enters an <code>AMOUNT</code> that is negative, a <code>ParseException</code> is thrown. This exception is thrown from <code>ParserUtil#parseSavings(savings)</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect4">
+<h5 id="deduction-of-savings-amount-from-user-s-wallet"><a class="link" href="#deduction-of-savings-amount-from-user-s-wallet">Deduction of savings amount from user&#8217;s wallet</a></h5>
+<div class="paragraph">
+<p>A <code>Savings</code> object is instantiated in the <code>SaveCommand</code> with the user&#8217;s input. It contains information about how much <code>Money</code>
+was saved, and the <code>TimeStamp</code> of the savings made. The <code>Money</code> object contains the amount of savings made, and the <code>TimeStamp</code>
+object contains the time and date the saving was made by the user.</p>
 </div>
 <div class="paragraph">
-<p>The following activity diagram below summarizes how the save command works</p>
+<p>When <code>SaveCommand#execute()</code> is called, <code>model#depositInSavings(savingsAmount)</code> is called. Within the <code>Model</code> of $aveNUS, the user&#8217;s
+wallet is checked. If the user attempts to save more money than he/she has in his/her wallet, they will be prompted that the command
+is invalid.</p>
 </div>
-<div class="imageblock" style="text-align: center">
-<div class="content">
-<img src="../images/SaveActivityDiagram.png" alt="SaveActivityDiagram" width="400">
+<div class="paragraph">
+<p>If the check passes, the saving amount is deducted from the user&#8217;s account within the <code>Model</code>.</p>
 </div>
-<div class="title">Figure 7. Activity diagram for a sample save command</div>
+</div>
+<div class="sect4">
+<h5 id="adding-of-savings-amount-into-user-s-savings-account"><a class="link" href="#adding-of-savings-amount-into-user-s-savings-account">Adding of savings amount into user&#8217;s savings account.</a></h5>
+<div class="paragraph">
+<p>Subsequently after the savings amount is deducted from the wallet, <code>savingsAccount#addToSavings(savings)</code>
+is called in the <code>Model</code> class. This method call will result in the addition of the savings into the <code>SavingsAccount</code>.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="adding-of-the-savings-into-the-user-s-saving-history"><a class="link" href="#adding-of-the-savings-into-the-user-s-saving-history">Adding of the savings into the user&#8217;s saving history</a></h5>
+<div class="paragraph">
+<p>After the savings is added into the user&#8217;s savings account, <code>model#addToHistory(savingsAmount)</code> is called, and the details
+of the savings are added into the <code>SavingsHistoryList</code>, found within the <code>SavingsHistory</code> object.</p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the making of a saving works:</p>
+</div>
+<div class="paragraph">
+<p>ADD SEQUENCE DIAGRAM HERE</p>
+</div>
+<div class="paragraph">
+<p>The following activity diagram summarises what happens when a user executes a <code>SaveCommand</code>:</p>
+</div>
+<div class="paragraph">
+<p>ADD ACTIVITY DIAGRAM HERE.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h5>
+<div class="paragraph">
+<p>Detailed below are the design considerations taken into account when engineering the
+ <code>model#depositInSavings(savingsAmount)</code> function.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Design considerations of the <code>model#depositInSavings(savingsAmount)</code> function.</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Alternative 1 (Chosen Implementation)</th>
+<th class="tableblock halign-left valign-top">Alternative 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Make <code>CurrentSavings</code> a standalone class that does not extend <code>Savings</code> class</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>CurrentSavings</code> can have its own set of methods that make it unmodifiable. <code>Savings</code> on the other hand is modifiable internally.</p>
+</li>
+<li>
+<p>More efficient as the number of method calls to retrieve the value of the user&#8217;s savings is reduced.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Does not maintain good abstraction of <code>CurrentSavings</code> since logically, it is a type of savings.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Make <code>CurrentSavings</code> extend the class <code>Savings</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Maintains better abstraction since in reality, a current saving is a type of savings.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Decreases the efficiency of getting the value of the savings, since it would mean increase coupling of classes, i.e.
+calling methods from <code>Savings</code> and <code>Money</code> classes to obtain the savings amount.</p>
+</li>
+<li>
+<p><code>Savings</code> is a modifiable class internally. Better data integrity will be ensured if the <code>CurrentSavings</code> remain a view-only
+class.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="making-a-withdrawal-from-user-s-savings-account"><a class="link" href="#making-a-withdrawal-from-user-s-savings-account">Making a withdrawal from user&#8217;s savings account.</a></h4>
+<div class="paragraph">
+<p>Similar to making a saving, the following steps occur when the user requests for a withdrawal.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>AMOUNT</code> specified by the user is deducted from the user&#8217;s savings account.</p>
+</li>
+<li>
+<p>The <code>AMOUNT</code> specified by the user is added into the user&#8217;s wallet.</p>
+</li>
+<li>
+<p>The withdrawal is reflected in the savings history.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If the user enters an <code>AMOUNT</code> that is negative, a <code>ParseException</code> is thrown. This exception is thrown from <code>ParserUtil#parseSavings(savings)</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect4">
+<h5 id="deduction-of-withdrawal-amount-from-user-s-savings-account"><a class="link" href="#deduction-of-withdrawal-amount-from-user-s-savings-account">Deduction of withdrawal amount from user&#8217;s savings account.</a></h5>
+<div class="paragraph">
+<p>A <code>Savings</code> object is instantiated in the <code>WithdrawCommand</code> with the user&#8217;s input. Because a withdrawal is subtracted from the savings account, the withdrawal is a <code>Savings</code> object
+recorded with a negative value.</p>
+</div>
+<div class="paragraph">
+<p>It contains information about how much <code>Money</code> was withdrawn, and the <code>TimeStamp</code> of the withdrawal made. The <code>Money</code> object contains the amount to withdraw, and the <code>TimeStamp</code>
+object contains the time and date the withdrawal was made by the user.</p>
+</div>
+<div class="paragraph">
+<p>When <code>WithdrawCommand#execute()</code> is called, <code>model#withdrawFromSavings(savings)</code> is called. Within the <code>Model</code> of $aveNUS, the user&#8217;s
+savings account is checked. If the user attempts to withdraw more money than he/she has in the savings account, they will be prompted that the command
+is invalid.</p>
+</div>
+<div class="paragraph">
+<p>Once the check is passed, a check is done in the wallet described in the section below.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="adding-of-savings-amount-into-user-s-wallet"><a class="link" href="#adding-of-savings-amount-into-user-s-wallet">Adding of savings amount into user&#8217;s wallet.</a></h5>
+<div class="paragraph">
+<p>Before the savings amount is deducted from the savings account, a check is done to make sure that the addition of the withdrawal
+into the user&#8217;s wallet will not result in the budget amount in the wallet to be great than $1,000,000.</p>
+</div>
+<div class="paragraph">
+<p>Only when this check is passed, the savings amount is added into the user&#8217;s wallet, using the command <code>wallet#setRemainingBudget(newRemainingBudget)</code>.
+The savings amount is subsequently deducted from the savings account using the command <code>savingsAccount#deductFromSavings(savings)</code>. Note again that the savings
+is of a negative value since this is a withdrawal.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="adding-of-the-withdrawals-into-the-user-s-saving-history"><a class="link" href="#adding-of-the-withdrawals-into-the-user-s-saving-history">Adding of the withdrawals into the user&#8217;s saving history</a></h5>
+<div class="paragraph">
+<p>After a successful deduction from the savings account, <code>model#addToHistory(savingsAmount)</code> is called, and the details
+of the savings are added into the <code>SavingsHistoryList</code>, found within the <code>SavingsHistory</code> object.</p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the making of a withdrawal works:</p>
+</div>
+<div class="paragraph">
+<p>ADD SEQUENCE DIAGRAM HERE</p>
+</div>
+<div class="paragraph">
+<p>The following activity diagram summarises what happens when a user wishes to withdraw $10 from his savings account:</p>
+</div>
+<div class="paragraph">
+<p>ADD ACTIVITY DIAGRAM HERE.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h5>
+<div class="paragraph">
+<p>Detailed below are the design considerations taken into account when engineering the
+ <code>Savings</code> class.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 2. Design considerations of the <code>Savings</code> class.</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Alternative 1</th>
+<th class="tableblock halign-left valign-top">Alternative 2 (Chosen Implementation)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Make a <code>Savings</code> class and another <code>Withdrawals</code> class, both extending an abstract class called <code>SavingsItem</code>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Maintains better abstraction since <code>Savings</code> and <code>Withdrawals</code> should implement similar methods and have similar attributes. They
+are simply opposites of each other.</p>
+</li>
+<li>
+<p>Allows <code>Money</code> to always be non-negative, since that is reasonable as in reality,
+there is no negative <code>Money</code> object, i.e. there are no negative dollar bills.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Implementation of the <code>SavingsHistory</code> and <code>SavingsHistoryList</code> becomes complicated since both <code>Savings</code> and <code>Wtihdrawals</code>
+have to be included within the same <code>SavingsHistoryList</code>.</p>
+</li>
+<li>
+<p>Converting the user&#8217;s savings history from the the Jackson File to a <code>SavingsHistory</code> object would be more complicated,
+because through this implementation, we were trying to maintain a non-negative money object, but the withdrawal is saved with a
+negative value.</p>
+</li>
+<li>
+<p>To read back the withdrawal from the Jackson file (savings.json) for savings account, an additional boolean might have to be saved persistently into the user&#8217;s hard disk
+to differentiate savings from withdrawals. This is necessary since the value saved will always be positive in this implementation.</p>
+</li>
+<li>
+<p>Implementation of <code>JsonAdaptedWithdrawals</code> and <code>JsonAdaptedSavingsItem</code> would be required,
+and complicated conversions between <code>SavingsItem</code> to the subclasses of <code>Savings</code> and <code>Withdrawals</code> have to be done.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Make a <code>Savings</code> class that has a <code>Money</code> object which can be modified internally.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Easier implementation since only <code>Savings</code> will be added to the <code>SavingsHistoryList</code>.</p>
+</li>
+<li>
+<p>Easier to identify withdrawals in the Jackson file for the user&#8217;s savings account, since the
+withdrawal is simply the saving with a negative value in it&#8217;s savingsAmount field.</p>
+</li>
+<li>
+<p>No need to maintain 2 separate list for the user&#8217;s savings history.</p>
+</li>
+<li>
+<p>Reading back from Jackson file for savings account is more direct as everything is converted back to a
+<code>JsonAdaptedSavings</code> object, which is then used to create a new <code>Savings</code> object within the application.</p>
+</li>
+<li>
+<p>We can still add a boolean field within the <code>Savings</code> to identify if it is a savings/withdrawal efficiently, however,
+there is no need to save this boolean persistently in the Jackson File.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Does not maintain abstraction because in reality a withdrawal is not a saving.</p>
+</li>
+<li>
+<p>Methods have to be called to convert the withdrawal amount to a positive amount in order to pass
+the checks that have been put in place to identify if a <code>Money</code> object has a valid value. We cannot change these checks
+since the <code>Price</code> object (introduced in <a href="#Budget Tracking feature">[Budget Tracking feature]</a>) and
+did not intend to implement new ones just for the withdrawal.</p>
+</li>
+<li>
+<p><code>Money</code> should not be of a negative value since in reality that is illogical.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="viewing-only-the-savings-withdrawals-made-by-the-user"><a class="link" href="#viewing-only-the-savings-withdrawals-made-by-the-user">Viewing only the savings/withdrawals made by the user.</a></h4>
+<div class="paragraph">
+<p>Upon the request of the user to display only the savings he/she makes using, for example, <code>show savings</code>, a
+<code>ShowCommand</code> object is created. It is then executed in the application&#8217;s <code>Logic</code>, and this returns
+a <code>CommandResult</code> which is instantiated with two booleans: <code>showSavingsOnly</code> and <code>showWithdrawalsOnly</code>.</p>
+</div>
+<div class="paragraph">
+<p>Within the <code>MainWindow</code> class of the application, these booleans are checked upon the calling of <code>mainWindow#executeCommand(commandText)</code>.
+In the example of the <code>show savings</code> input by the user, <code>showSavingsOnly</code> will be <code>true</code> and <code>showWithdrawalsOnly</code> will be <code>false</code>.</p>
+</div>
+<div class="paragraph">
+<p>This leads to the call to <code>ReadOnlySavingsHistory#getSavingsOnly()</code> method within the <code>ReadOnlySavingsHistory</code> class. This call
+returns an unmodifiable list of savings made by the user thus far.</p>
+</div>
+<div class="paragraph">
+<p>Finally, the savings history panel in the <code>MainWindow</code> class is updated with this unmodifiable list. The result
+is that the user will see only his savings being displayed within the application&#8217;s savings history panel.</p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the displaying of only savings/withdrawals works:</p>
+</div>
+<div class="paragraph">
+<p>ADD SEQUENCE DIAGRAM HERE</p>
+</div>
+<div class="paragraph">
+<p>The following activity diagram summarises what happens when a user requests to only view his savings:</p>
+</div>
+<div class="paragraph">
+<p>ADD ACTIVITY DIAGRAM HERE.</p>
 </div>
 </div>
 </div>
@@ -515,85 +913,483 @@ The documentation regarding the Withdrawal-Tracking feature can be found in our 
 <div class="sect2">
 <h3 id="savings-feature-2"><a class="link" href="#savings-feature-2">Savings feature</a></h3>
 <div class="paragraph">
-<p>The Savings feature allows users to save a specified amount of money from their wallet into their Savings Account using the <code>save AMOUNT</code> command, where <code>AMOUNT</code> is a user defined amount of money to deposit into the user&#8217;s Savings Account.
-The Savings feature also allows the user to withdraw from his savings account either into his wallet or withdraw the money completely from the $aveNUS app.
-Using the <code>withdraw AMOUNT</code>, users will be able to transfer their money into their $aveNUS wallets, and using "withdraw out AMOUNT", the user can withdraw the
-money completely from the Savings Account and the application.</p>
+<p>The Savings feature encompasses a Savings Account feature and a Savings History feature, both of which work together to allow the user
+to track his/her savings effectively.</p>
+</div>
+<div class="paragraph">
+<p>The Savings Account feature allows users to save a specified amount of money from their wallet into their savings account using the <code>save AMOUNT</code> command, where <code>AMOUNT</code> is a user defined amount of money to deposit into the user&#8217;s savings account.
+The feature also allows the user to withdraw money from his/her savings account, direcly into his/her $aveNUS wallet. This is accomplished using the <code>withdraw AMOUNT</code> command.</p>
+</div>
+<div class="paragraph">
+<p>Meanwhile, the Savings History feature is also introduced to allow $aveNUS users to keep track of all their savings and withdrawals.
+This is available by clicking the "Savings" tab located below the Savings Account and Wallet display.</p>
+</div>
+<div class="paragraph">
+<p>Also, users can choose to view their savings or withdrawals only, by calling the <code>show TO_DISPLAY</code> command. This allows the user to have a quick overview of his savings/withdrawals history to decide
+if he/she has been saving enough or not. <code>TO_DISPLAY</code> must either be <code>savings</code>/
+<code>withdrawals</code>/<code>both</code>, whereby the <code>TO_DISPLAY</code> input is case-insensitive, i.e. <code>show SaVinGs</code> and <code>show savings</code> are valid inputs.</p>
 </div>
 <div class="sect3">
-<h4 id="classes-for-savings-feature-in-model-2"><a class="link" href="#classes-for-savings-feature-in-model-2">Classes for savings feature in Model</a></h4>
+<h4 id="classes-for-savings-account-feature-in-model-2"><a class="link" href="#classes-for-savings-account-feature-in-model-2">Classes for Savings Account feature in Model</a></h4>
 <div class="paragraph">
-<p>The Savings feature was implemented with a new set of classes introduced to the Model. The <code>SavingsAccount</code> is a singleton class
-which contains the methods and  classes related to this feature.
-The <code>SavingsAccount</code> object is stored in $aveNUS. It exposes a read-only interface <code>ReadOnlySavings</code> to allow the other components to retrieve
-the savings history of the user while maintaining data integrity.</p>
-</div>
-<div class="paragraph">
-<p>The <code>SavingsAccount</code> contains a unique <code>SavingsHistory</code> which contains a list of the past savings and withdrawals made by the user.
-which are represented by <code>Saving</code> and <code>Withdrawal</code> respectively. Both <code>Saving</code> and <code>Withdrawal</code>
-implement AccountMoney object, which consists of 2 objects:</p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><code>Amount</code> indicated the value added/withdrew and it is displayed in the UI.</p>
-</li>
-<li>
-<p><code>TimeStamp</code> indicated the date and time the amount of money was added/withdrawn.</p>
-</li>
-</ol>
-</div>
-</div>
+<p>The Savings Account feature was implemented with the introduction of a new set of classes into the Model. A new <code>SavingsAccount</code> class encapsulates all the methods and classes
+related to this feature. The <code>SavingsAccount</code> object is stored in $aveNUS and it exposes only a read-only interface, <code>ReadOnlySavingsAccount</code>, to allow other components to retrieve
+the retrieve information within the user&#8217;s <code>SavingsAccount</code>, while maintaining data integrity.</p>
 </div>
 <div class="paragraph">
-<p>Each <code>AccountMoney</code> object is unique because the <code>TimeStamp</code> will never be the same. Since it is not possible for the user to do a saving
-and a withdrawal at a single time.</p>
+<p><code>SavingsAccount</code> contains a single instance of the <code>CurrentSavings</code> class, a class we implemented to allow greater abstraction of the user&#8217;s current savings value.</p>
+</div>
+<div class="paragraph">
+<p><code>CurrentSavings</code> is only called once throughout the application and is modified with package-protected methods within the class itself.
+This allows the <code>CurrentSavings</code> itself to be unmodifiable in other components in the application except within the <code>SavingsAccount</code> itself.</p>
+</div>
+<div class="paragraph">
+<p>Within <code>CurrentSavings</code>, there is an unmodifiable <code>Money</code> class. Once a <code>CurrentSavings</code> object is created with a fixed value, it cannot be changed.</p>
+</div>
+<div class="paragraph">
+<p>The <code>SavingsAccount</code> Class Diagram below shows the relationship between the classes mentioned above.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="../images/SavingsAccountClassDiagram.png" alt="SavingsAccount" width="180">
+<img src="../images/SavingsAccountClassDiagram.png" alt="SavingsAccountClassDiagram" width="400">
 </div>
-<div class="title">Figure 8. Savings class diagram in Model component.</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="adding-to-the-savings-account-2"><a class="link" href="#adding-to-the-savings-account-2">Adding to the Savings Account</a></h4>
+<h4 id="classes-for-savings-history-feature-in-model-2"><a class="link" href="#classes-for-savings-history-feature-in-model-2">Classes for Savings History feature in Model</a></h4>
 <div class="paragraph">
-<p>The user may want to add a new saving to his savings account. This can be done with the <code>save</code> command.</p>
+<p>Also, the Savings History feature was implemented with another set of classes introduced to the Model. It includes a new <code>SavingsHistory</code> class, which contains all the methods
+related to this feature. The <code>SavingHistory</code> object exposes only a read-only interface, <code>ReadOnlySavingsHistory</code>, to allow other components within the application to retrieve the savings
+history of the user.</p>
 </div>
 <div class="paragraph">
-<p>The savings/withdrawals are stored in the SavingsAccount in the SavingsHistory object, which stores the savings/withdrawal
-as a list.</p>
+<p>Within the <code>SavingsHistory</code> object, it contains all the methods to interact with the <code>SavingsHistoryList</code> object. Hence,
+Each <code>SavingsHistory</code> object only has ONE unmodifiable <code>SavingsHistoryList</code> object.</p>
 </div>
 <div class="paragraph">
-<p>The current implementation for adding a new saving/withdrawal is done by overwriting the existing SavingsHistory, with a new
-SavingsHistory that includes past and new savings/withdrawals.</p>
+<p>The <code>SavingsHistoryList</code> class acts as an abstraction of a list, which sole purpose is to store all <code>Savings</code> made by the user.</p>
 </div>
 <div class="paragraph">
-<p>The command is read as a text string from the command box in the UI and then is executed by calling MainWindow#executeCommand(),
-which passes this string (named commandText) to the Logic component by calling Logic#execute(Model model).</p>
+<p>Withdrawals and savings made by the user are both objects of the class <code>Savings</code>. Within the <code>Savings</code> class, there are 3 unmodifiable attributes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Money</code> which is a class that contains the value of the <code>Savings</code> made. It is a negative value if a withdrawal is made, and a positive
+value if a saving was made.</p>
+</li>
+<li>
+<p><code>TimeStamp</code> which is a class that contains the time in which the <code>Savings</code> object was created, i.e. what time the saving/withdrawal was
+made by the user.</p>
+</li>
+<li>
+<p><code>isWithdraw</code> which is a boolean that is <code>true</code> if the <code>Savings</code> object is a withdrawal, and false if the object is a saving.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>The sequence diagram for interactions between the Logic, Model and Storage components when a user executes the <code>save</code> command is shown below.</p>
+<p>The <code>SavingsHistory</code> Class Diagram is shown below to reflect the interactions above.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="../images/SaveSequenceDiagram.png" alt="SaveSequenceDiagram">
+<img src="../images/SavingsHistoryClassDiagram.png" alt="SavingsHistoryClassDiagram" width="400">
 </div>
-<div class="title">Figure 9. Sequence diagram for sample save command</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="making-a-saving-in-avenus-2"><a class="link" href="#making-a-saving-in-avenus-2">Making a saving in $aveNUS</a></h4>
+<div class="paragraph">
+<p>When a user requests for a saving to be made in the application by calling the <code>save AMOUNT</code> command, the following processes
+will occur internally within the application:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>AMOUNT</code> specified by the user is deducted from the user&#8217;s wallet.</p>
+</li>
+<li>
+<p>The <code>AMOUNT</code> specified by the user is added into the user&#8217;s saving account.</p>
+</li>
+<li>
+<p>The saving is reflected in the savings history.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If the user enters an <code>AMOUNT</code> that is negative, a <code>ParseException</code> is thrown. This exception is thrown from <code>ParserUtil#parseSavings(savings)</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect4">
+<h5 id="deduction-of-savings-amount-from-user-s-wallet-2"><a class="link" href="#deduction-of-savings-amount-from-user-s-wallet-2">Deduction of savings amount from user&#8217;s wallet</a></h5>
+<div class="paragraph">
+<p>A <code>Savings</code> object is instantiated in the <code>SaveCommand</code> with the user&#8217;s input. It contains information about how much <code>Money</code>
+was saved, and the <code>TimeStamp</code> of the savings made. The <code>Money</code> object contains the amount of savings made, and the <code>TimeStamp</code>
+object contains the time and date the saving was made by the user.</p>
 </div>
 <div class="paragraph">
-<p>The following activity diagram below summarizes how the save command works</p>
+<p>When <code>SaveCommand#execute()</code> is called, <code>model#depositInSavings(savingsAmount)</code> is called. Within the <code>Model</code> of $aveNUS, the user&#8217;s
+wallet is checked. If the user attempts to save more money than he/she has in his/her wallet, they will be prompted that the command
+is invalid.</p>
 </div>
-<div class="imageblock" style="text-align: center">
-<div class="content">
-<img src="../images/SaveActivityDiagram.png" alt="SaveActivityDiagram" width="400">
-</div>
-<div class="title">Figure 10. Activity diagram for a sample save command</div>
-</div>
+<div class="paragraph">
+<p>If the check passes, the saving amount is deducted from the user&#8217;s account within the <code>Model</code>.</p>
 </div>
 </div>
+<div class="sect4">
+<h5 id="adding-of-savings-amount-into-user-s-savings-account-2"><a class="link" href="#adding-of-savings-amount-into-user-s-savings-account-2">Adding of savings amount into user&#8217;s savings account.</a></h5>
+<div class="paragraph">
+<p>Subsequently after the savings amount is deducted from the wallet, <code>savingsAccount#addToSavings(savings)</code>
+is called in the <code>Model</code> class. This method call will result in the addition of the savings into the <code>SavingsAccount</code>.</p>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 17:11:44 UTC</div></div></div></body></html>
+</div>
+<div class="sect4">
+<h5 id="adding-of-the-savings-into-the-user-s-saving-history-2"><a class="link" href="#adding-of-the-savings-into-the-user-s-saving-history-2">Adding of the savings into the user&#8217;s saving history</a></h5>
+<div class="paragraph">
+<p>After the savings is added into the user&#8217;s savings account, <code>model#addToHistory(savingsAmount)</code> is called, and the details
+of the savings are added into the <code>SavingsHistoryList</code>, found within the <code>SavingsHistory</code> object.</p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the making of a saving works:</p>
+</div>
+<div class="paragraph">
+<p>ADD SEQUENCE DIAGRAM HERE</p>
+</div>
+<div class="paragraph">
+<p>The following activity diagram summarises what happens when a user executes a <code>SaveCommand</code>:</p>
+</div>
+<div class="paragraph">
+<p>ADD ACTIVITY DIAGRAM HERE.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="design-considerations-3"><a class="link" href="#design-considerations-3">Design Considerations</a></h5>
+<div class="paragraph">
+<p>Detailed below are the design considerations taken into account when engineering the
+ <code>model#depositInSavings(savingsAmount)</code> function.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 3. Design considerations of the <code>model#depositInSavings(savingsAmount)</code> function.</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Alternative 1 (Chosen Implementation)</th>
+<th class="tableblock halign-left valign-top">Alternative 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Make <code>CurrentSavings</code> a standalone class that does not extend <code>Savings</code> class</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>CurrentSavings</code> can have its own set of methods that make it unmodifiable. <code>Savings</code> on the other hand is modifiable internally.</p>
+</li>
+<li>
+<p>More efficient as the number of method calls to retrieve the value of the user&#8217;s savings is reduced.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Does not maintain good abstraction of <code>CurrentSavings</code> since logically, it is a type of savings.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Make <code>CurrentSavings</code> extend the class <code>Savings</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Maintains better abstraction since in reality, a current saving is a type of savings.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Decreases the efficiency of getting the value of the savings, since it would mean increase coupling of classes, i.e.
+calling methods from <code>Savings</code> and <code>Money</code> classes to obtain the savings amount.</p>
+</li>
+<li>
+<p><code>Savings</code> is a modifiable class internally. Better data integrity will be ensured if the <code>CurrentSavings</code> remain a view-only
+class.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="making-a-withdrawal-from-user-s-savings-account-2"><a class="link" href="#making-a-withdrawal-from-user-s-savings-account-2">Making a withdrawal from user&#8217;s savings account.</a></h4>
+<div class="paragraph">
+<p>Similar to making a saving, the following steps occur when the user requests for a withdrawal.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>AMOUNT</code> specified by the user is deducted from the user&#8217;s savings account.</p>
+</li>
+<li>
+<p>The <code>AMOUNT</code> specified by the user is added into the user&#8217;s wallet.</p>
+</li>
+<li>
+<p>The withdrawal is reflected in the savings history.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If the user enters an <code>AMOUNT</code> that is negative, a <code>ParseException</code> is thrown. This exception is thrown from <code>ParserUtil#parseSavings(savings)</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect4">
+<h5 id="deduction-of-withdrawal-amount-from-user-s-savings-account-2"><a class="link" href="#deduction-of-withdrawal-amount-from-user-s-savings-account-2">Deduction of withdrawal amount from user&#8217;s savings account.</a></h5>
+<div class="paragraph">
+<p>A <code>Savings</code> object is instantiated in the <code>WithdrawCommand</code> with the user&#8217;s input. Because a withdrawal is subtracted from the savings account, the withdrawal is a <code>Savings</code> object
+recorded with a negative value.</p>
+</div>
+<div class="paragraph">
+<p>It contains information about how much <code>Money</code> was withdrawn, and the <code>TimeStamp</code> of the withdrawal made. The <code>Money</code> object contains the amount to withdraw, and the <code>TimeStamp</code>
+object contains the time and date the withdrawal was made by the user.</p>
+</div>
+<div class="paragraph">
+<p>When <code>WithdrawCommand#execute()</code> is called, <code>model#withdrawFromSavings(savings)</code> is called. Within the <code>Model</code> of $aveNUS, the user&#8217;s
+savings account is checked. If the user attempts to withdraw more money than he/she has in the savings account, they will be prompted that the command
+is invalid.</p>
+</div>
+<div class="paragraph">
+<p>Once the check is passed, a check is done in the wallet described in the section below.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="adding-of-savings-amount-into-user-s-wallet-2"><a class="link" href="#adding-of-savings-amount-into-user-s-wallet-2">Adding of savings amount into user&#8217;s wallet.</a></h5>
+<div class="paragraph">
+<p>Before the savings amount is deducted from the savings account, a check is done to make sure that the addition of the withdrawal
+into the user&#8217;s wallet will not result in the budget amount in the wallet to be great than $1,000,000.</p>
+</div>
+<div class="paragraph">
+<p>Only when this check is passed, the savings amount is added into the user&#8217;s wallet, using the command <code>wallet#setRemainingBudget(newRemainingBudget)</code>.
+The savings amount is subsequently deducted from the savings account using the command <code>savingsAccount#deductFromSavings(savings)</code>. Note again that the savings
+is of a negative value since this is a withdrawal.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="adding-of-the-withdrawals-into-the-user-s-saving-history-2"><a class="link" href="#adding-of-the-withdrawals-into-the-user-s-saving-history-2">Adding of the withdrawals into the user&#8217;s saving history</a></h5>
+<div class="paragraph">
+<p>After a successful deduction from the savings account, <code>model#addToHistory(savingsAmount)</code> is called, and the details
+of the savings are added into the <code>SavingsHistoryList</code>, found within the <code>SavingsHistory</code> object.</p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the making of a withdrawal works:</p>
+</div>
+<div class="paragraph">
+<p>ADD SEQUENCE DIAGRAM HERE</p>
+</div>
+<div class="paragraph">
+<p>The following activity diagram summarises what happens when a user wishes to withdraw $10 from his savings account:</p>
+</div>
+<div class="paragraph">
+<p>ADD ACTIVITY DIAGRAM HERE.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="design-considerations-4"><a class="link" href="#design-considerations-4">Design Considerations</a></h5>
+<div class="paragraph">
+<p>Detailed below are the design considerations taken into account when engineering the
+ <code>Savings</code> class.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 4. Design considerations of the <code>Savings</code> class.</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Alternative 1</th>
+<th class="tableblock halign-left valign-top">Alternative 2 (Chosen Implementation)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Make a <code>Savings</code> class and another <code>Withdrawals</code> class, both extending an abstract class called <code>SavingsItem</code>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Maintains better abstraction since <code>Savings</code> and <code>Withdrawals</code> should implement similar methods and have similar attributes. They
+are simply opposites of each other.</p>
+</li>
+<li>
+<p>Allows <code>Money</code> to always be non-negative, since that is reasonable as in reality,
+there is no negative <code>Money</code> object, i.e. there are no negative dollar bills.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Implementation of the <code>SavingsHistory</code> and <code>SavingsHistoryList</code> becomes complicated since both <code>Savings</code> and <code>Wtihdrawals</code>
+have to be included within the same <code>SavingsHistoryList</code>.</p>
+</li>
+<li>
+<p>Converting the user&#8217;s savings history from the the Jackson File to a <code>SavingsHistory</code> object would be more complicated,
+because through this implementation, we were trying to maintain a non-negative money object, but the withdrawal is saved with a
+negative value.</p>
+</li>
+<li>
+<p>To read back the withdrawal from the Jackson file (savings.json) for savings account, an additional boolean might have to be saved persistently into the user&#8217;s hard disk
+to differentiate savings from withdrawals. This is necessary since the value saved will always be positive in this implementation.</p>
+</li>
+<li>
+<p>Implementation of <code>JsonAdaptedWithdrawals</code> and <code>JsonAdaptedSavingsItem</code> would be required,
+and complicated conversions between <code>SavingsItem</code> to the subclasses of <code>Savings</code> and <code>Withdrawals</code> have to be done.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Make a <code>Savings</code> class that has a <code>Money</code> object which can be modified internally.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Easier implementation since only <code>Savings</code> will be added to the <code>SavingsHistoryList</code>.</p>
+</li>
+<li>
+<p>Easier to identify withdrawals in the Jackson file for the user&#8217;s savings account, since the
+withdrawal is simply the saving with a negative value in it&#8217;s savingsAmount field.</p>
+</li>
+<li>
+<p>No need to maintain 2 separate list for the user&#8217;s savings history.</p>
+</li>
+<li>
+<p>Reading back from Jackson file for savings account is more direct as everything is converted back to a
+<code>JsonAdaptedSavings</code> object, which is then used to create a new <code>Savings</code> object within the application.</p>
+</li>
+<li>
+<p>We can still add a boolean field within the <code>Savings</code> to identify if it is a savings/withdrawal efficiently, however,
+there is no need to save this boolean persistently in the Jackson File.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Does not maintain abstraction because in reality a withdrawal is not a saving.</p>
+</li>
+<li>
+<p>Methods have to be called to convert the withdrawal amount to a positive amount in order to pass
+the checks that have been put in place to identify if a <code>Money</code> object has a valid value. We cannot change these checks
+since the <code>Price</code> object (introduced in <a href="#Budget Tracking feature">[Budget Tracking feature]</a>) and
+did not intend to implement new ones just for the withdrawal.</p>
+</li>
+<li>
+<p><code>Money</code> should not be of a negative value since in reality that is illogical.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="viewing-only-the-savings-withdrawals-made-by-the-user-2"><a class="link" href="#viewing-only-the-savings-withdrawals-made-by-the-user-2">Viewing only the savings/withdrawals made by the user.</a></h4>
+<div class="paragraph">
+<p>Upon the request of the user to display only the savings he/she makes using, for example, <code>show savings</code>, a
+<code>ShowCommand</code> object is created. It is then executed in the application&#8217;s <code>Logic</code>, and this returns
+a <code>CommandResult</code> which is instantiated with two booleans: <code>showSavingsOnly</code> and <code>showWithdrawalsOnly</code>.</p>
+</div>
+<div class="paragraph">
+<p>Within the <code>MainWindow</code> class of the application, these booleans are checked upon the calling of <code>mainWindow#executeCommand(commandText)</code>.
+In the example of the <code>show savings</code> input by the user, <code>showSavingsOnly</code> will be <code>true</code> and <code>showWithdrawalsOnly</code> will be <code>false</code>.</p>
+</div>
+<div class="paragraph">
+<p>This leads to the call to <code>ReadOnlySavingsHistory#getSavingsOnly()</code> method within the <code>ReadOnlySavingsHistory</code> class. This call
+returns an unmodifiable list of savings made by the user thus far.</p>
+</div>
+<div class="paragraph">
+<p>Finally, the savings history panel in the <code>MainWindow</code> class is updated with this unmodifiable list. The result
+is that the user will see only his savings being displayed within the application&#8217;s savings history panel.</p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the displaying of only savings/withdrawals works:</p>
+</div>
+<div class="paragraph">
+<p>ADD SEQUENCE DIAGRAM HERE</p>
+</div>
+<div class="paragraph">
+<p>The following activity diagram summarises what happens when a user requests to only view his savings:</p>
+</div>
+<div class="paragraph">
+<p>ADD ACTIVITY DIAGRAM HERE.</p>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 19:01:38 UTC</div></div></div></body></html>
