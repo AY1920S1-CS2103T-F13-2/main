@@ -49,6 +49,7 @@
 <ul class="sectlevel3">
 <li><a href="#classes-for-sorting-feature-in-model">4.4.1. Classes for sorting feature in Model</a></li>
 <li><a href="#creation-of-new-custom-comparator">4.4.2. Creation of new Custom Comparator</a></li>
+<li><a href="#sorting-of-the-food-list">4.4.3. Sorting of the Food list</a></li>
 </ul>
 </li>
 <li><a href="#savings-feature">4.5. Savings feature</a>
@@ -848,24 +849,37 @@ stall. As a result, we would want to be able to add these 2 food items into the 
 <div class="sect2">
 <h3 id="sorting-feature"><a class="link" href="#sorting-feature">4.4. Sorting feature</a></h3>
 <div class="paragraph">
-<p>The Sorting feature allows users to sort their food items based on certain <code>FIELD</code> and <code>DIRECTION</code>.</p>
+<p>The Sorting feature allows users to sort their food items based on certain <code>FIELD</code> and <code>DIRECTION</code>. The <code>FIELD</code> and
+<code>DIRECTION</code> are as followed:</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>The <code>FIELD</code> are as follows: <code>NAME</code>, <code>DESCRIPTION</code>, <code>PRICE</code>, <code>CATEGORY</code>, <code>LOCATION</code>, <code>OPENING_HOURS</code>, <code>RESTRICTIONS</code>.</p>
+<p><code>FIELD</code> : <code>NAME</code>, <code>DESCRIPTION</code>, <code>PRICE</code>, <code>CATEGORY</code>, <code>LOCATION</code>, <code>OPENING_HOURS</code>, <code>RESTRICTIONS</code>.</p>
 </li>
 <li>
-<p>The <code>DIRECTION</code> are as follows: <code>ASCENDING</code> or <code>DESCENDING</code>.</p>
+<p><code>DIRECTION</code> : <code>ASC</code> or <code>DESC</code>.</p>
 </li>
 </ol>
 </div>
 </div>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The <code>FIELD</code> and <code>DIRECTION</code> can be entirely in Upper or Lower Case.
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
-<p>First and foremost, they will be able to sort the food items based on their default ordering.
+<p>First and foremost, users will be able to sort the food items based on their default ordering.
 The default ordering is based on ascending price, name and then category. This is done using the <code>default</code> command.+</p>
 </div>
 <div class="paragraph">
@@ -890,8 +904,96 @@ The default ordering is based on ascending price, name and then category. This i
 <p>From which, you will need to call <code>makesort FIELD DIRECTION</code> to create the custom comparator. The <code>CustomSorter</code> contains a <code>FoodComparator</code>.<br></p>
 </div>
 <div class="paragraph">
-<p>The <code>FoodComparator</code> stores fields which will be needed for various <code>FOOD</code> to be compared. The <code>DefaultComparator</code> helps to sort food items based on their natural ordering. This is called via the <code>default</code> command.
-Finally, the <code>FieldComparator</code> helps to compare between various <code>FIELD</code>.</p>
+<p>The <code>FoodComparator</code> stores fields which will be needed for various <code>Food</code> to be compared.
+The <code>DefaultComparator</code> helps to sort food items based on their natural ordering. This is called via the <code>default</code> command.
+When <code>default</code> is called, the food list will be sorted according to ascending category, ascending name and ascending price.</p>
+</div>
+<div class="paragraph">
+<p>Detailed below are the design considerations taken into account when engineering the <code>DefaultComparator</code> and <code>FoodComparator</code>
+classes.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 2. Design considerations of `</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Alternative 1 (Chosen Implementation)</th>
+<th class="tableblock halign-left valign-top">Alternative 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>DefaultComparator</code> should extend from <code>FoodComparator</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Duplicate Code is not needed.</p>
+</li>
+<li>
+<p>This from of relationship follows Liskov Substitution Principle, as <code>DefaultComparator</code> can be easily substituted
+by an instance of <code>FoodComparator</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Necessary to specify fields while constructing the <code>DefaultComparator</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>DefaultComparator</code> and <code>FoodComparator</code> should be standalone classes.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Both can implement their own <code>compareTo()</code> methods.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This Implementation is wasteful as duplicate code is written.</p>
+</li>
+<li>
+<p>Makes it complicated for future developers when they wish to change the <code>DefaultComparator</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>As a result, we have chosen alternative 1. By specifying the specific fields in the body of constructor in
+the <code>DefaultComparator</code>, it makes it easier for future developers to create their own form of <code>DefaultComparator</code>.
+Not only that, it saves time and reduces duplicate code.</p>
 </div>
 </div>
 <div class="sect3">
@@ -912,12 +1014,12 @@ Finally, the <code>FieldComparator</code> helps to compare between various <code
 <p>The user may want to create a new custom comparator. This can be done with the <code>makesort</code> command.</p>
 </div>
 <div class="paragraph">
-<p>The fields are stored in the SavingsAccount in the CustomSorter object, which stores the necessary
+<p>The fields are stored in the <code>FoodComparator</code> in the CustomSorter object, which stores the necessary fields
 as a list.</p>
 </div>
 <div class="paragraph">
-<p>The current implementation for creating a new CustomSorter is done by overwriting the existing CustomSorter, with a new
-CustomSorter with the desired fields.</p>
+<p>The current implementation for creating a new <code>CustomSorter</code> is done by overwriting the existing <code>CustomSorter</code>, with a new
+<code>CustomSorter</code> with the desired fields.</p>
 </div>
 <div class="paragraph">
 <p>The command is read as a text string from the command box in the UI and then is executed by calling MainWindow#executeCommand(),
@@ -935,6 +1037,75 @@ which passes this string (named commandText) to the Logic component by calling L
 <div class="paragraph">
 <p>If fields are given, the original CustomSorter is overridden by a new CustomSorter with new fields. Else, the original
 CustomSorter is overridden by a new CustomSorter with no fields.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="sorting-of-the-food-list"><a class="link" href="#sorting-of-the-food-list">4.4.3. Sorting of the Food list</a></h4>
+<div class="paragraph">
+<p>After the customization of the Custom Comparator, the user can now call the <code>customsort</code> command to sort the food items based
+on the fields specified. For example, if the fields specified are <code>PRICE ASC NAME DESC</code>, the system will sort the food items in order
+of ascending price. If two items have the same price, they will be ranked according to their names using lexicographic
+comparison.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/SortingActivityDiagram.png" alt="SortingActivityDiagram" width="500">
+</div>
+<div class="title">Figure 12. Activity diagram for a sample sort command</div>
+</div>
+<div class="paragraph">
+<p>If two foods have the same price, they will compared using lexicographical ordering based on their names. If they
+are lexicographically similar, their ranks do not change.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 3. Ranking of food items</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Price ($)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ranking (Price)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Overall Ranking</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Chicken Rice</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.80</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nasi Lemak</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.80</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fried Rice</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4.00</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Dim Sum</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.80</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>From the table above, we can see Dim Sum will be ranked at the top as it is the cheapest. On the other hand, Fried Rice will
+be ranked at the bottom as it is the most expensive food item.</p>
+</div>
+<div class="paragraph">
+<p>As Chicken Rice and Nasi Lemak have the same price, they will compared
+using lexicographical ordering based on their names. Chicken Rice still has a higher ranking than Nasi Lemak as Chicken Rice is
+lexicographically smaller than Nasi Lemak.</p>
 </div>
 </div>
 </div>
@@ -981,7 +1152,7 @@ and a withdrawal at a single time.</p>
 <div class="content">
 <img src="images/SavingsAccountClassDiagram.png" alt="SavingsAccount" width="180">
 </div>
-<div class="title">Figure 12. Savings class diagram in Model component.</div>
+<div class="title">Figure 13. Savings class diagram in Model component.</div>
 </div>
 </div>
 <div class="sect3">
@@ -1008,7 +1179,7 @@ which passes this string (named commandText) to the Logic component by calling L
 <div class="content">
 <img src="images/SaveSequenceDiagram.png" alt="SaveSequenceDiagram">
 </div>
-<div class="title">Figure 13. Sequence diagram for sample save command</div>
+<div class="title">Figure 14. Sequence diagram for sample save command</div>
 </div>
 <div class="paragraph">
 <p>The following activity diagram below summarizes how the save command works</p>
@@ -1017,7 +1188,7 @@ which passes this string (named commandText) to the Logic component by calling L
 <div class="content">
 <img src="images/SaveActivityDiagram.png" alt="SaveActivityDiagram" width="400">
 </div>
-<div class="title">Figure 14. Activity diagram for a sample save command</div>
+<div class="title">Figure 15. Activity diagram for a sample save command</div>
 </div>
 </div>
 </div>
@@ -1037,7 +1208,7 @@ Budget information is also used in the application&#8217;s recommendation system
 <div class="content">
 <img src="images/WalletClassDiagram.png" alt="WalletClassDiagram" width="400">
 </div>
-<div class="title">Figure 15. Wallet-related class diagram in Model component.</div>
+<div class="title">Figure 16. Wallet-related class diagram in Model component.</div>
 </div>
 <div class="sect4">
 <h5 id="wallet"><a class="link" href="#wallet">Wallet</a></h5>
@@ -1108,7 +1279,7 @@ Due to development constraints, we have decided to only update the budget durati
 <p>Below are some design considerations when implementing Budget-related models.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 2. Design considerations of the for <code>RemainingBudget</code> model</caption>
+<caption class="title">Table 4. Design considerations of the for <code>RemainingBudget</code> model</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -1208,7 +1379,7 @@ This may confuse the user and is a bug that we wish to avoid.</p>
 <div class="content">
 <img src="images/BudgetSequenceDiagram.png" alt="BudgetSequenceDiagram">
 </div>
-<div class="title">Figure 16. Sequence diagram for <code>budget 100 10</code> command</div>
+<div class="title">Figure 17. Sequence diagram for <code>budget 100 10</code> command</div>
 </div>
 <div class="paragraph">
 <p>The following activity diagram below summarizes how <code>budget</code> commands works</p>
@@ -1217,7 +1388,7 @@ This may confuse the user and is a bug that we wish to avoid.</p>
 <div class="content">
 <img src="images/BudgetActivityDiagram.png" alt="BudgetActivityDiagram">
 </div>
-<div class="title">Figure 17. Activity diagram for a <code>budget</code> command</div>
+<div class="title">Figure 18. Activity diagram for a <code>budget</code> command</div>
 </div>
 </div>
 </div>
@@ -1234,7 +1405,7 @@ A user&#8217;s purchase history is displayed in the UI, similar to the food menu
 <div class="content">
 <img src="images/PurchaseHistoryClassDiagram.png" alt="PurchaseHistoryClassDiagram" width="200">
 </div>
-<div class="title">Figure 18. Purchase-related class diagram in Model component.</div>
+<div class="title">Figure 19. Purchase-related class diagram in Model component.</div>
 </div>
 <div class="paragraph">
 <p>The Purchase Tracking feature was implemented with the following classes.</p>
@@ -1306,7 +1477,7 @@ the purchase history data of the user while maintaining data integrity.</p>
 <div class="content">
 <img src="images/BuySequenceDiagram.png" alt="BuySequenceDiagram">
 </div>
-<div class="title">Figure 19. Sequence diagram for <code>buy 1</code> command</div>
+<div class="title">Figure 20. Sequence diagram for <code>buy 1</code> command</div>
 </div>
 <div class="paragraph">
 <p>The following activity diagram below summarizes how <code>buy</code> commands works</p>
@@ -1315,7 +1486,7 @@ the purchase history data of the user while maintaining data integrity.</p>
 <div class="content">
 <img src="images/BuyActivityDiagram.png" alt="BuyActivityDiagram" width="300">
 </div>
-<div class="title">Figure 20. Activity diagram for a <code>buy</code> command</div>
+<div class="title">Figure 21. Activity diagram for a <code>buy</code> command</div>
 </div>
 </div>
 </div>
@@ -1417,7 +1588,7 @@ comparison can be done more easily.</p>
 <div class="content">
 <img src="images/RecommendationClassDiagram.png" alt="RecommendationClassDiagram" width="400">
 </div>
-<div class="title">Figure 21. Recommendation class diagram in Model component</div>
+<div class="title">Figure 22. Recommendation class diagram in Model component</div>
 </div>
 </div>
 <div class="sect3">
@@ -1437,7 +1608,7 @@ Furthermore, the user&#8217;s likes and dislikes are integrated with <code>Stora
 <div class="content">
 <img src="images/LikeSequenceDiagram.png" alt="LikeSequenceDiagram">
 </div>
-<div class="title">Figure 22. Sequence diagram for a sample like command</div>
+<div class="title">Figure 23. Sequence diagram for a sample like command</div>
 </div>
 <div class="paragraph">
 <p>The following activity diagram below summarizes how the <code>like</code> command works:</p>
@@ -1446,7 +1617,7 @@ Furthermore, the user&#8217;s likes and dislikes are integrated with <code>Stora
 <div class="content">
 <img src="images/LikeActivityDiagram.png" alt="LikeActivityDiagram" width="450">
 </div>
-<div class="title">Figure 23. Activity diagram for a sample like command</div>
+<div class="title">Figure 24. Activity diagram for a sample like command</div>
 </div>
 <div class="paragraph">
 <p>A similar execution sequence is performed for a dislike command by replacing instances of like with dislike and vice versa.</p>
@@ -1462,7 +1633,7 @@ using the <code>recommend</code> command.</p>
 <p>Each food is passed to the recommendation system and it calculates the recommendation value based on the tables below:</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 3. Bonuses applied by the recommendation system</caption>
+<caption class="title">Table 5. Bonuses applied by the recommendation system</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -1533,7 +1704,7 @@ using the <code>recommend</code> command.</p>
 <p><br></p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 4. Penalties applied by the recommendation system</caption>
+<caption class="title">Table 6. Penalties applied by the recommendation system</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -1590,7 +1761,7 @@ recommendation value:</p>
 <div class="content">
 <img src="images/RecValueActivityDiagram.png" alt="RecValueActivityDiagram" width="650">
 </div>
-<div class="title">Figure 24. Activity diagram for <code>RecommendationSystem#calculateRecommendation</code></div>
+<div class="title">Figure 25. Activity diagram for <code>RecommendationSystem#calculateRecommendation</code></div>
 </div>
 <div class="paragraph">
 <p>The calculated recommendation values are used to sort the food items when the <code>recommend</code> command
@@ -1603,7 +1774,7 @@ is executed. Food with similar recommendation values are sorted based on their p
  <code>RecommendationSystem#calculateRecommendation()</code> function.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 5. Design considerations of the <code>RecommendationSystem#calculateRecommendation()</code> function</caption>
+<caption class="title">Table 7. Design considerations of the <code>RecommendationSystem#calculateRecommendation()</code> function</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -1723,7 +1894,7 @@ all command words in $aveNUS will have their mapped alias words removed, being r
 <div class="content">
 <img src="images/AliasClassDiagram.png" alt="AliasClassDiagram" width="650">
 </div>
-<div class="title">Figure 25. Class Diagram for Alias feature.</div>
+<div class="title">Figure 26. Class Diagram for Alias feature.</div>
 </div>
 </div>
 <div class="sect3">
@@ -1742,7 +1913,7 @@ in $aveNUS, as long as the alias word is alphanumeric.</p>
 <div class="content">
 <img src="images/AliasSequenceDiagram.png" alt="AliasSequenceDiagram" width="650">
 </div>
-<div class="title">Figure 26. Sequence Diagram for sample alias command.</div>
+<div class="title">Figure 27. Sequence Diagram for sample alias command.</div>
 </div>
 <div class="paragraph">
 <p>The following activity diagram below shows how the <code>alias</code> command works.</p>
@@ -1751,7 +1922,7 @@ in $aveNUS, as long as the alias word is alphanumeric.</p>
 <div class="content">
 <img src="images/AliasActivityDiagram.png" alt="AliasActivityDiagram" width="650">
 </div>
-<div class="title">Figure 27. Activity Diagram for sample alias command.</div>
+<div class="title">Figure 28. Activity Diagram for sample alias command.</div>
 </div>
 </div>
 </div>
@@ -1825,7 +1996,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 28. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 29. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 <div class="sect2">
@@ -1846,7 +2017,7 @@ Attributes left unset in the <code>build.gradle</code> file will use their <stro
 </table>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 6. List of site-wide attributes</caption>
+<caption class="title">Table 8. List of site-wide attributes</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 50%;">
@@ -1908,7 +2079,7 @@ Attributes left unset in <code>.adoc</code> files will use their <strong>default
 </table>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 7. List of per-file attributes, excluding Asciidoctor&#8217;s built-in attributes</caption>
+<caption class="title">Table 9. List of per-file attributes, excluding Asciidoctor&#8217;s built-in attributes</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 50%;">
@@ -2058,7 +2229,7 @@ e.g. <code>seedu.savenus.logic.LogicManagerTest</code></p>
 <div class="content">
 <img src="images/testfx-idea-accessibility-permissions.png" alt="testfx idea accessibility permissions" width="600">
 </div>
-<div class="title">Figure 29. <code>Accessibility</code> permission is granted to <code>IntelliJ IDEA</code></div>
+<div class="title">Figure 30. <code>Accessibility</code> permission is granted to <code>IntelliJ IDEA</code></div>
 </div>
 </div>
 </div>
@@ -2916,4 +3087,4 @@ recommendation value are documented in the User Guide and Developer Guide.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 09:51:09 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 11:44:14 UTC</div></div></div></body></html>
