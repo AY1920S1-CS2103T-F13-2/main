@@ -42,46 +42,46 @@
 </li>
 <li><a href="#implementation">4. Implementation</a>
 <ul class="sectlevel2">
-<li><a href="#proposed-data-encryption">4.1. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">4.2. Logging</a></li>
-<li><a href="#Implementation-Configuration">4.3. Configuration</a></li>
-<li><a href="#sorting-feature">4.4. Sorting feature</a>
+<li><a href="#logging">4.1. Logging</a></li>
+<li><a href="#Implementation-Configuration">4.2. Configuration</a></li>
+<li><a href="#sorting-feature">4.3. Sorting feature</a>
 <ul class="sectlevel3">
-<li><a href="#classes-for-sorting-feature-in-model">4.4.1. Classes for sorting feature in Model</a></li>
-<li><a href="#creation-of-new-custom-comparator">4.4.2. Creation of new Custom Comparator</a></li>
-<li><a href="#sorting-of-the-food-list">4.4.3. Sorting of the Food list</a></li>
+<li><a href="#classes-for-sorting-feature-in-model">4.3.1. Classes for sorting feature in Model</a></li>
+<li><a href="#creation-of-new-custom-comparator">4.3.2. Creation of new Custom Comparator</a></li>
+<li><a href="#sorting-of-the-food-list">4.3.3. Sorting of the Food list</a></li>
 </ul>
 </li>
-<li><a href="#savings-feature">4.5. Savings feature</a>
+<li><a href="#savings-feature">4.4. Savings feature</a>
 <ul class="sectlevel3">
-<li><a href="#classes-for-savings-feature-in-model">4.5.1. Classes for savings feature in Model</a></li>
-<li><a href="#adding-to-the-savings-account">4.5.2. Adding to the Savings Account</a></li>
+<li><a href="#classes-for-savings-feature-in-model">4.4.1. Classes for savings feature in Model</a></li>
+<li><a href="#adding-to-the-savings-account">4.4.2. Adding to the Savings Account</a></li>
 </ul>
 </li>
-<li><a href="#budget-tracking-feature">4.6. Budget Tracking feature</a>
+<li><a href="#budget-tracking-feature">4.5. Budget Tracking feature</a>
 <ul class="sectlevel3">
-<li><a href="#classes-for-budget-tracking-feature-in-model">4.6.1. Classes for Budget Tracking feature in Model</a></li>
-<li><a href="#design-considerations-for-budget-related-models">4.6.2. Design considerations for Budget-related models</a></li>
-<li><a href="#setting-a-budget">4.6.3. Setting a Budget</a></li>
+<li><a href="#classes-for-budget-tracking-feature-in-model">4.5.1. Classes for Budget Tracking feature in Model</a></li>
+<li><a href="#design-considerations-for-budget-related-models">4.5.2. Design considerations for Budget-related models</a></li>
+<li><a href="#setting-a-budget">4.5.3. Setting a Budget</a></li>
 </ul>
 </li>
-<li><a href="#purchase-tracking-feature">4.7. Purchase Tracking feature</a>
+<li><a href="#purchase-tracking-feature">4.6. Purchase Tracking feature</a>
 <ul class="sectlevel3">
-<li><a href="#classes-for-purchase-tracking-feature-in-model">4.7.1. Classes for Purchase Tracking feature in Model</a></li>
-<li><a href="#buying-a-food-item">4.7.2. Buying a Food Item</a></li>
+<li><a href="#classes-for-purchase-tracking-feature-in-model">4.6.1. Classes for Purchase Tracking feature in Model</a></li>
+<li><a href="#buying-a-food-item">4.6.2. Buying a Food Item</a></li>
 </ul>
 </li>
-<li><a href="#recommendation-feature">4.8. Recommendation feature</a>
+<li><a href="#recommendation-feature">4.7. Recommendation feature</a>
 <ul class="sectlevel3">
-<li><a href="#classes-for-recommendation-feature-in-model">4.8.1. Classes for recommendation feature in Model</a></li>
-<li><a href="#adding-likes-and-dislikes">4.8.2. Adding likes and dislikes</a></li>
-<li><a href="#displaying-recommendations">4.8.3. Displaying recommendations</a></li>
+<li><a href="#classes-for-recommendation-feature-in-model">4.7.1. Classes for recommendation feature in Model</a></li>
+<li><a href="#adding-likes-and-dislikes">4.7.2. Adding likes and dislikes</a></li>
+<li><a href="#displaying-recommendations">4.7.3. Displaying recommendations</a></li>
+<li><a href="#design-considerations">4.7.4. Design Considerations</a></li>
 </ul>
 </li>
-<li><a href="#alias-feature">4.9. Alias feature</a>
+<li><a href="#alias-feature">4.8. Alias feature</a>
 <ul class="sectlevel3">
-<li><a href="#classes-for-alias-feature-in-model">4.9.1. Classes for alias feature in Model</a></li>
-<li><a href="#mapping-an-alias-word-to-a-command-word">4.9.2. Mapping an alias word to a command word.</a></li>
+<li><a href="#classes-for-alias-feature-in-model">4.8.1. Classes for alias feature in Model</a></li>
+<li><a href="#mapping-an-alias-word-to-a-command-word">4.8.2. Mapping an alias word to a command word.</a></li>
 </ul>
 </li>
 </ul>
@@ -799,18 +799,14 @@ stall. As a result, we would want to be able to add these 2 food items into the 
 <p>This section describes some noteworthy details on how certain features are implemented.</p>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">4.1. [Proposed] Data Encryption</a></h3>
-
-</div>
-<div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">4.2. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">4.1. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 4.3, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 4.2, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -841,13 +837,13 @@ stall. As a result, we would want to be able to add these 2 food items into the 
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.3. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.2. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="sorting-feature"><a class="link" href="#sorting-feature">4.4. Sorting feature</a></h3>
+<h3 id="sorting-feature"><a class="link" href="#sorting-feature">4.3. Sorting feature</a></h3>
 <div class="paragraph">
 <p>The Sorting feature allows users to sort their food items based on certain <code>FIELD</code> and <code>DIRECTION</code>. The <code>FIELD</code> and
 <code>DIRECTION</code> are as followed:</p>
@@ -887,7 +883,7 @@ The default ordering is based on ascending price, name and then category. This i
 <code>customsort</code> sorts the food items based on the custom comparator, where <code>autosort</code> sorts the food items every time there is an edit to the food list.</p>
 </div>
 <div class="sect3">
-<h4 id="classes-for-sorting-feature-in-model"><a class="link" href="#classes-for-sorting-feature-in-model">4.4.1. Classes for sorting feature in Model</a></h4>
+<h4 id="classes-for-sorting-feature-in-model"><a class="link" href="#classes-for-sorting-feature-in-model">4.3.1. Classes for sorting feature in Model</a></h4>
 <div class="paragraph">
 <p>The Sorting feature was implemented with a new set of classes introduced to the Model.<br></p>
 </div>
@@ -997,7 +993,7 @@ Not only that, it saves time and reduces duplicate code.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="creation-of-new-custom-comparator"><a class="link" href="#creation-of-new-custom-comparator">4.4.2. Creation of new Custom Comparator</a></h4>
+<h4 id="creation-of-new-custom-comparator"><a class="link" href="#creation-of-new-custom-comparator">4.3.2. Creation of new Custom Comparator</a></h4>
 <div class="paragraph">
 <p>The user may wish to create a new custom comparator. This can be done with the <code>makesort</code> command.</p>
 </div>
@@ -1040,7 +1036,7 @@ CustomSorter is overridden by a new CustomSorter with no fields.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="sorting-of-the-food-list"><a class="link" href="#sorting-of-the-food-list">4.4.3. Sorting of the Food list</a></h4>
+<h4 id="sorting-of-the-food-list"><a class="link" href="#sorting-of-the-food-list">4.3.3. Sorting of the Food list</a></h4>
 <div class="paragraph">
 <p>After the customization of the Custom Comparator, the user can now call the <code>customsort</code> command to sort the food items based
 on the fields specified. For example, if the fields specified are <code>PRICE ASC NAME DESC</code>, the system will sort the food items in order
@@ -1110,7 +1106,7 @@ lexicographically smaller than Nasi Lemak.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="savings-feature"><a class="link" href="#savings-feature">4.5. Savings feature</a></h3>
+<h3 id="savings-feature"><a class="link" href="#savings-feature">4.4. Savings feature</a></h3>
 <div class="paragraph">
 <p>The Savings feature allows users to save a specified amount of money from their wallet into their Savings Account using the <code>save AMOUNT</code> command, where <code>AMOUNT</code> is a user defined amount of money to deposit into the user&#8217;s Savings Account.
 The Savings feature also allows the user to withdraw from his savings account either into his wallet or withdraw the money completely from the $aveNUS app.
@@ -1118,7 +1114,7 @@ Using the <code>withdraw AMOUNT</code>, users will be able to transfer their mon
 money completely from the Savings Account and the application.</p>
 </div>
 <div class="sect3">
-<h4 id="classes-for-savings-feature-in-model"><a class="link" href="#classes-for-savings-feature-in-model">4.5.1. Classes for savings feature in Model</a></h4>
+<h4 id="classes-for-savings-feature-in-model"><a class="link" href="#classes-for-savings-feature-in-model">4.4.1. Classes for savings feature in Model</a></h4>
 <div class="paragraph">
 <p>The Savings feature was implemented with a new set of classes introduced to the Model. The <code>SavingsAccount</code> is a singleton class
 which contains the methods and  classes related to this feature.
@@ -1156,7 +1152,7 @@ and a withdrawal at a single time.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="adding-to-the-savings-account"><a class="link" href="#adding-to-the-savings-account">4.5.2. Adding to the Savings Account</a></h4>
+<h4 id="adding-to-the-savings-account"><a class="link" href="#adding-to-the-savings-account">4.4.2. Adding to the Savings Account</a></h4>
 <div class="paragraph">
 <p>The user may want to add a new saving to his savings account. This can be done with the <code>save</code> command.</p>
 </div>
@@ -1193,14 +1189,14 @@ which passes this string (named commandText) to the Logic component by calling L
 </div>
 </div>
 <div class="sect2">
-<h3 id="budget-tracking-feature"><a class="link" href="#budget-tracking-feature">4.6. Budget Tracking feature</a></h3>
+<h3 id="budget-tracking-feature"><a class="link" href="#budget-tracking-feature">4.5. Budget Tracking feature</a></h3>
 <div class="paragraph">
 <p>The Budget Tracking feature allows users to manage their budget for food expenditure.
 It keeps the user updated with regards to the amount as well as the duration left for their current budget.
 Budget information is also used in the application&#8217;s recommendation system to suggest appropriate food items within a user&#8217;s budget.</p>
 </div>
 <div class="sect3">
-<h4 id="classes-for-budget-tracking-feature-in-model"><a class="link" href="#classes-for-budget-tracking-feature-in-model">4.6.1. Classes for Budget Tracking feature in Model</a></h4>
+<h4 id="classes-for-budget-tracking-feature-in-model"><a class="link" href="#classes-for-budget-tracking-feature-in-model">4.5.1. Classes for Budget Tracking feature in Model</a></h4>
 <div class="paragraph">
 <p>The Budget Tracking feature was implemented with the following classes.</p>
 </div>
@@ -1274,7 +1270,7 @@ Due to development constraints, we have decided to only update the budget durati
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-for-budget-related-models"><a class="link" href="#design-considerations-for-budget-related-models">4.6.2. Design considerations for Budget-related models</a></h4>
+<h4 id="design-considerations-for-budget-related-models"><a class="link" href="#design-considerations-for-budget-related-models">4.5.2. Design considerations for Budget-related models</a></h4>
 <div class="paragraph">
 <p>Below are some design considerations when implementing Budget-related models.</p>
 </div>
@@ -1365,7 +1361,7 @@ This may confuse the user and is a bug that we wish to avoid.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="setting-a-budget"><a class="link" href="#setting-a-budget">4.6.3. Setting a Budget</a></h4>
+<h4 id="setting-a-budget"><a class="link" href="#setting-a-budget">4.5.3. Setting a Budget</a></h4>
 <div class="paragraph">
 <p>A budget can be set using the <code>budget</code> command which takes a budget amount, and an optional budget duration.</p>
 </div>
@@ -1393,14 +1389,14 @@ This may confuse the user and is a bug that we wish to avoid.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="purchase-tracking-feature"><a class="link" href="#purchase-tracking-feature">4.7. Purchase Tracking feature</a></h3>
+<h3 id="purchase-tracking-feature"><a class="link" href="#purchase-tracking-feature">4.6. Purchase Tracking feature</a></h3>
 <div class="paragraph">
 <p>The Purchase Tracking feature allows users to monitor their food expenditure by keeping track of their purchase history.
 Whenever a user&#8217;s executes the <code>buy</code> command, the corresponding food will be added as a purchase to the purchase history.
 A user&#8217;s purchase history is displayed in the UI, similar to the food menu, and is updated every time a change is made to it.</p>
 </div>
 <div class="sect3">
-<h4 id="classes-for-purchase-tracking-feature-in-model"><a class="link" href="#classes-for-purchase-tracking-feature-in-model">4.7.1. Classes for Purchase Tracking feature in Model</a></h4>
+<h4 id="classes-for-purchase-tracking-feature-in-model"><a class="link" href="#classes-for-purchase-tracking-feature-in-model">4.6.1. Classes for Purchase Tracking feature in Model</a></h4>
 <div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/PurchaseHistoryClassDiagram.png" alt="PurchaseHistoryClassDiagram" width="200">
@@ -1463,7 +1459,7 @@ the purchase history data of the user while maintaining data integrity.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="buying-a-food-item"><a class="link" href="#buying-a-food-item">4.7.2. Buying a Food Item</a></h4>
+<h4 id="buying-a-food-item"><a class="link" href="#buying-a-food-item">4.6.2. Buying a Food Item</a></h4>
 <div class="paragraph">
 <p>The user may want to buy a food item and record the purchase. This can be done with the <code>buy</code> command.</p>
 </div>
@@ -1491,7 +1487,7 @@ the purchase history data of the user while maintaining data integrity.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="recommendation-feature"><a class="link" href="#recommendation-feature">4.8. Recommendation feature</a></h3>
+<h3 id="recommendation-feature"><a class="link" href="#recommendation-feature">4.7. Recommendation feature</a></h3>
 <div class="paragraph">
 <p>The recommendation feature allows users to generate a list of personalized recommendations using the <code>recommend</code> command.
 The recommendations are tailored to each user based on the factors below:</p>
@@ -1520,7 +1516,7 @@ to generate a more accurate list of recommendations. Users will then able to fin
 more accurately.</p>
 </div>
 <div class="sect3">
-<h4 id="classes-for-recommendation-feature-in-model"><a class="link" href="#classes-for-recommendation-feature-in-model">4.8.1. Classes for recommendation feature in Model</a></h4>
+<h4 id="classes-for-recommendation-feature-in-model"><a class="link" href="#classes-for-recommendation-feature-in-model">4.7.1. Classes for recommendation feature in Model</a></h4>
 <div class="paragraph">
 <p>With the addition of the recommendation feature, a new set of classes were implemented to support the feature.</p>
 </div>
@@ -1533,20 +1529,6 @@ and include the ability to generate recommendation values.</p>
 <p>Additionally, the <code>RecommendationSystem</code> class also contains a class <code>UserRecommendations</code>, which include the likes and
 dislikes of the user. The functionality of <code>UserRecommendations</code> is specified by the <code>Recommendations</code> interface,
 encompassing the ability to add and remove likes and dislikes, among other features.</p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Design decisions for <code>RecommendationSystem</code></div>
-<div class="paragraph">
-<p><code>RecommendationSystem</code> was chosen to be a singleton because of the fact that it exists as a global class, encapsulating
-many seemingly unrelated classes such as <code>Budget</code>, <code>PurchaseHistory</code> and <code>UserRecommendations</code> in order to produce the
-required recommendation value.</p>
-</div>
-<div class="paragraph">
-<p>Furthermore, there should only be one unique <code>RecommendationSystem</code> and <code>UserRecommendations</code> in the application.
-To ensure the above requirements are met, we have decided to implement <code>RecommendationSystem</code> as a singleton class.</p>
-</div>
-</div>
 </div>
 <div class="paragraph">
 <p>The <code>UserRecommendations</code> object contain 6 sets, namely:</p>
@@ -1592,7 +1574,7 @@ comparison can be done more easily.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="adding-likes-and-dislikes"><a class="link" href="#adding-likes-and-dislikes">4.8.2. Adding likes and dislikes</a></h4>
+<h4 id="adding-likes-and-dislikes"><a class="link" href="#adding-likes-and-dislikes">4.7.2. Adding likes and dislikes</a></h4>
 <div class="paragraph">
 <p>The feature of adding the user&#8217;s liked and disliked categories, tags and locations was introduced to support the
 recommendation system.</p>
@@ -1624,7 +1606,7 @@ Furthermore, the user&#8217;s likes and dislikes are integrated with <code>Stora
 </div>
 </div>
 <div class="sect3">
-<h4 id="displaying-recommendations"><a class="link" href="#displaying-recommendations">4.8.3. Displaying recommendations</a></h4>
+<h4 id="displaying-recommendations"><a class="link" href="#displaying-recommendations">4.7.3. Displaying recommendations</a></h4>
 <div class="paragraph">
 <p>After customizing the user&#8217;s likes and dislikes, users can obtain a personalized list of recommendations
 using the <code>recommend</code> command.</p>
@@ -1767,14 +1749,127 @@ recommendation value:</p>
 <p>The calculated recommendation values are used to sort the food items when the <code>recommend</code> command
 is executed. Food with similar recommendation values are sorted based on their price.</p>
 </div>
-<div class="sect4">
-<h5 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h5>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">4.7.4. Design Considerations</a></h4>
 <div class="paragraph">
-<p>Detailed below are the design considerations taken into account when engineering the
- <code>RecommendationSystem#calculateRecommendation()</code> function.</p>
+<p>Detailed below are the design considerations taken into account when engineering the Recommendation System.</p>
+</div>
+<div class="sect4">
+<h5 id="design-considerations-of-code-recommendationsystem-code-class"><a class="link" href="#design-considerations-of-code-recommendationsystem-code-class">Design Considerations of <code>RecommendationSystem</code> class</a></h5>
+<div class="paragraph">
+<p>Explained below are our considerations when designing the <code>RecommendationSystem</code> class.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 7. Design considerations of the <code>RecommendationSystem#calculateRecommendation()</code> function</caption>
+<caption class="title">Table 7. Design considerations of <code>RecommendationSystem</code> class</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Alternative 1 (Chosen Implementation)</th>
+<th class="tableblock halign-left valign-top">Alternative 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Implement <code>RecommendationSystem</code> a singleton class</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Versatile and easy to implement</p>
+</li>
+<li>
+<p>Enforces the Singleton property</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Testability of class decreases</p>
+</li>
+<li>
+<p>Hidden dependencies are introduced into the class</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Implement <code>RecommendationSystem</code> as a normal class</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Testability of class would be easier</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Hard to bring together the classes required by <code>RecommendationSystem</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>We decided to go with alternative 1 and implement <code>RecommendationSystem</code> as a singleton because of the fact that it
+exists as a global class, encapsulating many seemingly unrelated classes such as <code>Budget</code>, <code>PurchaseHistory</code> and
+<code>UserRecommendations</code> in order to produce the required recommendation value.</p>
+</div>
+<div class="paragraph">
+<p>Implementing <code>RecommendationSystem</code> as a singleton would be much simpler than linking together these seemingly
+unrelated classes as discussed in alternative 2.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, there should only be one unique <code>RecommendationSystem</code> and <code>UserRecommendations</code> in the application due to
+our design requirements. To ensure the above requirements are met, we have decided to implement <code>RecommendationSystem</code>
+as a singleton class.</p>
+</div>
+<div class="paragraph">
+<p>Furthermore, we have thoroughly tested the implementation of
+<code>RecommendationSystem</code> and <code>UserRecommendations</code> to mitigate the downsides introduced when implementing a singleton.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><br></p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="design-considerations-of-code-recommendationsystem-calculaterecommendation-code-function"><a class="link" href="#design-considerations-of-code-recommendationsystem-calculaterecommendation-code-function">Design Considerations of <code>RecommendationSystem#calculateRecommendation()</code> function.</a></h5>
+<div class="paragraph">
+<p>Explained below are our considerations when designing the <code>RecommendationSystem#calculateRecommendation()</code> function.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 8. Design considerations of the <code>RecommendationSystem#calculateRecommendation()</code> function</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -1854,6 +1949,8 @@ the recommendation value</p>
 </tr>
 </tbody>
 </table>
+<div class="sidebarblock">
+<div class="content">
 <div class="paragraph">
 <p>We chose alternative 1 because of its simplicity of implementation. Adding a hidden <code>recommendationValue</code>
 field for each <code>Food</code> might not be the best solution in the design of our application. A <code>recommendationValue</code> might
@@ -1867,14 +1964,16 @@ design.</p>
 </div>
 </div>
 </div>
+</div>
+</div>
 <div class="sect2">
-<h3 id="alias-feature"><a class="link" href="#alias-feature">4.9. Alias feature</a></h3>
+<h3 id="alias-feature"><a class="link" href="#alias-feature">4.8. Alias feature</a></h3>
 <div class="paragraph">
 <p>The alias feature allows users to generate their own unique aliases for commands in $aveNUS. This can be
 done using the <code>alias</code> command.</p>
 </div>
 <div class="sect3">
-<h4 id="classes-for-alias-feature-in-model"><a class="link" href="#classes-for-alias-feature-in-model">4.9.1. Classes for alias feature in Model</a></h4>
+<h4 id="classes-for-alias-feature-in-model"><a class="link" href="#classes-for-alias-feature-in-model">4.8.1. Classes for alias feature in Model</a></h4>
 <div class="paragraph">
 <p>With the addition of the alias feature, a new set of classes were implemented to support the feature.</p>
 </div>
@@ -1898,7 +1997,7 @@ all command words in $aveNUS will have their mapped alias words removed, being r
 </div>
 </div>
 <div class="sect3">
-<h4 id="mapping-an-alias-word-to-a-command-word"><a class="link" href="#mapping-an-alias-word-to-a-command-word">4.9.2. Mapping an alias word to a command word.</a></h4>
+<h4 id="mapping-an-alias-word-to-a-command-word"><a class="link" href="#mapping-an-alias-word-to-a-command-word">4.8.2. Mapping an alias word to a command word.</a></h4>
 <div class="paragraph">
 <p>The main command behind the alias feature is <code>alias</code>. The user can assign an alias word to a command word
 in $aveNUS, as long as the alias word is alphanumeric.</p>
@@ -2017,7 +2116,7 @@ Attributes left unset in the <code>build.gradle</code> file will use their <stro
 </table>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 8. List of site-wide attributes</caption>
+<caption class="title">Table 9. List of site-wide attributes</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 50%;">
@@ -2079,7 +2178,7 @@ Attributes left unset in <code>.adoc</code> files will use their <strong>default
 </table>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 9. List of per-file attributes, excluding Asciidoctor&#8217;s built-in attributes</caption>
+<caption class="title">Table 10. List of per-file attributes, excluding Asciidoctor&#8217;s built-in attributes</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 50%;">
@@ -3087,4 +3186,4 @@ recommendation value are documented in the User Guide and Developer Guide.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 11:44:14 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 12:16:10 UTC</div></div></div></body></html>

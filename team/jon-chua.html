@@ -309,6 +309,9 @@ The commands are shown below while the full user guide can be found
 </tr>
 </tbody>
 </table>
+<div class="paragraph">
+<p><br></p>
+</div>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Table 2. Penalties applied by the recommendation system</caption>
 <colgroup>
@@ -838,20 +841,6 @@ and include the ability to generate recommendation values.</p>
 dislikes of the user. The functionality of <code>UserRecommendations</code> is specified by the <code>Recommendations</code> interface,
 encompassing the ability to add and remove likes and dislikes, among other features.</p>
 </div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Design decisions for <code>RecommendationSystem</code></div>
-<div class="paragraph">
-<p><code>RecommendationSystem</code> was chosen to be a singleton because of the fact that it exists as a global class, encapsulating
-many seemingly unrelated classes such as <code>Budget</code>, <code>PurchaseHistory</code> and <code>UserRecommendations</code> in order to produce the
-required recommendation value.</p>
-</div>
-<div class="paragraph">
-<p>Furthermore, there should only be one unique <code>RecommendationSystem</code> and <code>UserRecommendations</code> in the application.
-To ensure the above requirements are met, we have decided to implement <code>RecommendationSystem</code> as a singleton class.</p>
-</div>
-</div>
-</div>
 <div class="paragraph">
 <p>The <code>UserRecommendations</code> object contain 6 sets, namely:</p>
 </div>
@@ -951,14 +940,127 @@ recommendation value:</p>
 <p>The calculated recommendation values are used to sort the food items when the <code>recommend</code> command
 is executed. Food with similar recommendation values are sorted based on their price.</p>
 </div>
-<div class="sect4">
-<h5 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h5>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
 <div class="paragraph">
-<p>Detailed below are the design considerations taken into account when engineering the
- <code>RecommendationSystem#calculateRecommendation()</code> function.</p>
+<p>Detailed below are the design considerations taken into account when engineering the Recommendation System.</p>
+</div>
+<div class="sect4">
+<h5 id="design-considerations-of-code-recommendationsystem-code-class"><a class="link" href="#design-considerations-of-code-recommendationsystem-code-class">Design Considerations of <code>RecommendationSystem</code> class</a></h5>
+<div class="paragraph">
+<p>Explained below are our considerations when designing the <code>RecommendationSystem</code> class.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 3. Design considerations of the <code>RecommendationSystem#calculateRecommendation()</code> function</caption>
+<caption class="title">Table 3. Design considerations of <code>RecommendationSystem</code> class</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Alternative 1 (Chosen Implementation)</th>
+<th class="tableblock halign-left valign-top">Alternative 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Implement <code>RecommendationSystem</code> a singleton class</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Versatile and easy to implement</p>
+</li>
+<li>
+<p>Enforces the Singleton property</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Testability of class decreases</p>
+</li>
+<li>
+<p>Hidden dependencies are introduced into the class</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Implement <code>RecommendationSystem</code> as a normal class</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Testability of class would be easier</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Hard to bring together the classes required by <code>RecommendationSystem</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>We decided to go with alternative 1 and implement <code>RecommendationSystem</code> as a singleton because of the fact that it
+exists as a global class, encapsulating many seemingly unrelated classes such as <code>Budget</code>, <code>PurchaseHistory</code> and
+<code>UserRecommendations</code> in order to produce the required recommendation value.</p>
+</div>
+<div class="paragraph">
+<p>Implementing <code>RecommendationSystem</code> as a singleton would be much simpler than linking together these seemingly
+unrelated classes as discussed in alternative 2.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, there should only be one unique <code>RecommendationSystem</code> and <code>UserRecommendations</code> in the application due to
+our design requirements. To ensure the above requirements are met, we have decided to implement <code>RecommendationSystem</code>
+as a singleton class.</p>
+</div>
+<div class="paragraph">
+<p>Furthermore, we have thoroughly tested the implementation of
+<code>RecommendationSystem</code> and <code>UserRecommendations</code> to mitigate the downsides introduced when implementing a singleton.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><br></p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="design-considerations-of-code-recommendationsystem-calculaterecommendation-code-function"><a class="link" href="#design-considerations-of-code-recommendationsystem-calculaterecommendation-code-function">Design Considerations of <code>RecommendationSystem#calculateRecommendation()</code> function.</a></h5>
+<div class="paragraph">
+<p>Explained below are our considerations when designing the <code>RecommendationSystem#calculateRecommendation()</code> function.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 4. Design considerations of the <code>RecommendationSystem#calculateRecommendation()</code> function</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -1038,6 +1140,8 @@ the recommendation value</p>
 </tr>
 </tbody>
 </table>
+<div class="sidebarblock">
+<div class="content">
 <div class="paragraph">
 <p>We chose alternative 1 because of its simplicity of implementation. Adding a hidden <code>recommendationValue</code>
 field for each <code>Food</code> might not be the best solution in the design of our application. A <code>recommendationValue</code> might
@@ -1052,4 +1156,6 @@ design.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 11:44:14 UTC</div></div></div></body></html>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 12:16:10 UTC</div></div></div></body></html>
