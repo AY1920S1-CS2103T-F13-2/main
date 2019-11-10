@@ -597,7 +597,47 @@ e.g. calling <code>theme dark</code> and then <code>theme dark</code> again will
 <div class="sect3">
 <h4 id="add"><a class="link" href="#add">3.2.1. Add a food item: <code>add</code></a></h4>
 <div class="paragraph">
-<p>Adds a food item to the food list.</p>
+<p>Adds a food item to the food list. Do note of the following:</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>You are only allowed to give one of <code>NAME</code>, <code>DESCRIPTION</code>, <code>CATEGORY</code>, <code>LOCATION</code>, <code>RESTRICTIONS</code>, <code>PRICE</code> and <code>OPENING HOURS</code>.
+Providing more than one of these <code>FIELD</code> will throw an error.</p>
+</li>
+<li>
+<p>You are allowed to give one or more <code>TAGS</code>.</p>
+</li>
+<li>
+<p><code>PRICE</code> must be a number wth 0 or 2 decimal places, it cannot exceed more than 5000.00 and it should not contain leading zeros.</p>
+</li>
+<li>
+<p><code>OPENING HOURS</code> must be in HHMM HHMM format. The start time must be earlier than or equal to the end time.</p>
+</li>
+<li>
+<p><code>NAME</code> <code>DESCRIPTION</code> <code>CATEGORY</code> <code>LOCATION</code> and <code>RESTRICTIONS</code> must all be alphanumeric.</p>
+</li>
+<li>
+<p><code>TAG</code> is limited to 20 characters per tag, and only limited to one word per tag.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+The list will scroll to the end when the food is added.<br>
+If <code>autosort</code> is turned on, it will not scroll to the end of the list.
+</td>
+</tr>
+</table>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -627,11 +667,35 @@ by using the <code>recommend</code> command again (see <a href="#getting-a-list-
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><strong>Format</strong>: <code>add n/NAME d/DESCRIPTION p/PRICE c/CATEGORY l/LOCATION o/OPENING HOURS r/RESTRICTIONS</code><br>
-<strong>Example</strong>: <code>add n/Chicken Rice d/Rice with Chicken p/2.50 c/Chinese l/NUS o/0800 2000 r/NIL</code></p>
+<p><strong>Format</strong>: <code>add n/NAME p/PRICE c/CATEGORY [d/DESCRIPTION] [l/LOCATION] [o/OPENING HOURS] [r/RESTRICTIONS] [t/TAG]&#8230;&#8203;</code><br>
+<strong>Example</strong>: <code>add n/Chicken Rice d/Rice with Chicken p/2.50 c/Chinese l/NUS o/0800 2000 r/NI t/Chicken t/RiceL</code></p>
 </div>
 </div>
 </div>
+<table class="tableblock frame-all grid-none spread">
+<colgroup>
+<col style="width: 5%;">
+<col style="width: 95%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><span class="icon green"><i class="fa fa-check fa-2x"></i></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The food list will scroll to the bottom, where the new food item is added.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/addsuccess.png" alt="addsuccess">
+</div>
+</div>
+<div class="paragraph">
+<p></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect3">
 <h4 id="list-all-food-items-code-list-code"><a class="link" href="#list-all-food-items-code-list-code">3.2.2. List all food items: <code>list</code></a></h4>
@@ -658,20 +722,96 @@ by using the <code>recommend</code> command again (see <a href="#getting-a-list-
 </div>
 </div>
 </div>
+<table class="tableblock frame-all grid-none spread">
+<colgroup>
+<col style="width: 5%;">
+<col style="width: 95%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><span class="icon green"><i class="fa fa-check fa-2x"></i></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>All the items in the food list will be shown.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/listsuccess.png" alt="listsuccess">
+</div>
+</div>
+<div class="paragraph">
+<p></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect3">
 <h4 id="edit-a-food-item-code-edit-code"><a class="link" href="#edit-a-food-item-code-edit-code">3.2.3. Edit a food item: <code>edit</code></a></h4>
 <div class="paragraph">
-<p>Edits a food item at a INDEX based on a specific FIELD or fields. INDEX must be a positive integer. At least one FIELD must be given.</p>
+<p>Edits a food item at a INDEX based on a specific FIELD or fields. INDEX must be a positive integer. At least one FIELD must be given.
+Do take note of the following:</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>You are only allowed to give one of <code>NAME</code>, <code>DESCRIPTION</code>, <code>CATEGORY</code>, <code>LOCATION</code>, <code>RESTRICTIONS</code>, <code>PRICE</code> and <code>OPENING HOURS</code>.
+Providing more than one of these <code>FIELD</code> will throw an error.</p>
+</li>
+<li>
+<p>You are allowed to give one or more <code>TAGS</code>.</p>
+</li>
+<li>
+<p><code>PRICE</code> must be a number wth 0 or 2 decimal places, it cannot exceed more than 5000.00 and it should not contain leading zeros.</p>
+</li>
+<li>
+<p><code>OPENING HOURS</code> must be in HHMM HHMM format. The start time must be earlier than or equal to the end time.</p>
+</li>
+<li>
+<p><code>NAME</code> <code>DESCRIPTION</code> <code>CATEGORY</code> <code>LOCATION</code> and <code>RESTRICTIONS</code> must all be alphanumeric.</p>
+</li>
+<li>
+<p><code>TAG</code> is limited to 20 characters per tag, and only limited to one word per tag.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><strong>Format</strong>: <code>edit INDEX n/NAME d/DESCRIPTION &#8230;&#8203;</code><br>
+<p><strong>Format</strong>: <code>edit INDEX n/NAME &#8230;&#8203;</code><br>
 <strong>Example</strong>: <code>edit 2 n/Fried Rice</code></p>
 </div>
 </div>
 </div>
+<table class="tableblock frame-all grid-none spread">
+<colgroup>
+<col style="width: 5%;">
+<col style="width: 95%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><span class="icon green"><i class="fa fa-check fa-2x"></i></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The food item&#8217;s fields will be updated.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/editsuccess.png" alt="editsuccess">
+</div>
+</div>
+<div class="paragraph">
+<p></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect3">
 <h4 id="finds-food-items-based-on-keywords-code-find-code"><a class="link" href="#finds-food-items-based-on-keywords-code-find-code">3.2.4. Finds food items based on keywords: <code>find</code></a></h4>
@@ -682,17 +822,51 @@ be shown in the food list.</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><strong>Format</strong>: <code>find KEYWORD [MORE_KEYWORDS]..</code><br>
+<p><strong>Format</strong>: <code>find KEYWORD &#8230;&#8203;</code><br>
 <strong>Example</strong>: <code>find Chicken Rice</code></p>
 </div>
 </div>
 </div>
+<table class="tableblock frame-all grid-none spread">
+<colgroup>
+<col style="width: 5%;">
+<col style="width: 95%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><span class="icon green"><i class="fa fa-check fa-2x"></i></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The food items containing any of the specific keywords will be shown.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/findsuccess.png" alt="findsuccess">
+</div>
+</div>
+<div class="paragraph">
+<p></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect3">
 <h4 id="filters-food-items-based-on-criteria-code-filter-code"><a class="link" href="#filters-food-items-based-on-criteria-code-filter-code">3.2.5. Filters food items based on criteria: <code>filter</code></a></h4>
 <div class="paragraph">
-<p>Filters the food items based on the criteria specified. Note: You can need to
-have at least one of a <code>FIELD</code>, <code>QUANTIFIER</code> and <code>VALUE</code>.</p>
+<p>Filters the food items based on the criteria specified. Take note of the following:</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>VALUE</code> of the <code>PRICE</code> must be a number wth 0 or 2 decimal places, and it cannot exceed more than 1000000.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -715,12 +889,47 @@ in v2.0 and above.
 </div>
 </div>
 </div>
+<table class="tableblock frame-all grid-none spread">
+<colgroup>
+<col style="width: 5%;">
+<col style="width: 95%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><span class="icon green"><i class="fa fa-check fa-2x"></i></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The food items satisfying the conditions will be shown.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/filtersuccess.png" alt="filtersuccess">
+</div>
+</div>
+<div class="paragraph">
+<p></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect3">
 <h4 id="deletes-a-food-item-code-delete-code"><a class="link" href="#deletes-a-food-item-code-delete-code">3.2.6. Deletes a food item: <code>delete</code></a></h4>
 <div class="paragraph">
-<p>Deletes a food items based on the given INDEX. INDEX must be a positive integer.
-Note: You are allowed to have more than one <code>INDEX</code>.</p>
+<p>Deletes a food items based on the given INDEX. INDEX must be a positive integer.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+You are allowed to have more than one <code>INDEX</code>.
+</td>
+</tr>
+</table>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -730,11 +939,35 @@ Note: You are allowed to have more than one <code>INDEX</code>.</p>
 </div>
 </div>
 </div>
+<table class="tableblock frame-all grid-none spread">
+<colgroup>
+<col style="width: 5%;">
+<col style="width: 95%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><span class="icon green"><i class="fa fa-check fa-2x"></i></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>A confirmation message will appear, informing that the food item has been deleted.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/deletesuccess.png" alt="deletesuccess">
+</div>
+</div>
+<div class="paragraph">
+<p></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect3">
 <h4 id="clears-wallet-purchase-history-and-food-items-code-clear-code"><a class="link" href="#clears-wallet-purchase-history-and-food-items-code-clear-code">3.2.7. Clears wallet purchase history and food items: <code>clear</code></a></h4>
 <div class="paragraph">
-<p>Clears wallet, purchase history, savings account, wallet, likes, dislikes and aliases in the application.</p>
+<p>Clears wallet, purchase history, savings account, likes, dislikes and aliases in the application.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -743,6 +976,30 @@ Note: You are allowed to have more than one <code>INDEX</code>.</p>
 </div>
 </div>
 </div>
+<table class="tableblock frame-all grid-none spread">
+<colgroup>
+<col style="width: 5%;">
+<col style="width: 95%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><span class="icon green"><i class="fa fa-check fa-2x"></i></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Wallet, Purchase History, Savings History, Savings Account, likes, dislikes and aliases will all be cleared..</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/clearsuccess.png" alt="clearsuccess">
+</div>
+</div>
+<div class="paragraph">
+<p></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -751,20 +1008,23 @@ Note: You are allowed to have more than one <code>INDEX</code>.</p>
 <p>Allows the user to sort the food items based on his liking.
 This is done so that the user is able to get the food which is most relevant to his or her preferences.</p>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-You must always provide pairs of FIELD and DIRECTION to execute the Sorting commands.
-The fields are as followed: <code>NAME</code>, <code>DESCRIPTION</code>, <code>PRICE</code>,
-<code>CATEGORY</code>, <code>LOCATION</code>, <code>OPENING_HOURS</code>, <code>RESTRICTIONS</code>.
-The directions are as follows: <code>ASC</code> or <code>DESC</code>.
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p>You must always provide pairs of <code>FIELD</code> and <code>DIRECTION</code> to execute the Sorting commands.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The various <code>FIELD</code> are as followed: <code>NAME</code>, <code>DESCRIPTION</code>, <code>PRICE</code>,
+<code>CATEGORY</code>, <code>LOCATION</code>, <code>OPENING_HOURS</code> and <code>RESTRICTIONS</code>.</p>
+</li>
+<li>
+<p>The <code>DIRECTION</code> are as follows: <code>ASC</code> or <code>DESC</code>.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -782,19 +1042,29 @@ price in ascending order. Following which, sorts the food items based on names i
 <div class="sect3">
 <h4 id="sorts-food-items-based-on-fields-code-sort-code"><a class="link" href="#sorts-food-items-based-on-fields-code-sort-code">3.3.1. Sorts food items based on fields: <code>sort</code></a></h4>
 <div class="paragraph">
-<p>Sorts all the food items by some specific FIELD.</p>
+<p>Sorts all the food items by some specific <code>FIELD</code>.</p>
 </div>
-<div class="paragraph">
-<p>Note: You can have more than one pair of FIELD and DIRECTION.</p>
-</div>
-<div class="admonitionblock important">
+<div class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-important" title="Important"></i>
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The usage of <code>sort</code> will turn the recommendation system OFF it is in use.
+The list of recommendations would be cleared if you use the this command. You can re-enable recommendations
+by using the <code>recommend</code> command again (see <a href="#getting-a-list-of-recommended-food-items-code-recommend-code">Section 3.7.1, &#8220;Getting a list of recommended food items: <code>recommend</code>&#8221;</a>).
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+You can have more than one pair of <code>FIELD</code> and <code>DIRECTION</code>.
 </td>
 </tr>
 </table>
@@ -876,14 +1146,15 @@ FIELD and DIRECTION.</p>
 <div class="paragraph">
 <p>Sort Using your own custom comparator, which you have creating from MakeSort.</p>
 </div>
-<div class="admonitionblock important">
+<div class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-important" title="Important"></i>
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The usage of <code>customsort</code> will turn the recommendation system OFF it is in use.
+The list of recommendations would be cleared if you use the this command. You can re-enable recommendations
+by using the <code>recommend</code> command again (see <a href="#getting-a-list-of-recommended-food-items-code-recommend-code">Section 3.7.1, &#8220;Getting a list of recommended food items: <code>recommend</code>&#8221;</a>).
 </td>
 </tr>
 </table>
@@ -926,25 +1197,18 @@ The usage of <code>customsort</code> will turn the recommendation system OFF it 
 <p>Turns on and off auto sorting, based on your own custom comparator, every time you make changes to the food list.
 There are only two states, ON or OFF.</p>
 </div>
-<div class="admonitionblock important">
+<div class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-important" title="Important"></i>
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The usage of <code>autosort</code> will turn the recommendation system OFF it is in use.
+The list of recommendations would be cleared if you use the this command. You can re-enable recommendations
+by using the <code>recommend</code> command again (see <a href="#getting-a-list-of-recommended-food-items-code-recommend-code">Section 3.7.1, &#8220;Getting a list of recommended food items: <code>recommend</code>&#8221;</a>).
 </td>
 </tr>
 </table>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="paragraph">
-<p><strong>Format</strong>: <code>autosort STATE</code><br>
-<strong>Example</strong>: <code>autosort ON</code></p>
-</div>
-</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -958,6 +1222,14 @@ turn auto sorting off.
 </td>
 </tr>
 </table>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Format</strong>: <code>autosort STATE</code><br>
+<strong>Example</strong>: <code>autosort ON</code></p>
+</div>
+</div>
 </div>
 <table class="tableblock frame-all grid-none spread">
 <colgroup>
@@ -989,7 +1261,7 @@ turn auto sorting off.
 <div class="paragraph">
 <p>Views the current Custom Sorter.</p>
 </div>
-<div class="exampleblock">
+<div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
 <p><strong>Format</strong>: <code>viewsort</code></p>
@@ -1026,14 +1298,15 @@ turn auto sorting off.
 <div class="paragraph">
 <p>Sorts the food items based on their default ordering, where it is based on ascending category, name and then price.</p>
 </div>
-<div class="admonitionblock important">
+<div class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-important" title="Important"></i>
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The usage of <code>default</code> will turn the recommendation system OFF it is in use.
+The list of recommendations would be cleared if you use the this command. You can re-enable recommendations
+by using the <code>recommend</code> command again (see <a href="#getting-a-list-of-recommended-food-items-code-recommend-code">Section 3.7.1, &#8220;Getting a list of recommended food items: <code>recommend</code>&#8221;</a>).
 </td>
 </tr>
 </table>
@@ -2080,12 +2353,12 @@ later to run the app.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sort-based-on-your-custom-comparator-code-customsort-code"><code>customsort</code></a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Sorts items based on a created custom comparator.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>customsort</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><code>customsort</code></code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sorts-food-items-based-on-natural-order-code-default-code"><code>default</code></a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Sorts the food items based on their natural ordering.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>default</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><code>default</code></code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#deletes-a-food-item-code-delete-code"><code>delete</code></a></p></td>
@@ -2100,7 +2373,7 @@ later to run the app.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#edit-a-food-item-code-edit-code"><code>edit</code></a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Edits a food item at a index based on a specific field or fields.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>edit 2 n/Fried Rice</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><code>edit 2 n/Fried Rice</code></code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#exiting-the-application-code-exit-code"><code>exit</code></a></p></td>
@@ -2110,7 +2383,7 @@ later to run the app.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#filters-food-items-based-on-criteria-code-filter-code"><code>filter</code></a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Filters the food items based on the criteria specified.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>filter PRICE LESS_THAN 4.00 CATEGORY EQUALS_TO Halal</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><code>filter PRICE LESS_THAN 4.00</code></code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#finds-food-items-based-on-keywords-code-find-code"><code>find</code></a></p></td>
@@ -2135,7 +2408,7 @@ later to run the app.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#adding-likes-and-dislikes-to-the-recommendation-system-code-like-code-or-code-dislike-code"><code>like</code></a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Specifies the user&#8217;s liked categories, tags and locations.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>like c/Chinese c/Western t/Healthy l/Univeristy Town</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><code>like c/Chinese c/Western t/Healthy l/Univeristy Town</code></code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#list-all-food-items-code-list-code"><code>list</code></a></p></td>
@@ -2195,4 +2468,4 @@ later to run the app.</p>
 </tbody>
 </table>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 14:25:47 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 17:11:44 UTC</div></div></div></body></html>
