@@ -263,11 +263,58 @@ default browser would definitely make it much more convenient for the user.</p>
 <div class="paragraph">
 <p>This section shows the contributions that I have made to the sorting feature of the User Guide.</p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This application is optimized for screen resolution of 1400x900 pixels and higher. Anything lower than that and you
+might experienced some bugs.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Ensure that your scaling setting is set to 100% as anything higher might result in text being cut off.
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ScalingSetting.png" alt="ScalingSetting">
+</div>
+</div>
+<div class="paragraph">
+<p>This section was done to enable users to find out the optimal screen resolution to use the application. This is due
+to the fact that the application might not work as intended on very small screen resolution, especially on the older
+generation laptops.</p>
+</div>
+<div class="paragraph">
+<p>Smaller screen resolution might result in truncation in details in some section of the application
+such as the <code>info</code> command.</p>
+</div>
+<div class="paragraph">
+<p>The scaling setting reminder is done as our app is optimized to work in 100% scaling. Any higher and some section of
+the application might fall out of the monitor&#8217;s boundaries. This reminder is important as some laptops' default scaling
+setting is usually higher than 100%.</p>
+</div>
+<div class="paragraph">
+<p>The following is my contribution to the general commands that the app can offer.</p>
+</div>
 <div class="sect2">
 <h3 id="general-commands"><a class="link" href="#general-commands">General Commands</a></h3>
 <div class="paragraph">
-<p>$aveNUS provides the user with a set of commands that are not feature-specific to
-enhance the user&#8217;s experience as a whole.</p>
+<p>General commands are used to enhance the user&#8217;s experience when using the app and also provide some useful information
+to make the user more familiar with the app.</p>
 </div>
 <div class="sect3">
 <h4 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">Viewing help: <code>help</code></a></h4>
@@ -278,11 +325,27 @@ by clicking the <code>Guide</code> button.</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><strong>Format</strong>: <code>help</code>
+<p><strong>Format</strong>: <code>help</code><br>
 <strong>Example</strong>: <code>help</code></p>
 </div>
 </div>
 </div>
+<table class="tableblock frame-all grid-none spread">
+<colgroup>
+<col style="width: 5%;">
+<col style="width: 95%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><span class="icon green"><i class="fa fa-check fa-2x"></i></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>You will see the help the help window, diplaying the list of commands available.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect3">
 <h4 id="viewing-previously-typed-commands-code-history-code"><a class="link" href="#viewing-previously-typed-commands-code-history-code">Viewing previously typed commands: <code>history</code></a></h4>
@@ -306,6 +369,19 @@ The user can view up to 10 previously typed commands.</p>
 </td>
 <td class="content">
 A message stating that "You have not entered any commands." is displayed if you have not input any commands prior to the call to <code>history</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+This command only allows you to see previously typed commands. Any commands done through the buttons on the menu pane
+will not be shown.
 </td>
 </tr>
 </table>
@@ -352,7 +428,8 @@ The <code>history</code> command will only display previous commands with no dup
 <div class="sect3">
 <h4 id="viewing-information-about-a-command-code-info-code"><a class="link" href="#viewing-information-about-a-command-code-info-code">Viewing information about a command: <code>info</code></a></h4>
 <div class="paragraph">
-<p>Displays the information of the command specified. A new window will be opened.</p>
+<p>Displays the information of the command specified. A new window will be opened showing additional information about the
+specified command, usage example, and expected output of the command.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -361,6 +438,32 @@ The <code>history</code> command will only display previous commands with no dup
 <strong>Example</strong>: <code>info edit</code></p>
 </div>
 </div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+$aveNUS can only display one information window at a time. Therefore, subsequent usage of the <code>info</code> command will only
+display the latest command specified.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+You will not have to worry about opening too many new information window as older information window closes as soon as
+a new one is opened!
+</td>
+</tr>
+</table>
 </div>
 <table class="tableblock frame-all grid-none spread">
 <colgroup>
@@ -374,6 +477,12 @@ The <code>history</code> command will only display previous commands with no dup
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>You will see a window pop-up specifying the details of the command you wanted more information about.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/InfoEditUI.png" alt="InfoEditUI">
+</div>
+<div class="title">Figure 2. Example of view of information window after user inputs <code>info edit</code>.</div>
 </div></div></td>
 </tr>
 </tbody>
@@ -387,7 +496,8 @@ The <code>history</code> command will only display previous commands with no dup
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><strong>Format</strong>: <code>exit</code></p>
+<p><strong>Format</strong>: <code>exit</code><br>
+<strong>Example</strong>: <code>exit</code></p>
 </div>
 </div>
 </div>
@@ -423,7 +533,7 @@ The <code>history</code> command will only display previous commands with no dup
 <div class="content">
 <img src="../images/UiClassDiagram.png" alt="UiClassDiagram">
 </div>
-<div class="title">Figure 2. Structure of the UI Component</div>
+<div class="title">Figure 3. Structure of the UI Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> : <a href="{repoURL}/src/main/java/seedu/savenus/ui/Ui.java"><code>Ui.java</code></a></p>
@@ -463,7 +573,7 @@ The <code>history</code> command will only display previous commands with no dup
 <div class="content">
 <img src="../images/LogicClassDiagram.png" alt="LogicClassDiagram">
 </div>
-<div class="title">Figure 3. Structure of the Logic Component</div>
+<div class="title">Figure 4. Structure of the Logic Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> :
@@ -495,7 +605,7 @@ The <code>history</code> command will only display previous commands with no dup
 <div class="content">
 <img src="../images/DeleteSequenceDiagram.png" alt="DeleteSequenceDiagram">
 </div>
-<div class="title">Figure 4. Interactions Inside the Logic Component for the <code>delete 1</code> Command</div>
+<div class="title">Figure 5. Interactions Inside the Logic Component for the <code>delete 1</code> Command</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -511,4 +621,4 @@ The lifeline for <code>DeleteCommandParser</code> should end at the destroy mark
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 08:40:43 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 09:51:09 UTC</div></div></div></body></html>
