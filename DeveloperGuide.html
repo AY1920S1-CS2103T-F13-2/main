@@ -77,7 +77,7 @@
 <li><a href="#classes-for-recommendation-feature-in-model">4.7.1. Classes for recommendation feature in Model</a></li>
 <li><a href="#adding-likes-and-dislikes">4.7.2. Adding likes and dislikes</a></li>
 <li><a href="#displaying-recommendations">4.7.3. Displaying recommendations</a></li>
-<li><a href="#design-considerations-4">4.7.4. Design Considerations</a></li>
+<li><a href="#design-considerations-5">4.7.4. Design Considerations</a></li>
 </ul>
 </li>
 <li><a href="#alias-feature">4.8. Alias feature</a>
@@ -90,13 +90,13 @@
 <ul class="sectlevel3">
 <li><a href="#classes-for-info-feature-in-model">4.9.1. Classes for info feature in Model</a></li>
 <li><a href="#opening-info-card-about-a-command">4.9.2. Opening info card about a command</a></li>
-<li><a href="#design-considerations-5">4.9.3. Design Considerations</a></li>
+<li><a href="#design-considerations-6">4.9.3. Design Considerations</a></li>
 </ul>
 </li>
 <li><a href="#theme-feature">4.10. Theme Feature</a>
 <ul class="sectlevel3">
 <li><a href="#changing-the-theme-of-the-app">4.10.1. Changing the theme of the app</a></li>
-<li><a href="#design-considerations-6">4.10.2. Design Considerations</a></li>
+<li><a href="#design-considerations-7">4.10.2. Design Considerations</a></li>
 </ul>
 </li>
 </ul>
@@ -1856,6 +1856,101 @@ the purchase history data of the user while maintaining data integrity.</p>
 </div>
 </div>
 </div>
+<div class="sect4">
+<h5 id="design-considerations-4"><a class="link" href="#design-considerations-4">Design considerations</a></h5>
+<div class="paragraph">
+<p>Below are some design considerations when implementing Purchase-related models.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 7. Design considerations of the for <code>Purchase</code> model</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Alternative 1 (Chosen Implementation)</th>
+<th class="tableblock halign-left valign-top">Alternative 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Storing the purchased food item as a <code>Food</code> object in the <code>Purchase</code> object</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Easier to implement</p>
+</li>
+<li>
+<p>No need to do additional input validation to ensure validity of <code>Purchase</code> and can instead rely on the input validation provided by <code>Food</code>.</p>
+</li>
+<li>
+<p>Allow for future functionality extension by storing all the information of the purchased <code>Food</code> to be accessed when needed.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Increased coupling due to the dependency created between <code>Purchase</code> model and <code>Food</code> model.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Creating an additional immutable <code>PurchasedFood</code> class to store information regarding the purchased <code>Food</code> object.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Can choose to only include relevant information such as the food name and price while cutting out other irrelevant parts.</p>
+</li>
+<li>
+<p>Remove the dependency between <code>Purchase</code> model and <code>Food</code> model</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Creates another dependency between <code>Purchase</code> and <code>PurchasedFood</code></p>
+</li>
+<li>
+<p>Harder to implement, additional classes would have to be written to allow for serialisation as well.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>We chose alternative 1 due to the fact that <code>Food</code> is implemented as a immutable class.
+Therefore, we are able to get the required from the <code>Food</code> object the user selected to construct the new purchased <code>Food</code> object.
+And at the same time, ensure the data integrity of that information.
+Also, by encapsulating the <code>Food</code> object within the <code>Purchase</code> object and making it a private field, we are able to ensure that the purchased <code>Food</code> is not modified in an unintended manner.</p>
+</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="buying-a-food-item"><a class="link" href="#buying-a-food-item">4.6.2. Buying a Food Item</a></h4>
@@ -2014,7 +2109,7 @@ using the <code>recommend</code> command.</p>
 <p>Each food is passed to the recommendation system and it calculates the recommendation value based on the tables below:</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 7. Bonuses applied by the recommendation system</caption>
+<caption class="title">Table 8. Bonuses applied by the recommendation system</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -2085,7 +2180,7 @@ using the <code>recommend</code> command.</p>
 <p><br></p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 8. Penalties applied by the recommendation system</caption>
+<caption class="title">Table 9. Penalties applied by the recommendation system</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -2150,7 +2245,7 @@ is executed. Food with similar recommendation values are sorted based on their p
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">4.7.4. Design Considerations</a></h4>
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">4.7.4. Design Considerations</a></h4>
 <div class="paragraph">
 <p>Detailed below are the design considerations taken into account when engineering the Recommendation System.</p>
 </div>
@@ -2160,7 +2255,7 @@ is executed. Food with similar recommendation values are sorted based on their p
 <p>Explained below are our considerations when designing the <code>RecommendationSystem</code> class.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 9. Design considerations of <code>RecommendationSystem</code> class</caption>
+<caption class="title">Table 10. Design considerations of <code>RecommendationSystem</code> class</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -2268,7 +2363,7 @@ as a singleton class.</p>
 <p>Explained below are our considerations when designing the <code>RecommendationSystem#calculateRecommendation()</code> function.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 10. Design considerations of the <code>RecommendationSystem#calculateRecommendation()</code> function</caption>
+<caption class="title">Table 11. Design considerations of the <code>RecommendationSystem#calculateRecommendation()</code> function</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -2495,7 +2590,7 @@ as long as the command exist within the app (There exist the class for such info
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">4.9.3. Design Considerations</a></h4>
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">4.9.3. Design Considerations</a></h4>
 <div class="paragraph">
 <p>Detailed below are our considerations when creating the Info feature.</p>
 </div>
@@ -2505,7 +2600,7 @@ as long as the command exist within the app (There exist the class for such info
 <p>Explained below are our consideration when designing the <code>InfoCommand</code> class.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 11. Design considerations of the <code>InfoCommand</code> class</caption>
+<caption class="title">Table 12. Design considerations of the <code>InfoCommand</code> class</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -2612,7 +2707,7 @@ subsequent command addition would be much easier as it&#8217;s just repeated rou
 <p>Explained below are our consideration when designing on the best way to display the command&#8217;s information.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 12. Design considerations of the way to display information</caption>
+<caption class="title">Table 13. Design considerations of the way to display information</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -2744,7 +2839,7 @@ theme. As such, the only valid commands are <code>theme dark</code> or <code>the
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">4.10.2. Design Considerations</a></h4>
+<h4 id="design-considerations-7"><a class="link" href="#design-considerations-7">4.10.2. Design Considerations</a></h4>
 <div class="paragraph">
 <p>Detailed below are our considerations when creating the Theme feature.</p>
 </div>
@@ -2754,7 +2849,7 @@ theme. As such, the only valid commands are <code>theme dark</code> or <code>the
 <p>Explained below are our consideration when designing method to change the theme.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 13. Design considerations of the theme change feature</caption>
+<caption class="title">Table 14. Design considerations of the theme change feature</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -2939,7 +3034,7 @@ Attributes left unset in the <code>build.gradle</code> file will use their <stro
 </table>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 14. List of site-wide attributes</caption>
+<caption class="title">Table 15. List of site-wide attributes</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 50%;">
@@ -3001,7 +3096,7 @@ Attributes left unset in <code>.adoc</code> files will use their <strong>default
 </table>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 15. List of per-file attributes, excluding Asciidoctor&#8217;s built-in attributes</caption>
+<caption class="title">Table 16. List of per-file attributes, excluding Asciidoctor&#8217;s built-in attributes</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 50%;">
@@ -4069,4 +4164,4 @@ recommendation value are documented in the User Guide and Developer Guide.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 13:32:25 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 13:35:05 UTC</div></div></div></body></html>
