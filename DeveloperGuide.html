@@ -93,6 +93,12 @@
 <li><a href="#design-considerations-5">4.9.3. Design Considerations</a></li>
 </ul>
 </li>
+<li><a href="#theme-feature">4.10. Theme Feature</a>
+<ul class="sectlevel3">
+<li><a href="#changing-the-theme-of-the-app">4.10.1. Changing the theme of the app</a></li>
+<li><a href="#design-considerations-6">4.10.2. Design Considerations</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#documentation">5. Documentation</a>
@@ -2814,6 +2820,142 @@ information-heavy commands such as <code>add</code> and <code>edit</code> which 
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="theme-feature"><a class="link" href="#theme-feature">4.10. Theme Feature</a></h3>
+<div class="paragraph">
+<p>The theme feature allows users to change the look of the app. This can be done through calling the
+<code>theme</code> command.</p>
+</div>
+<div class="sect3">
+<h4 id="changing-the-theme-of-the-app"><a class="link" href="#changing-the-theme-of-the-app">4.10.1. Changing the theme of the app</a></h4>
+<div class="paragraph">
+<p>Command word to change the theme is <code>theme</code>. Currently there are only two themes available which are light and dark
+theme. As such, the only valid commands are <code>theme dark</code> or <code>theme light</code>.</p>
+</div>
+<div class="paragraph">
+<p>The sequence window below shows how a sample <code>theme</code> command is executed:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ThemeSequenceDiagram.png" alt="ThemeSequenceDiagram">
+</div>
+<div class="title">Figure 28. Sequence diagram for sample <code>theme</code> command</div>
+</div>
+<div class="paragraph">
+<p>The following activity diagram shows how the <code>theme</code> command works.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ThemeActivityDiagram.png" alt="ThemeActivityDiagram">
+</div>
+<div class="title">Figure 29. Activity diagram for sample <code>theme</code> command</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">4.10.2. Design Considerations</a></h4>
+<div class="paragraph">
+<p>Detailed below are our considerations when creating the Theme feature.</p>
+</div>
+<div class="sect4">
+<h5 id="design-considerations-on-how-to-implement-the-theme-change"><a class="link" href="#design-considerations-on-how-to-implement-the-theme-change">Design considerations on how to implement the theme change</a></h5>
+<div class="paragraph">
+<p>Explained below are our consideration when designing method to change the theme.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 13. Design considerations of the theme change feature</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Alternative 1 (Chosen Implementation)</th>
+<th class="tableblock halign-left valign-top">Alternative 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Using CSS styling and just simply changing the <code>StyleSheet</code> for every <code>theme</code> call</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Adds more customization and much easier implementation.</p>
+</li>
+<li>
+<p>Minimize the chance of missing an UI component as the entire CSS <code>StyleSheet</code> can just be easily copy-pasted.</p>
+</li>
+<li>
+<p>Better organization of the different themes.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Many components of the CSS <code>StyleSheet</code> are repeated and hence taking up unnecessary space.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Creating a class that automates the theme change according to color scheme.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Can easily add more themes as we only need to input the color schemes.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Less customization ability.</p>
+</li>
+<li>
+<p>More prone to bugs.</p>
+</li>
+<li>
+<p>Different themes might look very similar due to similar implementation.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>We decided to go with alternative 1 and utilize <code>StyleSheet</code> instead of creating a class that automates the theme change.
+This greatly improve the customization between themes and much easier to implement. THe greater customization option
+allows for different themes to look distinct and also look better.</p>
+</div>
+<div class="paragraph">
+<p>This implementation also allows for better organization of the themes which makes it easy to keep track of the
+different themes available. The space taken up by repeated components is not that heavy since the app itself is light.</p>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -2884,7 +3026,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 28. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 30. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 <div class="sect2">
@@ -2905,7 +3047,7 @@ Attributes left unset in the <code>build.gradle</code> file will use their <stro
 </table>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 13. List of site-wide attributes</caption>
+<caption class="title">Table 14. List of site-wide attributes</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 50%;">
@@ -2967,7 +3109,7 @@ Attributes left unset in <code>.adoc</code> files will use their <strong>default
 </table>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 14. List of per-file attributes, excluding Asciidoctor&#8217;s built-in attributes</caption>
+<caption class="title">Table 15. List of per-file attributes, excluding Asciidoctor&#8217;s built-in attributes</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 50%;">
@@ -3117,7 +3259,7 @@ e.g. <code>seedu.savenus.logic.LogicManagerTest</code></p>
 <div class="content">
 <img src="images/testfx-idea-accessibility-permissions.png" alt="testfx idea accessibility permissions" width="600">
 </div>
-<div class="title">Figure 29. <code>Accessibility</code> permission is granted to <code>IntelliJ IDEA</code></div>
+<div class="title">Figure 31. <code>Accessibility</code> permission is granted to <code>IntelliJ IDEA</code></div>
 </div>
 </div>
 </div>
@@ -4035,4 +4177,4 @@ recommendation value are documented in the User Guide and Developer Guide.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 06:35:47 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 07:14:40 UTC</div></div></div></body></html>
