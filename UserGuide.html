@@ -187,13 +187,13 @@ You can download Java 11 from
 </li>
 </ol>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="images/DarkMode.png" alt="DarkMode" width="1000">
+<img src="images/DarkMode.png" alt="DarkMode">
 </div>
 <div class="title">Figure 1. Dark Mode display for $aveNUS</div>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/LightMode.png" alt="width-&quot;800&quot;">
 </div>
@@ -247,8 +247,8 @@ might experienced some bugs.
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-You might experience some truncated detail on smaller laptop screens. As such, we would advice you to not to input
-really long names, description, etc.
+Users might experience some truncated detail on smaller laptop screens. As such, we advice users to not input
+names with many characters, description, etc.
 </td>
 </tr>
 </table>
@@ -260,15 +260,10 @@ really long names, description, etc.
 <i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
-Ensure that your scaling setting is set to 100% as anything higher might result in text being cut off.
+Ensure that your screen setting is set to a display size of 100%, as a higher setting might result in texts being cut off.
 </td>
 </tr>
 </table>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/ScalingSetting.png" alt="ScalingSetting">
-</div>
 </div>
 </div>
 <div class="sect2">
@@ -286,22 +281,40 @@ is provided in the command descriptions.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
-<div class="paragraph">
+<div class="ulist">
+<ul>
+<li>
 <p><code>UPPER_CASE</code> words are the parameters supplied by you.</p>
-</div>
-<div class="paragraph">
+<div class="ulist">
+<ul>
+<li>
 <p>For example, <code>info COMMAND</code>, <code>COMMAND</code> is a parameter to find out more information about <code>COMMAND</code>.</p>
+</li>
+</ul>
 </div>
-<div class="paragraph">
+</li>
+<li>
 <p>Items in square brackets are optional.</p>
-</div>
-<div class="paragraph">
+<div class="ulist">
+<ul>
+<li>
 <p>For example, <code>budget AMOUNT [DURATION]</code> has an optional parameter <code>DURATION</code>, hence <code>budget 100 10</code> or <code>budget 100</code>
 are both valid commands.</p>
+</li>
+</ul>
 </div>
-<div class="paragraph">
-<p>Items with …​ after them can be used multiple times or not at all.
-For example, <code>delete INDEX&#8230;&#8203;</code> works with commands such as <code>delete 1</code>, <code>delete 1 2</code> and so on.</p>
+</li>
+<li>
+<p>Items with …​ after them can be used multiple times or not at all.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>For example, <code>delete INDEX&#8230;&#8203;</code> works with commands such as <code>delete 1</code>, <code>delete 1 2</code> and so on.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -331,8 +344,8 @@ to make the user more familiar with the app.</p>
 <div class="sect3">
 <h4 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">3.1.1. Viewing help: <code>help</code></a></h4>
 <div class="paragraph">
-<p>Display the help screen that allows you to view the list of commands available and also open up the user guide
-by clicking the <code>Guide</code> button.</p>
+<p>Displays the help window that allows users to view the list of commands available.
+It also allows users to open up the user guide by clicking the <code>Guide</code> button within the help window.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -373,18 +386,6 @@ The user can view up to 10 previously typed commands.</p>
 </div>
 </div>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-A message stating that "You have not entered any commands." is displayed if you have not input any commands prior to the call to <code>history</code>.
-</td>
-</tr>
-</table>
-</div>
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -411,9 +412,9 @@ will not be shown.
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>You will see a list of commands that you have previously typed in the Results Display.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="images/HistoryUI.png" alt="HistoryUI" width="450">
+<img src="images/HistoryUI.png" alt="HistoryUI" width="600">
 </div>
 <div class="title">Figure 3. Example of view of $aveNUS after user inputs <code>history</code>. History of previously typed command appears in the Results Display as shown.</div>
 </div>
@@ -423,6 +424,18 @@ will not be shown.
 </tr>
 </tbody>
 </table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+A message stating that "You have not entered any commands." is displayed if you have not input any commands prior to the call to <code>history</code>.
+</td>
+</tr>
+</table>
+</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -451,19 +464,6 @@ specified command, usage example, and expected output of the command.</p>
 </div>
 </div>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-$aveNUS can only display one information window at a time. Therefore, subsequent usage of the <code>info</code> command will only
-display the latest command specified.
-</td>
-</tr>
-</table>
-</div>
 <div class="admonitionblock tip">
 <table>
 <tr>
@@ -471,8 +471,8 @@ display the latest command specified.
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-You will not have to worry about opening too many new information window as older information window closes as soon as
-a new one is opened!
+$aveNUS can only display one information window at a time. Therefore, subsequent usage of the <code>info</code> command will only
+display the latest command specified.
 </td>
 </tr>
 </table>
@@ -490,9 +490,9 @@ a new one is opened!
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>You will see a window pop-up specifying the details of the command you wanted more information about.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="images/InfoEditUI.png" alt="InfoEditUI" width="250">
+<img src="images/InfoEditUI.png" alt="InfoEditUI" width="450">
 </div>
 <div class="title">Figure 4. Example of view of information window after user inputs <code>info edit</code>.</div>
 </div>
@@ -687,10 +687,11 @@ restrictions and opening hours.
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>The food list will scroll to the bottom, where the new food item is added.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/addsuccess.png" alt="addsuccess">
 </div>
+<div class="title">Figure 5. Example of new food added into the app</div>
 </div>
 <div class="paragraph">
 <p></p>
@@ -737,10 +738,11 @@ by using the <code>recommend</code> command again (see <a href="#getting-a-list-
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>All the items in the food list will be shown.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/listsuccess.png" alt="listsuccess">
 </div>
+<div class="title">Figure 6. Example of listing all food items</div>
 </div>
 <div class="paragraph">
 <p></p>
@@ -803,10 +805,11 @@ Providing more than one of these <code>FIELD</code> will throw an error.</p>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>The food item&#8217;s fields will be updated.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/editsuccess.png" alt="editsuccess">
 </div>
+<div class="title">Figure 7. Example of edited food item</div>
 </div>
 <div class="paragraph">
 <p></p>
@@ -842,10 +845,11 @@ be shown in the food list.</p>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>The food items containing any of the specific keywords will be shown.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/findsuccess.png" alt="findsuccess">
 </div>
+<div class="title">Figure 8. Example of finding food</div>
 </div>
 <div class="paragraph">
 <p></p>
@@ -904,10 +908,11 @@ in v2.0 and above.
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>The food items satisfying the conditions will be shown.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/filtersuccess.png" alt="filtersuccess">
 </div>
+<div class="title">Figure 9. Example of filtering food successfully</div>
 </div>
 <div class="paragraph">
 <p></p>
@@ -954,10 +959,11 @@ You are allowed to have more than one <code>INDEX</code>.
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>A confirmation message will appear, informing that the food item has been deleted.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/deletesuccess.png" alt="deletesuccess">
 </div>
+<div class="title">Figure 10. Example of deleting food sucessfully</div>
 </div>
 <div class="paragraph">
 <p></p>
@@ -991,10 +997,11 @@ You are allowed to have more than one <code>INDEX</code>.
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Wallet, Purchase History, Savings History, Savings Account, likes, dislikes and aliases will all be cleared..</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/clearsuccess.png" alt="clearsuccess">
 </div>
+<div class="title">Figure 11. Example of calling <code>clear</code> in the app.</div>
 </div>
 <div class="paragraph">
 <p></p>
@@ -1118,10 +1125,11 @@ You can have more than one pair of <code>FIELD</code> and <code>DIRECTION</code>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>The list of food items will be sorted by the fields you have entered.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/sortsuccess.png" alt="sortsuccess">
 </div>
+<div class="title">Figure 12. Example of sorting the food items successfully</div>
 </div>
 <div class="paragraph">
 <p></p>
@@ -1157,10 +1165,11 @@ FIELD and DIRECTION.</p>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Your custom comparator will be shown.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/makesortsuccess.png" alt="makesortsuccess">
 </div>
+<div class="title">Figure 13. Example of success message when custom comparator successfully created.</div>
 </div>
 <div class="paragraph">
 <p></p>
@@ -1207,10 +1216,11 @@ by using the <code>recommend</code> command again (see <a href="#getting-a-list-
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>The list of food items will be sorted by the fields specified in your custom comparator.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/customsortsuccess.png" alt="customsortsuccess">
 </div>
+<div class="title">Figure 14. Example of successful custom sort</div>
 </div>
 <div class="paragraph">
 <p></p>
@@ -1272,10 +1282,11 @@ turn auto sorting off.
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>A message will inform you if you have turned autosorting on or off.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/autosortsuccess.png" alt="autosortsuccess">
 </div>
+<div class="title">Figure 15. Example of successful autosort.</div>
 </div>
 <div class="paragraph">
 <p></p>
@@ -1309,10 +1320,11 @@ turn auto sorting off.
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>A message will inform you of the fields of your custom comparator.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/viewsortsuccess.png" alt="viewsortsuccess">
 </div>
+<div class="title">Figure 16. Example of success message when user request to view the custom comparator</div>
 </div>
 <div class="paragraph">
 <p></p>
@@ -1359,10 +1371,11 @@ by using the <code>recommend</code> command again (see <a href="#getting-a-list-
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>The list of food items will be sorted in its natural order.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/defaultsuccess.png" alt="defaultsuccess">
 </div>
+<div class="title">Figure 17. Example of setting the food items in default order</div>
 </div>
 <div class="paragraph">
 <p></p>
@@ -1374,11 +1387,11 @@ by using the <code>recommend</code> command again (see <a href="#getting-a-list-
 </div>
 <div class="sect2">
 <h3 id="budgeting"><a class="link" href="#budgeting">3.4. Budgeting</a></h3>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/wallet.png" alt="wallet" width="400">
 </div>
-<div class="title">Figure 5. Example User&#8217;s Wallet</div>
+<div class="title">Figure 18. Example User&#8217;s Wallet</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1446,13 +1459,16 @@ If the top up was successful, you should be able to see the update to your walle
 <div class="sect2">
 <h3 id="savings"><a class="link" href="#savings">3.5. Savings</a></h3>
 <div class="paragraph">
-<p>Unlike your wallet which has a limit to the amount you can have, i.e. $1,000,000, your savings account has a limit that is imposed by the limitations of the user&#8217;s computer&#8217;s memory.<br>
-The savings account and the savings history is presented to the user in the display as shown in figure below.</p>
+<p>Unlike your wallet which has a limit to the amount you can have, i.e. $1,000,000, your savings account has a limit that is imposed by the limitations of the user&#8217;s computer&#8217;s memory.<br></p>
 </div>
-<div class="imageblock">
+<div class="paragraph">
+<p>The savings account and the savings history is presented to the user in the display as shown in figure below.</p>
+</div>
+<div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="images/SavingsDisplay.png" alt="SavingsDisplay" width="400">
+<img src="images/SavingsDisplay.png" alt="SavingsDisplay">
 </div>
+<div class="title">Figure 19. GUI display of $aveNUS</div>
 </div>
 <div class="sect3">
 <h4 id="transfer-money-from-user-s-wallet-into-savings-account-code-save-code"><a class="link" href="#transfer-money-from-user-s-wallet-into-savings-account-code-save-code">3.5.1. Transfer money from user&#8217;s wallet into savings account: <code>save</code></a></h4>
@@ -1497,17 +1513,17 @@ money without having money in your wallet.
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>You will see a success message and the amount of money you have saved in your savings account. You will be able to view your savings in the savings history tab. The savings will appear GREEN.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="images/SavingsAdded.png" alt="SavingsAdded" width="300">
+<img src="images/SavingsAdded.png" alt="SavingsAdded" width="450">
 </div>
-<div class="title">Figure 6. Example savings display when "Savings" is clicked as shown after savings are made.</div>
+<div class="title">Figure 20. Example savings display when "Savings" is clicked as shown after savings are made.</div>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="images/SavingsSuccessMessage.png" alt="SavingsSuccessMessage" width="300">
+<img src="images/SavingsSuccessMessage.png" alt="SavingsSuccessMessage" width="450">
 </div>
-<div class="title">Figure 7. Example success message that appears after keying a successful saving.</div>
+<div class="title">Figure 21. Example success message that appears after keying a successful saving.</div>
 </div>
 <div class="paragraph">
 <p></p>
@@ -1559,20 +1575,20 @@ Also, you cannot withdraw an amount that will result in your wallet having more 
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>You will see a success message and the amount of money you have withdrawn from your savings account. You will be able to view your withdrawals in the savings history tab. The withdrawals will appear RED.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="images/SavingsWithdraw.png" alt="SavingsWithdraw" width="300">
+<img src="images/SavingsWithdraw.png" alt="SavingsWithdraw" width="450">
 </div>
-<div class="title">Figure 8. Example withdrawal display when "Savings" is clicked as shown after withdrawals are made.</div>
+<div class="title">Figure 22. Example withdrawal display when "Savings" is clicked as shown after withdrawals are made.</div>
 </div>
 <div class="paragraph">
 <p></p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="images/WithdrawalSuccessMessage.png" alt="WithdrawalSuccessMessage" width="300">
+<img src="images/WithdrawalSuccessMessage.png" alt="WithdrawalSuccessMessage" width="450">
 </div>
-<div class="title">Figure 9. Example success message that appears after keying a successful withdrawal. This appears below where the user typed.</div>
+<div class="title">Figure 23. Example success message that appears after keying a successful withdrawal. This appears below where the user typed.</div>
 </div>
 <div class="paragraph">
 <p></p>
@@ -1684,11 +1700,11 @@ Only the date shall be entered, no time is required.
 </div>
 <div class="sect2">
 <h3 id="purchasing"><a class="link" href="#purchasing">3.6. Purchasing</a></h3>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/PurchaseHistory.png" alt="PurchaseHistory" width="600">
 </div>
-<div class="title">Figure 10. Example User&#8217;s PurchaseHistory</div>
+<div class="title">Figure 24. Example User&#8217;s PurchaseHistory</div>
 </div>
 <div class="sect3">
 <h4 id="buy-a-food-item-code-buy-code"><a class="link" href="#buy-a-food-item-code-buy-code">3.6.1. Buy a food item: <code>buy</code></a></h4>
@@ -1900,7 +1916,7 @@ If the purchase was successful, you should be able to see the update to your pur
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>The list of recommendations will be shown, sorted by their recommendation value.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/recommend.png" alt="recommend">
 </div>
@@ -2543,4 +2559,4 @@ later to run the app.</p>
 </tbody>
 </table>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 13:35:05 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 13:41:58 UTC</div></div></div></body></html>
