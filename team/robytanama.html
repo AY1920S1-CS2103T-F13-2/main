@@ -91,22 +91,22 @@ successfully come up with color schemes for any theme selected by the user that 
 stylish in design.</p>
 </div>
 <div class="paragraph">
-<p>There are also a list of themes available which gives the user a sense of freedom where they are able to tweak how the
-application looks according to their own preferences. There is also custom theme available to suit the tastes of even
-the most demanding of users.</p>
+<p>I also added buttons on the menu pane that functions as the single-word commands such as <code>recommend</code> and <code>default</code>.
+These buttons function just like typing the commands on the Command Text Box and the icon for each button has been
+carefully selected from online database of icons to perfectly match its function.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="justification"><a class="link" href="#justification">Justification</a></h4>
 <div class="paragraph">
-<p>The look of the app is the first thing that users see when starting up the application. By having a expertly
+<p>The look of the app is the first thing that users see when starting up the application. By having an expertly
 designed UI, the user will feel more at ease when using the app as it gives a sense of overall professionalism.</p>
 </div>
 <div class="paragraph">
 <p>The reasoning behind adding enhancements to the UI components such as statistics tab and wallet section is to make
 the app more convenient to the user. By adding such displays, the user will no longer have to type on the command line
 just to get the statistics that they desire. Even the most experienced of keyboard users will definitely not want to
-constantly type commands just for a bunch if information that could have been easily displayed on the screen.</p>
+constantly type commands just for a bunch of information that could have been easily displayed on the screen.</p>
 </div>
 <div class="paragraph">
 <p>The themes are added so that the users are able to easily modify how the app look to their likings. Due to our team&#8217;s
@@ -114,19 +114,30 @@ foresight and forward-thinking nature, we thought that it would be much more acc
 to stare at the same application for hours on end without being able to change the look of the application at all,
 which is why it is important to have themes.</p>
 </div>
+<div class="paragraph">
+<p>The buttons are added to improve the user&#8217;s convenience as most single-word commands like <code>recommend</code> are done by
+typing the command word into the Command Text Box. By being able to use the command just by clicking the button, it
+would greatly save the user&#8217;s time. This also allows the app to accommodate the different type of users, where some
+might prefer mouse over keyboard, and vice versa.</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="highlights"><a class="link" href="#highlights">Highlights</a></h4>
 <div class="paragraph">
-<p>As of now, this feature does not have any CLI implementation as I prioritise being able to display the features first.</p>
+<p>The UI features such as <code>theme</code> has been implemented to work with Command Line Interface. For example, <code>theme dark</code> will
+change the application&#8217;s theme to Dark theme. This is to enhance the clickable theme button and also to give users the
+freedom of choice.</p>
 </div>
 <div class="paragraph">
 <p>A menu tab has been created on the left side of the application with a variety of buttons available such as help menu,
-and theme button which allow user to know what they can do before even reading the user guide.</p>
+and theme button with tooltip that appears when user hovers over the button. This is to give a brief outline to the
+users on what the application is capable of doing.</p>
 </div>
 <div class="paragraph">
 <p>The <code>MainWindow</code> has been meticulously modified and tweaked to make the application look more professional and
-numerous bug fixes were done to allow most laptop to open the application without any problems.</p>
+numerous bug fixes were done to allow most laptop to open the application without any problems. The application used
+to have problems with smaller laptop screens due to the size of the UI but I have managed to tweak the UI to suit
+reasonably small screens.</p>
 </div>
 </div>
 </div>
@@ -156,6 +167,11 @@ enable the <code>HelpWindow</code> to automatically open up the user guide using
 <p>Firstly, the <code>info</code> command is implemented to give users a better understanding of how the application works. The
 information listed for the commands are written as detailed as possible without over-using technical terms. This works
 like an in-built user-guide, hence improving convenience.</p>
+</div>
+<div class="paragraph">
+<p>The <code>info</code> command does not require internet connection as everything is manually typed by the developers and is
+integrated into the application. This is so help those users who do not have internet connection but would still want
+to know more about various commands.</p>
 </div>
 <div class="paragraph">
 <p>Secondly, the enhanced <code>help</code> command is done so as to provide users with more convenience. The list of commands is to
@@ -214,7 +230,7 @@ default browser would definitely make it much more convenient for the user.</p>
 <p>Organized mini project milestones [Examples: <a href="https://github.com/AY1920S1-CS2103T-F13-2/main/issues/228">#228</a>]</p>
 </li>
 <li>
-<p>Fixed bugs after they were found [PR <a href="https://github.com/AY1920S1-CS2103T-F13-2/main/pull/221">#221</a>]</p>
+<p>Fixed bugs after they were found [PR <a href="https://github.com/AY1920S1-CS2103T-F13-2/main/pull/317">#317</a>]</p>
 </li>
 </ul>
 </div>
@@ -224,27 +240,20 @@ default browser would definitely make it much more convenient for the user.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Updated the User Guide</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Updated README and badges [PR <a href="https://github.com/AY1920S1-CS2103T-F13-2/main/pull/116">#116</a>]</p>
-</li>
-<li>
-<p>Updated the UI screenshots</p>
-</li>
-<li>
-<p>Provided sample screenshots for any UI changes</p>
-</li>
-</ul>
-</div>
+<p>Updated the User Guide [PR <a href="https://github.com/AY1920S1-CS2103T-F13-2/main/pull/315">#315</a>]</p>
 </li>
 <li>
 <p>Updated the Developer Guide</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Updated UI section of the Developer Guide [PR <a href="https://github.com/AY1920S1-CS2103T-F13-2/main/pull/190">#190</a>]</p>
+<p>Updated UI section of the Developer Guide [PR <a href="https://github.com/AY1920S1-CS2103T-F13-2/main/pull/198">#198</a>]</p>
+</li>
+<li>
+<p>Updated Info feature of the Developer Guide [PR <a href="https://github.com/AY1920S1-CS2103T-F13-2/main/pull/323">#323</a>]</p>
+</li>
+<li>
+<p>Updated Theme feature of the Developer Guide [PR <a href="https://github.com/AY1920S1-CS2103T-F13-2/main/pull/333">#333</a>]</p>
 </li>
 </ul>
 </div>
@@ -261,7 +270,7 @@ default browser would definitely make it much more convenient for the user.</p>
 <h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This section shows the contributions that I have made to the sorting feature of the User Guide.</p>
+<p>This section shows the contributions that I have made to the general feature of the User Guide.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -654,118 +663,11 @@ e.g. calling <code>theme dark</code> and then <code>theme dark</code> again will
 This is to allow for easy access and also to better organize the information to be displayed for each commands.</p>
 </div>
 <div class="paragraph">
-<p>These classes only has public fields without any methods as it is only needed by <code>InfoWindow</code> to access the information
-stored within the class.</p>
+<p>These classes only has public fields without any methods as it is only needed by <code>InfoWindow</code> to access the information</p>
 </div>
 <div class="paragraph">
-<p>The classes added where each class represents an info card:</p>
+<p>Here are some example classes: <code>AddInfo</code>, <code>AliasInfo</code>, <code>AutoSortInfo</code>, <code>BudgetInfo</code></p>
 </div>
-<div class="sect4">
-<h5 id="code-addinfo-code"><a class="link" href="#code-addinfo-code"><code>AddInfo</code></a></h5>
-
-</div>
-<div class="sect4">
-<h5 id="code-aliasinfo-code"><a class="link" href="#code-aliasinfo-code"><code>AliasInfo</code></a></h5>
-
-</div>
-<div class="sect4">
-<h5 id="code-autosortinfo-code"><a class="link" href="#code-autosortinfo-code"><code>AutoSortInfo</code></a></h5>
-
-</div>
-<div class="sect4">
-<h5 id="code-budgetinfo-code"><a class="link" href="#code-budgetinfo-code"><code>BudgetInfo</code></a></h5>
-
-</div>
-<div class="sect4">
-<h5 id="code-buyinfo-code"><a class="link" href="#code-buyinfo-code"><code>BuyInfo</code></a></h5>
-
-</div>
-<div class="sect4">
-<h5 id="code-clearinfo-code"><a class="link" href="#code-clearinfo-code"><code>ClearInfo</code></a></h5>
-
-</div>
-<div class="sect4">
-<h5 id="code-customsortinfo-code"><a class="link" href="#code-customsortinfo-code"><code>CustomSortInfo</code></a></h5>
-
-</div>
-<div class="sect4">
-<h5 id="code-defaultinfo-code"><a class="link" href="#code-defaultinfo-code"><code>DefaultInfo</code></a></h5>
-
-</div>
-<div class="sect4">
-<h5 id="code-deleteinfo-code"><a class="link" href="#code-deleteinfo-code"><code>DeleteInfo</code></a></h5>
-
-</div>
-<div class="sect4">
-<h5 id="code-dislikeinfo-code"><a class="link" href="#code-dislikeinfo-code"><code>DislikeInfo</code></a></h5>
-
-</div>
-<div class="sect4">
-<h5 id="code-editinfo-code"><a class="link" href="#code-editinfo-code"><code>EditInfo</code></a></h5>
-
-</div>
-<div class="sect4">
-<h5 id="code-exitinfo-code"><a class="link" href="#code-exitinfo-code"><code>ExitInfo</code></a></h5>
-
-</div>
-<div class="sect4">
-<h5 id="code-filterinfo-code"><a class="link" href="#code-filterinfo-code"><code>FilterInfo</code></a></h5>
-
-</div>
-<div class="sect4">
-<h5 id="code-helpinfo-code"><a class="link" href="#code-helpinfo-code"><code>HelpInfo</code></a></h5>
-
-</div>
-<div class="sect4">
-<h5 id="code-historyinfo-code"><a class="link" href="#code-historyinfo-code"><code>HistoryInfo</code></a></h5>
-
-</div>
-<div class="sect4">
-<h5 id="code-infoinfo-code"><a class="link" href="#code-infoinfo-code"><code>InfoInfo</code></a></h5>
-
-</div>
-<div class="sect4">
-<h5 id="code-likeinfo-code"><a class="link" href="#code-likeinfo-code"><code>LikeInfo</code></a></h5>
-
-</div>
-<div class="sect4">
-<h5 id="code-makesortinfo-code"><a class="link" href="#code-makesortinfo-code"><code>MakeSortInfo</code></a></h5>
-
-</div>
-<div class="sect4">
-<h5 id="code-recommendinfo-code"><a class="link" href="#code-recommendinfo-code"><code>RecommendInfo</code></a></h5>
-
-</div>
-<div class="sect4">
-<h5 id="code-removedislikeinfo-code"><a class="link" href="#code-removedislikeinfo-code"><code>RemoveDislikeInfo</code></a></h5>
-
-</div>
-<div class="sect4">
-<h5 id="code-removelikeinfo-code"><a class="link" href="#code-removelikeinfo-code"><code>RemoveLikeInfo</code></a></h5>
-
-</div>
-<div class="sect4">
-<h5 id="code-saveinfo-code"><a class="link" href="#code-saveinfo-code"><code>SaveInfo</code></a></h5>
-
-</div>
-<div class="sect4">
-<h5 id="code-showinfo-code"><a class="link" href="#code-showinfo-code"><code>ShowInfo</code></a></h5>
-
-</div>
-<div class="sect4">
-<h5 id="code-themeinfo-code"><a class="link" href="#code-themeinfo-code"><code>ThemeInfo</code></a></h5>
-
-</div>
-<div class="sect4">
-<h5 id="code-topupinfo-code"><a class="link" href="#code-topupinfo-code"><code>TopUpInfo</code></a></h5>
-
-</div>
-<div class="sect4">
-<h5 id="code-viewsortinfo-code"><a class="link" href="#code-viewsortinfo-code"><code>ViewSortInfo</code></a></h5>
-
-</div>
-<div class="sect4">
-<h5 id="code-withdrawinfo-code"><a class="link" href="#code-withdrawinfo-code"><code>WithdrawInfo</code></a></h5>
 <div class="paragraph">
 <p>Each of these classes contains these fields:</p>
 </div>
@@ -788,7 +690,6 @@ stored within the class.</p>
 <div class="paragraph">
 <p>Each of these fields have to be manually typed as it acts like an in-built user guide for the users who do not have
 access to internet connection, but would still like to know about the command.</p>
-</div>
 </div>
 </div>
 <div class="sect3">
@@ -1178,4 +1079,4 @@ different themes available. The space taken up by repeated components is not tha
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 07:53:15 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 07:56:24 UTC</div></div></div></body></html>
