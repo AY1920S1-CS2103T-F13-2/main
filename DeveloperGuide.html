@@ -86,6 +86,13 @@
 <li><a href="#mapping-an-alias-word-to-a-command-word">4.8.2. Mapping an alias word to a command word.</a></li>
 </ul>
 </li>
+<li><a href="#info-feature">4.9. Info Feature</a>
+<ul class="sectlevel3">
+<li><a href="#classes-for-info-feature-in-model">4.9.1. Classes for info feature in Model</a></li>
+<li><a href="#opening-info-card-about-a-command">4.9.2. Opening info card about a command</a></li>
+<li><a href="#design-considerations-5">4.9.3. Design Considerations</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#documentation">5. Documentation</a>
@@ -488,10 +495,10 @@ The following class plays an important role at the architecture level:</p>
 <p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103T-F13-2/main/src/main/java/seedu/savenus/ui/Ui.java"><code>Ui.java</code></a></p>
 </div>
 <div class="paragraph">
-<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>FoodListPanel</code>, <code>PurchaseListPanel</code>, <code>SavingsHistoryPanel</code>, <code>StatusBarFooter</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
+<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>FoodListPanel</code>, <code>PurchaseListPanel</code>, <code>SavingsHistoryPanel</code>, <code>StatusBarFooter</code>, etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
 </div>
 <div class="paragraph">
-<p>There are pop-up windows that appeared when the calls the <code>InfoCommand</code> or <code>HelpCommand</code> which is a new window with their own stages. The CSS files for each pop-up windows is taken from the <code>MainWindow</code> which ensures that they always match the theme of the <code>MainWindow</code> should the user decide to switch the theme while either pop-up window is open.</p>
+<p>There are pop-up windows that appear when user calls the <code>InfoCommand</code> or <code>HelpCommand</code> which is a new window with their own stages. The CSS files for each pop-up windows is taken from the <code>MainWindow</code> which ensures that they always match the theme of the <code>MainWindow</code> should the user decide to switch the theme while either pop-up window is open.</p>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/AY1920S1-CS2103T-F13-2/main/src/main/java/seedu/savenus/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/AY1920S1-CS2103T-F13-2/main/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
@@ -509,6 +516,12 @@ The following class plays an important role at the architecture level:</p>
 </li>
 <li>
 <p>Pop-up windows respond to the buttons on the menu tab.</p>
+</li>
+<li>
+<p>Button on the menu tab which acts as substitute for keyboard input for single-word commands.</p>
+</li>
+<li>
+<p>Each usage of the menu tab buttons will update the Food list accordingly.</p>
 </li>
 <li>
 <p>Listens for changes to <code>Model</code> data so that the UI can be updated with the modified data.</p>
@@ -2425,6 +2438,402 @@ in $aveNUS, as long as the alias word is alphanumeric.</p>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="info-feature"><a class="link" href="#info-feature">4.9. Info Feature</a></h3>
+<div class="paragraph">
+<p>The info feature allows users to view more information about a particular command. This can be done through calling the
+<code>info</code> command.</p>
+</div>
+<div class="sect3">
+<h4 id="classes-for-info-feature-in-model"><a class="link" href="#classes-for-info-feature-in-model">4.9.1. Classes for info feature in Model</a></h4>
+<div class="paragraph">
+<p>In order to support the <code>info</code> command, new classes were added that correspond to each command in the app.
+This is to allow for easy access and also to better organize the information to be displayed for each commands.</p>
+</div>
+<div class="paragraph">
+<p>These classes only has public fields without any methods as it is only needed by <code>InfoWindow</code> to access the information
+stored within the class.</p>
+</div>
+<div class="paragraph">
+<p>The classes added where each class represents an info card:</p>
+</div>
+<div class="sect4">
+<h5 id="code-addinfo-code"><a class="link" href="#code-addinfo-code"><code>AddInfo</code></a></h5>
+
+</div>
+<div class="sect4">
+<h5 id="code-aliasinfo-code"><a class="link" href="#code-aliasinfo-code"><code>AliasInfo</code></a></h5>
+
+</div>
+<div class="sect4">
+<h5 id="code-autosortinfo-code"><a class="link" href="#code-autosortinfo-code"><code>AutoSortInfo</code></a></h5>
+
+</div>
+<div class="sect4">
+<h5 id="code-budgetinfo-code"><a class="link" href="#code-budgetinfo-code"><code>BudgetInfo</code></a></h5>
+
+</div>
+<div class="sect4">
+<h5 id="code-buyinfo-code"><a class="link" href="#code-buyinfo-code"><code>BuyInfo</code></a></h5>
+
+</div>
+<div class="sect4">
+<h5 id="code-clearinfo-code"><a class="link" href="#code-clearinfo-code"><code>ClearInfo</code></a></h5>
+
+</div>
+<div class="sect4">
+<h5 id="code-customsortinfo-code"><a class="link" href="#code-customsortinfo-code"><code>CustomSortInfo</code></a></h5>
+
+</div>
+<div class="sect4">
+<h5 id="code-defaultinfo-code"><a class="link" href="#code-defaultinfo-code"><code>DefaultInfo</code></a></h5>
+
+</div>
+<div class="sect4">
+<h5 id="code-deleteinfo-code"><a class="link" href="#code-deleteinfo-code"><code>DeleteInfo</code></a></h5>
+
+</div>
+<div class="sect4">
+<h5 id="code-dislikeinfo-code"><a class="link" href="#code-dislikeinfo-code"><code>DislikeInfo</code></a></h5>
+
+</div>
+<div class="sect4">
+<h5 id="code-editinfo-code"><a class="link" href="#code-editinfo-code"><code>EditInfo</code></a></h5>
+
+</div>
+<div class="sect4">
+<h5 id="code-exitinfo-code"><a class="link" href="#code-exitinfo-code"><code>ExitInfo</code></a></h5>
+
+</div>
+<div class="sect4">
+<h5 id="code-filterinfo-code"><a class="link" href="#code-filterinfo-code"><code>FilterInfo</code></a></h5>
+
+</div>
+<div class="sect4">
+<h5 id="code-helpinfo-code"><a class="link" href="#code-helpinfo-code"><code>HelpInfo</code></a></h5>
+
+</div>
+<div class="sect4">
+<h5 id="code-historyinfo-code"><a class="link" href="#code-historyinfo-code"><code>HistoryInfo</code></a></h5>
+
+</div>
+<div class="sect4">
+<h5 id="code-infoinfo-code"><a class="link" href="#code-infoinfo-code"><code>InfoInfo</code></a></h5>
+
+</div>
+<div class="sect4">
+<h5 id="code-likeinfo-code"><a class="link" href="#code-likeinfo-code"><code>LikeInfo</code></a></h5>
+
+</div>
+<div class="sect4">
+<h5 id="code-makesortinfo-code"><a class="link" href="#code-makesortinfo-code"><code>MakeSortInfo</code></a></h5>
+
+</div>
+<div class="sect4">
+<h5 id="code-recommendinfo-code"><a class="link" href="#code-recommendinfo-code"><code>RecommendInfo</code></a></h5>
+
+</div>
+<div class="sect4">
+<h5 id="code-removedislikeinfo-code"><a class="link" href="#code-removedislikeinfo-code"><code>RemoveDislikeInfo</code></a></h5>
+
+</div>
+<div class="sect4">
+<h5 id="code-removelikeinfo-code"><a class="link" href="#code-removelikeinfo-code"><code>RemoveLikeInfo</code></a></h5>
+
+</div>
+<div class="sect4">
+<h5 id="code-saveinfo-code"><a class="link" href="#code-saveinfo-code"><code>SaveInfo</code></a></h5>
+
+</div>
+<div class="sect4">
+<h5 id="code-showinfo-code"><a class="link" href="#code-showinfo-code"><code>ShowInfo</code></a></h5>
+
+</div>
+<div class="sect4">
+<h5 id="code-themeinfo-code"><a class="link" href="#code-themeinfo-code"><code>ThemeInfo</code></a></h5>
+
+</div>
+<div class="sect4">
+<h5 id="code-topupinfo-code"><a class="link" href="#code-topupinfo-code"><code>TopUpInfo</code></a></h5>
+
+</div>
+<div class="sect4">
+<h5 id="code-viewsortinfo-code"><a class="link" href="#code-viewsortinfo-code"><code>ViewSortInfo</code></a></h5>
+
+</div>
+<div class="sect4">
+<h5 id="code-withdrawinfo-code"><a class="link" href="#code-withdrawinfo-code"><code>WithdrawInfo</code></a></h5>
+<div class="paragraph">
+<p>Each of these classes contains these fields:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Command Word</p>
+</li>
+<li>
+<p>Information</p>
+</li>
+<li>
+<p>Usage example</p>
+</li>
+<li>
+<p>Expected Output</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Each of these fields have to be manually typed as it acts like an in-built user guide for the users who do not have
+access to internet connection, but would still like to know about the command.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="opening-info-card-about-a-command"><a class="link" href="#opening-info-card-about-a-command">4.9.2. Opening info card about a command</a></h4>
+<div class="paragraph">
+<p>Command word to open up a new <code>InfoWindow</code> is <code>info</code>. Users are able to view the <code>InfoWindow</code> for each and every command
+as long as the command exist within the app (There exist the class for such info card in the model).</p>
+</div>
+<div class="paragraph">
+<p>For example, <code>info add</code> will open up a new <code>InfoWindow</code> about the command <code>add</code>.</p>
+</div>
+<div class="paragraph">
+<p>The sequence window below shows how a sample <code>info</code> command is executed:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/InfoSequenceDiagram.png" alt="InfoSequenceDiagram">
+</div>
+<div class="title">Figure 26. Sequence diagram for sample <code>info</code> command</div>
+</div>
+<div class="paragraph">
+<p>The following activity diagram shows how the <code>info</code> command works.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/InfoActivityDiagram.png" alt="InfoActivityDiagram">
+</div>
+<div class="title">Figure 27. Activity diagram for sample <code>info</code> command</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">4.9.3. Design Considerations</a></h4>
+<div class="paragraph">
+<p>Detailed below are our considerations when creating the Info feature.</p>
+</div>
+<div class="sect4">
+<h5 id="design-considerations-of-code-infocommand-code-class"><a class="link" href="#design-considerations-of-code-infocommand-code-class">Design considerations of <code>InfoCommand</code> class</a></h5>
+<div class="paragraph">
+<p>Explained below are our consideration when designing the <code>InfoCommand</code> class.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 11. Design considerations of the <code>InfoCommand</code> class</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Alternative 1 (Chosen Implementation)</th>
+<th class="tableblock halign-left valign-top">Alternative 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Returning a specific message for each input command to create specific <code>CommandResult</code> which can be
+handled accordingly in <code>MainWindow</code>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This greatly decreases chances of different input command returning the same <code>CommandResult</code> due to standardized
+success message, output message, etc.</p>
+</li>
+<li>
+<p>This enables similar commands to have similar or standardized output message without having to worry about causing
+a bug with the info feature.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Accommodating newly-added command might be messy and complicated as new field will have to be created
+plus new object to be returned when execute() is called.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Simply returning the input command&#8217;s output message.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Makes it easier to accommodate newly-added commands as no new field or object needs to be created.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Might cause bug where different command open the same info card due to equal output message.</p>
+</li>
+<li>
+<p>Will have to ensure that every command have a different output message.</p>
+</li>
+<li>
+<p>Similar commands will not be able to have standardized output message.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>We decided to go with alternative 1 and implemented <code>InfoCommand</code> class to just return a specific message for each
+and every input command. Not only that this is much safer but this also allows similar commands to have standardized
+output message e.g. <code>like</code> command and <code>dislike</code> command.</p>
+</div>
+<div class="paragraph">
+<p>The hassle of having to create new field and object to be returned for every new command added is mitigated by the fact
+that we will not have to worry about similar output message for the commands resulting in a bug in the info feature.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, this implementation also allows a unique output message to be displayed on the <code>ResultDisplay</code> which
+definitely adds more personality to the program and allows a better, more informative feedback to user to be displayed.</p>
+</div>
+<div class="paragraph">
+<p>Basically the benefits of this implementation as mentioned, greatly outweighs the cost it takes to implement it and
+subsequent command addition would be much easier as it&#8217;s just repeated routine.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="design-considerations-on-how-to-display-the-command-s-information"><a class="link" href="#design-considerations-on-how-to-display-the-command-s-information">Design considerations on how to display the command&#8217;s information</a></h5>
+<div class="paragraph">
+<p>Explained below are our consideration when designing on the best way to display the command&#8217;s information.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 12. Design considerations of the way to display information</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Alternative 1 (Chosen Implementation)</th>
+<th class="tableblock halign-left valign-top">Alternative 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Creating <code>InfoWindow</code> that is opened every time the <code>info</code> command is used.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Allow more information to be displayed about a particular command.</p>
+</li>
+<li>
+<p>Allow developers to design how they want the information to be displayed.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Need to create new window and carefully engineer the proportion to prevent truncation, etc.</p>
+</li>
+<li>
+<p>User might not like the app opening up a new window every time the <code>info</code> command is called.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Displaying the information on the <code>ResultDisplay</code>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Safer as it eliminated bugs from having to create a new window.</p>
+</li>
+<li>
+<p>Makes the application less-messy as there are less windows opened.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The small <code>ResultDisplay</code> component means that not much information can be displayed.</p>
+</li>
+<li>
+<p>Displaying a large amount of information will require the user to slowly read it through the small <code>ResultDisplay</code>
+tab which will not be comfortable to the users.</p>
+</li>
+<li>
+<p>This implementation prevents us from freely designing the information displayed as we are only limited to
+designing the information in text form.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>We decided to go with alternative 1 where we just create a new window called <code>InfoWindow</code> to display the information.
+Firstly, this allows us to format the information in a way to make it easy for the users to understand. Secondly, we
+are able to fit so much more information in the new window and even possibly image guides which would definitely
+help users understand the commands better.</p>
+</div>
+<div class="paragraph">
+<p>Displaying the information on the <code>ResultDisplay</code> simply would not be helpful enough to the users especially with
+information-heavy commands such as <code>add</code> and <code>edit</code> which would definitely not fit the small <code>ResultDisplay</code> screen.</p>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -2495,7 +2904,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 26. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 28. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 <div class="sect2">
@@ -2516,7 +2925,7 @@ Attributes left unset in the <code>build.gradle</code> file will use their <stro
 </table>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 11. List of site-wide attributes</caption>
+<caption class="title">Table 13. List of site-wide attributes</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 50%;">
@@ -2578,7 +2987,7 @@ Attributes left unset in <code>.adoc</code> files will use their <strong>default
 </table>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 12. List of per-file attributes, excluding Asciidoctor&#8217;s built-in attributes</caption>
+<caption class="title">Table 14. List of per-file attributes, excluding Asciidoctor&#8217;s built-in attributes</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 50%;">
@@ -2728,7 +3137,7 @@ e.g. <code>seedu.savenus.logic.LogicManagerTest</code></p>
 <div class="content">
 <img src="images/testfx-idea-accessibility-permissions.png" alt="testfx idea accessibility permissions" width="600">
 </div>
-<div class="title">Figure 27. <code>Accessibility</code> permission is granted to <code>IntelliJ IDEA</code></div>
+<div class="title">Figure 29. <code>Accessibility</code> permission is granted to <code>IntelliJ IDEA</code></div>
 </div>
 </div>
 </div>
@@ -3586,4 +3995,4 @@ recommendation value are documented in the User Guide and Developer Guide.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 02:48:16 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 03:17:15 UTC</div></div></div></body></html>
